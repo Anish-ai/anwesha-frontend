@@ -1,5 +1,5 @@
 import styles from '../styles/events.module.css'
-import { Josefin_Sans, Montserrat } from 'next/font/google'
+import { Josefin_Sans, Montserrat, DM_Serif_Display } from 'next/font/google'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -44,6 +44,11 @@ import Modal from '../components/BigModal/index.js'
 //     "poster": '/events/workshopPoster.jpeg',
 //     "Event": "2 days of workshop",
 // }]
+
+const dmSerif = DM_Serif_Display({
+    subsets: ["latin"],
+    weight: "400",
+});
 
 const SponsorsSlider = ({ images, animation_duration = -1 }) => {
     const width = 127.381; // IF YOU CHANGE THIS THEN CHANGE IT INSIDE autoScrollSponseAnimation ALSO
@@ -292,7 +297,7 @@ const Events = () => {
             {/* Sponsors */}
             <section className={styles.sponsors}>
                 <div className={styles.sponsors_title}>
-                    <h2>Our Proud Sponsors</h2>
+                    <h2 className={dmSerif.className}>Our Proud Sponsors</h2>
                     <h3>Strengthening the Vision Together</h3>
                 </div>
                 <div className={styles.sponsors_images_slider}>
