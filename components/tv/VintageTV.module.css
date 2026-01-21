@@ -1,0 +1,31 @@
+.tvLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 30px);
+  width: 100%;
+  flex-direction: row;
+}
+
+.tvKnobs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 4vw, 36px);
+  width: clamp(80px, 20vw, 150px);
+}
+
+/* Mobile layout - stack vertically */
+@media (max-width: 640px) {
+  .tvLayout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tvKnobs {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 40px);
+  }
+}
