@@ -1209,7 +1209,7 @@ const IndexPage = () => {
                         <div className={styles.cta_body}>
                             <div className={styles.cta_body_left}>
                                 <Image
-                                    src={'/home/home_circle_theme.png'}
+                                    src={'/home/circle.png'}
                                     width={450}
                                     height={450}
                                     alt="Theme Circle"
@@ -1217,7 +1217,7 @@ const IndexPage = () => {
                                 />
                                 <div className={styles.cta_image}>
                                     <Image
-                                        src="/home/mascot.png"
+                                        src="/home/mascott.png"
                                         alt="Mascot"
                                         width={320}
                                         height={320}

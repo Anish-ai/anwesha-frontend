@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/sf-ironsides');
 @import url('https://fonts.cdnfonts.com/css/laila');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lisu+Bosa&display=swap');
 @import url(https://db.onlinewebfonts.com/c/c4edbff807a21e68cd990230dab176df?family=Anavio+Small+Capitals+W01+Rg);
 
 .parentcontainer {
@@ -10,7 +11,7 @@
 }
 .head{
     color: #fff;
-    font-family: 'SF Ironsides', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 50px;
     font-style: normal;
     line-height: normal;
@@ -35,7 +36,7 @@
 
 .subheading {
     color: #fff;
-    font-family: 'SF Ironsides', sans-serif;
+    font-family: 'Cinzel', serif;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
@@ -44,7 +45,7 @@
 }
 .title{
     font-size: 20px;
-    font-family: 'Anavio Small Capitals W01 Rg';
+    font-family: 'Cinzel', serif;
     color: #F2BF51;
 
 }

@@ -114,25 +114,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    margin: -10px 10px 10px 10px;
-    font-family: 'Cormorant Garamond', serif;
-    padding: 25px 12px 25px 12px;
+    max-width: 900px;
+    /* key fix */
+    margin: 0 auto;
+    /* center it */
+    width: 100%;
+    gap: 80px;
+    flex-wrap: wrap;
+    padding: 25px 12px;
     border-top: solid 1px white;
     border-bottom: solid 1px white;
-    /* flex-wrap: wrap; */
-}
-
-.userDetails {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    max-width: 900px; /* key fix */
-    margin: 0 auto; /* center it */
-    width: 100%;
-
-    gap: 80px;
 }
 
 .userDetailsHeading {
@@ -161,7 +152,9 @@
     min-height: 600px;
     padding: 20px;
     width: 90%;
-    margin: 20px auto 20px auto;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-sizing: border-box;
 }
 .copy {
     background-color: rgba(0, 0, 0, 0);
@@ -174,18 +167,21 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .tab {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, 24px);
     height: 39px;
     cursor: pointer;
     list-style: none;
-    padding: 0px 7px 0px 7px;
+    padding: 0px 7px;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 .tabActive {
@@ -334,6 +330,7 @@
 @media (max-width: 768px) {
     .welcome {
         font-size: 35px;
+        height: 150px;
     }
     .anwesha_id {
         font-size: 18px;
@@ -350,46 +347,122 @@
     }
 
     .userDetails {
-        /* flex-direction: column; */
-        padding: 0 20px;
-        gap: 24px;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 10px;
         text-align: center;
     }
     .anwesha_username {
-        font-size: 40px;
+        font-size: 32px;
     }
     .userDetailsContent {
         font-size: 14px;
     }
     .userDetailsHeading {
-        font-size: 18px;
+        font-size: 16px;
+    }
+    .tabs {
+        padding: 15px;
+        min-height: 500px;
+    }
+    .tabList {
+        flex-direction: row;
+    }
+    .tab {
+        font-size: 16px;
+        padding: 0px 5px;
+    }
+    .idandqr {
+        flex-direction: column;
+        align-items: center;
+    }
+    .userImage {
+        width: 90px;
+        height: 90px;
     }
 }
 @media (max-width: 480px) {
     .welcome {
-        font-size: 30px;
+        font-size: 26px;
+        height: 120px;
     }
     .idandqr {
         flex-direction: column;
+        padding: 10px;
     }
     .anwesha_id {
-        font-size: 16px;
+        font-size: 14px;
     }
     .anwesha_username {
-        font-size: 36px;
+        font-size: 28px;
     }
-
+    .userImage {
+        width: 75px;
+        height: 75px;
+    }
     .subContainer {
         padding-bottom: 120px;
     }
     .subContainer::after {
         height: 120px;
     }
+    .userDetails {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 5px;
+    }
+    .tabs {
+        width: 95%;
+        padding: 12px;
+        min-height: 450px;
+    }
+    .tabList {
+        flex-direction: row;
+        gap: 8px;
+    }
+    .tab {
+        font-size: 14px;
+        padding: 0px 3px;
+        height: 35px;
+    }
+    .tabPanel {
+        width: 95%;
+    }
+    .userDetailsHeading {
+        font-size: 14px;
+    }
+    .userDetailsContent {
+        font-size: 12px;
+    }
 }
 @media (max-width: 1200px) {
     .userDetails {
-        padding: 20px 80px;
-        gap: 40px;
+        padding: 20px 40px;
+        gap: 30px;
+    }
+    .tabs {
+        width: 92%;
+    }
+}
+
+@media (max-width: 360px) {
+    .welcome {
+        font-size: 22px;
+        height: 100px;
+    }
+    .anwesha_username {
+        font-size: 24px;
+    }
+    .anwesha_id {
+        font-size: 12px;
+    }
+    .tab {
+        font-size: 12px;
+        padding: 0px 2px;
+    }
+    .userImage {
+        width: 65px;
+        height: 65px;
     }
 }
 .bottomDesign {
