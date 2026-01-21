@@ -2,8 +2,6 @@
 
 @import url('https://fonts.cdnfonts.com/css/sf-ironsides');
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lisu+Bosa&display=swap');
-
 .container {
     position: relative;
     width: 100%;
@@ -34,7 +32,7 @@
 }
 
 .folderTitle {
-    font-family: 'Cinzel', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1rem;
@@ -180,3 +178,91 @@
     }
   }
 /* vi: set et sw=4: */
+
+/* ✅ TV Wrapper */
+.tvWrapper {
+  width: 100%;
+  min-height: 140vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* pushes the TV below fixed "GLIMPSE" overlay */
+  padding-top: 120vh;
+  padding-bottom: 120px;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* ✅ Psychedelic Animated Background */
+.psyBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Big moving glow blobs */
+.psyBackground::before,
+.psyBackground::after {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.35;
+  animation: psyMove 12s ease-in-out infinite alternate;
+}
+
+/* Left blob */
+.psyBackground::before {
+  top: -200px;
+  left: -200px;
+  background: radial-gradient(circle, rgba(255, 0, 200, 0.55), transparent 70%);
+}
+
+/* Right blob */
+.psyBackground::after {
+  bottom: -200px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(0, 255, 200, 0.55), transparent 70%);
+}
+
+/* Slow animated aurora overlay */
+.psyAurora {
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(160, 0, 255, 0.18),
+    rgba(0, 255, 220, 0.16),
+    rgba(255, 255, 0, 0.12),
+    rgba(255, 0, 120, 0.16),
+    rgba(160, 0, 255, 0.18)
+  );
+  filter: blur(90px);
+  opacity: 0.7;
+  animation: auroraSpin 20s linear infinite;
+}
+
+@keyframes psyMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(220px, 120px) scale(1.2);
+  }
+}
+
+@keyframes auroraSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
