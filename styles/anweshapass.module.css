@@ -13,6 +13,30 @@
     src: url('/font/Laila-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Lisu_Bosa';
+    src: url('../styles/fonts/Lisu_Bosa/LisuBosa-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cormorant_Garamond';
+    src: url('../styles/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cinzel_Decorative';
+    src: url('../styles//fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DM_Serif_Display';
+    src: url('../styles//fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 /* .parentContainer {
  
     padding-top: 100px;
@@ -130,7 +154,7 @@
     color: var(--Color-Primary500, #F2BF51);
     margin-top: 20px;
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
@@ -142,7 +166,7 @@
     color: #fff;
     margin-top: 15px;
     /* AN/AN - 24 */
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 100;
@@ -154,7 +178,7 @@
     text-align: justify;
 
     /* La/La - 20 Reg */
-    font-family: laila;
+    font-family: 'Lisu_Bosa',serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -207,7 +231,7 @@
 }
 
 .linkContainer a {
-    font-family: 'Laila', serif;
+    font-family: 'Lisu_Bosa', serif;
     color: #fff;
     font-size: 20px;
     text-decoration: none;
@@ -286,7 +310,7 @@
     align-items: center;
     text-align: center;
     font-size: 20px;
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Lisu_Bosa';
 }
 
 .earlybird1 {
@@ -294,7 +318,7 @@
     align-items: center;
     text-align: center;
     font-size: 20px;
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
 }
 
 @media only screen and (max-width: 1250px) {
@@ -451,7 +475,7 @@
     text-align: center;
 
     /* SF/SF - 36 REG */
-    font-family: 'SF Ironsides';
+    font-family: 'Lisu_Bosa',serif;
     font-size: 28px;
     font-weight: 400;
     line-height: normal;
@@ -517,7 +541,7 @@
     text-align: right;
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
@@ -530,7 +554,7 @@
     text-align: center;
 
     /* AN/AN - 24 */
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -582,7 +606,7 @@
     align-self: stretch;
     color: #fff;
     text-align: center;
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -592,7 +616,7 @@
     align-self: stretch;
     color: #fff;
     text-align: center;
-    font-family: 'EB Garamond';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -758,7 +782,7 @@
     color: var(--Color-Primary500, #F2BF51);
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
@@ -770,7 +794,7 @@
     color: #fff;
 
     /* AN/AN - 24 */
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Lisu_Bosa',serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 100;
@@ -782,7 +806,7 @@
     text-align: justify;
 
     /* La/La - 20 Reg */
-    font-family: laila;
+    font-family: 'Lisu_Bosa',serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -935,7 +959,7 @@
     color: var(--Color-Primary500, #F2BF51);
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
@@ -947,7 +971,7 @@
     color: #fff;
 
     /* AN/AN - 24 */
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 100;
@@ -959,7 +983,7 @@
     text-align: justify;
 
     /* La/La - 20 Reg */
-    font-family: laila;
+    font-family: 'Lisu_Bosa',serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -1120,7 +1144,7 @@
     color: var(--Color-Primary500, #F2BF51);
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
@@ -1132,7 +1156,7 @@
     color: #fff;
 
     /* AN/AN - 24 */
-    font-family: AnavioSmallCapitalsW01-Bold;
+    font-family: 'Cinzel_Decorative',serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 100;
@@ -1144,7 +1168,7 @@
     text-align: justify;
 
     /* La/La - 20 Reg */
-    font-family: laila;
+    font-family: 'Lisu_Bosa',serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -1273,7 +1297,7 @@
 }
 .register_button{
     all: unset;
-    width: 231.338px;
+    width: 301.338px;
     height: 96.135px;
     margin-bottom: 34px;
 
@@ -1287,14 +1311,14 @@
     /* filter: drop-shadow(0px -3.623px 3.623px #f2e279); */
 
     /* color: var(--Color-Primary500, #50FF00); */
-    color: #f3de56;
+    color: #ffffff;
     text-align: center;
     padding-top: 5px;
-
+    padding-left: 6px;
     /* SF/SF - 36 REG */
-    font-family: "SF Ironsides";
+    font-family: "Cormorant_Garamond",serif;
     font-size: 23px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 

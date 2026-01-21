@@ -3,6 +3,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lisu+Bosa&display=swap');
 @import url(https://db.onlinewebfonts.com/c/c4edbff807a21e68cd990230dab176df?family=Anavio+Small+Capitals+W01+Rg);
 
+@font-face {
+    font-family: 'Lisu_Bosa';
+    src: url('../styles/fonts/Lisu_Bosa/LisuBosa-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cormorant_Garamond';
+    src: url('../styles/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cinzel_Decorative';
+    src: url('../styles//fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DM_Serif_Display';
+    src: url('../styles//fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .parentcontainer {
     background-image: url('/assets/aboutusnew.png');
     background-size: 100%;
@@ -11,7 +36,7 @@
 }
 .head{
     color: #fff;
-    font-family: 'Cinzel', serif;
+    font-family: 'Cinzel_Decorative', serif;
     font-size: 50px;
     font-style: normal;
     line-height: normal;
@@ -36,7 +61,7 @@
 
 .subheading {
     color: #fff;
-    font-family: 'Cinzel', serif;
+    font-family: 'Lisu_Bosa', serif;
     font-size: 50px;
     font-style: normal;
     font-weight: 700;
@@ -45,7 +70,7 @@
 }
 .title{
     font-size: 20px;
-    font-family: 'Cinzel', serif;
+    font-family: 'DM_Serif_Display', serif;
     color: #F2BF51;
 
 }

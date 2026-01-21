@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { useState } from 'react';
+import styles from '../components/UserRegister-Login/style.module.css'
 
 const Custom404 = () => {
+    const [hover, setHover] = useState(false);
     return (
+        
         <div
             style={{
-                backgroundImage: 'url("/404.png")',
+                backgroundImage: 'url("/assets/error_404.png")',
                 height: '100%',
                 position: 'relative',
                 width: '100%',
@@ -22,7 +26,7 @@ const Custom404 = () => {
             <div
                 style={{
                     backgroundImage: 'url("/error404.png")',
-                    height: '100vh',
+                    height: '100dvh',
                     width: '75vw',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -32,31 +36,53 @@ const Custom404 = () => {
                     mixBlendMode: 'color-dodge',
                 }}
             ></div>
+           <p
+           className={styles.dont_loss}
+
+>
+    DON'T GET LOST IN ABYSS
+</p>
 
             {/* Return Home Button */}
             <Link
                 href="/"
+             className={styles.homepage_btn}
                 style={{
-                    backgroundImage: 'url("/redbutton.png")',
+                    backgroundImage: 'url("/assets/register_button_bac.png")',
+                    width: '346px',
+                    height:'77px',
                     backgroundSize: 'contain',
-                    color: '#FF0000',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundClip:'border-box',
+                    backgroundPosition: 'center',
                     zIndex: '1',
-                    padding: '10px 20px',
-                    borderRadius: '30px',
-                    textDecoration: 'none',
-                    fontFamily: '"SF Ironsides", sans-serif',
-                    textTransform: 'uppercase',
-                    fontSize: 'clamp(32px, 4vw, 34px)',
-                    fontWeight: 'bold',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                 
+                   
                     position: 'absolute',
                     bottom: 'clamp(50px, 10vh, 100px)',
                     textAlign: 'center',
-                    minWidth: 'min(180px, 80vw)',
+                  
+                    transition: 'all ease 0.2s',
+
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingLeft: '28px',
+                    color: 'white',
+                    filter: hover
+                    ? 'drop-shadow(0px -3.623px 3.623px #f2e279)'
+                    : 'drop-shadow(0px 0px 0px #ffffff)',
+                  transform: hover ? 'scale(0.97)' : 'scale(1)',
+                 
+                  textDecoration: 'none',
+
                 }}
+                      onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
             >
                 Home Page
             </Link>
+           
             <style jsx global>{`
                 @import url('https://fonts.cdnfonts.com/css/sf-ironsides');
             `}</style>

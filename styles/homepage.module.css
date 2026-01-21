@@ -24,9 +24,23 @@
 .bat_scroll_button {
     all: unset;
     cursor: pointer;
-    width: min-content;
-    height: min-content;
+
+    /* width: 120px;     
+    height: 120px; */
+
+    display: flex;     /* 🔥 REQUIRED */
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;    /* 🔥 VERY IMPORTANT */
 }
+
+.bat_scroll_button svg {
+    width: 90px;
+    height: auto;
+    display: block;
+}
+
 
 .bat_scroll_button:hover {
     filter: drop-shadow(1px 1px 1px yellow);
@@ -37,46 +51,49 @@
 }
 
 .sexy_button {
-    /* USE TAILWIND I struggle to name classes :) */
     all: unset;
-    width: 300px;
-    height: auto;
-    aspect-ratio: 231.338 / 76.135;
 
+    /* REQUIRED RESET AFTER unset */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
 
-    /* flex-shrink: 0; */
+    /* 🔥 SIZE (THIS FIXES height = 0) */
+    width: 100%;
+    min-width: 250px;
+    min-height: 250px;        /* IMPORTANT */
+        
+
+    /* BACKGROUND */
     background-image: url('/home/home_button.png');
-    /* background-color: #150318; */
     background-repeat: no-repeat;
-    background-size: 160%;
-    background-clip: border-box;
     background-position: center;
-    fill: #000;
-    /* filter: drop-shadow(0px -3.623px 3.623px #55a826); */
-    filter: drop-shadow(0px -3.623px 3.623px #F2E279);
+    background-size:cover;
+    /* border : 2px solid black; */
 
-    /* color: var(--Color-Primary500, #DEB25B); */
-    color: var(--Color-Primary500, #F2E279);
-    text-align: center;
-
-    /* SF/SF - 36 REG */
+    /* TEXT */
     font-family: 'SF Ironsides';
     font-size: 28px;
     font-weight: 400;
-    line-height: normal;
+    line-height: 1;         /* IMPORTANT */
     text-transform: uppercase;
-    /* border-radius: 20px; */
+    color: var(--Color-Primary500, #F2E279);
+    text-align: center;
 
+    /* EFFECT */
+    filter: drop-shadow(0px -3.623px 3.623px #F2E279);
     cursor: pointer;
 }
 
+
 .sexy_button_small {
-    width: 201.315px;
-    height: 102.963px;
-    font-size: 28px;
+    max-width: 320px;
+    min-height: 94px;
+    font-size: 26px;
     filter: drop-shadow(0px -2.996px 2.996px #F2E279);
-    /* filter: drop-shadow(0px -2.996px 2.996px #55a826); */
 }
+
 
 /* .sexy_button:focus{
     filter: drop-shadow(0px -1px 1px white);
@@ -91,6 +108,30 @@
 .sexy_button:active {
     filter: drop-shadow(1px 1px 1px white);
 }
+
+@media (max-width: 568px) {
+    .sexy_button,
+    .sexy_button_small {
+        width: 100%;
+        max-width: 100%;
+        min-height: 94px;
+        font-size: 24px;
+    }
+}
+
+
+
+@media (max-width: 568px) {
+    .hero_button {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .hero_button > button {
+        width: 100%;
+    }
+}
+
 
 .sexy_title {
     display: inline-flex;
@@ -256,9 +297,40 @@
     display: flex;
     gap: 50px;
     justify-content: center;
-
-    transform: translateY(-45vh)
+    align-items: center;
+    /* border: 1px solid red; */
+    transform: translateY(-40vh)
 }
+
+.hero_title_img {
+    width: 100%;
+    height: auto;          /* keeps ratio */
+    max-width: 1000px;
+}
+@media (max-width: 1200px) {
+    .hero_title_img {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero_title_img {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 550px) {
+    .hero_title_img {
+        max-width: 620px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero_title_img {
+        max-width: 400px;
+    }
+}
+
 
 
 @media only screen and (max-width: 900px) {
@@ -278,9 +350,17 @@
     .hero_button {
         flex-direction: column;
         /* 🔥 STACK */
-        gap: 0px;
+        gap: 23px;
         transform: translateY(-30vh);
     }
+    .hero_button > button{
+    min-width: 200px;
+}
+
+}
+
+.hero_button > button{
+    min-width: 300px;
 }
 
 
@@ -320,6 +400,7 @@
         font-size: 46px;
     }
 }
+
 
 .home_bg {
     background-image: url("/home/backdrop2_home.png");
@@ -414,8 +495,10 @@
 }
 
 .events_images_parent {
+    position: relative; 
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 4px;
     width: 100%;
     max-width: 100%;
@@ -487,6 +570,7 @@
 }
 
 .events_button>button {
+    min-width: 300px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -557,6 +641,7 @@
         overflow-x: hidden;
     } */
     .events_images_parent>.bat_scroll_button>svg {
+        position: static;
         width: 8vw;
         height: calc(55px * (8vw / 155px));
         min-width: calc(65px / 1.75);
@@ -577,6 +662,35 @@
         margin-top: -16px;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .events_images_parent > .bat_scroll_button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+
+        width: 90px;
+        height: 90px;
+    
+    }
+
+    /* LEFT BAT */
+    .events_images_parent > .bat_scroll_button:first-child {
+        left: 8px;
+    }
+
+    /* RIGHT BAT */
+    .events_images_parent > .bat_scroll_button:last-child {
+        right: 8px;
+    }
+
+    .events_images_parent > .bat_scroll_button svg {
+        width: 36px;
+        height: auto;
+    }
+}
+
 
 @media only screen and (max-width: 550px) {
 
@@ -611,6 +725,9 @@
     .events_button {
         margin-top: -32px;
         margin-bottom: 32px;
+    }
+    .events_button > button{
+        max-width: 200px;
     }
 
     .events_title {
@@ -811,12 +928,36 @@
     position: absolute;
     display: flex;
     padding-right: 8px;
+    /* border: 1px solid red; */
 }
 
 .merch_button>button {
+    /* height: 200px; */
     z-index: 10;
     margin-left: auto;
     margin-right: auto;
+}
+
+.merch_grab_button {
+    width: auto;
+    min-width: 260px;
+    min-height: 88px;
+    font-size: 28px;
+}
+
+@media (max-width: 768px) {
+    .merch_grab_button {
+        width: 90%;
+        min-height: 84px;
+        font-size: 26px;
+    }
+}
+@media (max-width: 550px) {
+    .merch_grab_button {
+        width: 85%;
+        min-height: 76px;
+        font-size: 24px;
+    }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -897,6 +1038,10 @@
         width: 75vw;
         max-width: 515px;
     }
+    .merch_button {
+        bottom:0px;
+           
+    }
 
     /* .merch_tshirts {
         height: 100%;
@@ -913,9 +1058,7 @@
         width: calc(271.126px / 1.25);
         height: calc(358.956px / 1.25);
     } */
-    .merch_button {
-        bottom: 120px;
-    }
+    
 }
 
 @media only screen and (max-width: 550px) {
@@ -962,7 +1105,12 @@
     .merch_hero {
         height: calc(450px + 45vw);
     }
-
+    .merch_button {
+        position: relative;   /* 🔥 */
+        bottom: auto;         /* 🔥 reset */
+        margin-top: 55px;     /* 🔥 now works */
+    }
+    
     /* .tshirt_blue {
         width: calc(271.126px / 1.5);
         height: calc(358.956px / 1.5);
@@ -1059,9 +1207,16 @@
 
 .moments_button {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 24px;
+
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
 }
+
+
 
 @media only screen and (max-width: 1250px) {
     .moments {
@@ -1096,9 +1251,7 @@
 @media only screen and (max-width: 550px) {
 
     /* TODO */
-    .moments_button {
-        gap: 12px;
-    }
+    
 
     .moments_images_curve {
         width: 140%;
@@ -1112,8 +1265,8 @@
     }
 
     .moments_button>.sexy_button_small {
-        padding-left: 1.8rem;
-        padding-right: 1.8rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
     }
 
     .moments_button {
@@ -1121,6 +1274,7 @@
         gap: 0;
     }
 }
+
 
 /* =================================== aftermovie =================================== */
 .aftermovie {
