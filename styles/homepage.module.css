@@ -13,33 +13,6 @@
     src: url('/font/Laila-Regular.ttf');
 }
 
-@font-face {
-    /* /Users/harishchandel/Documents/codes/web codes/anweshaaa/anwesha-frontend/styles/fonts/Cinzel_Decorative */
-    font-family: 'Lisu_Bosa';
-    src: url('../styles/fonts/Lisu_Bosa/LisuBosa-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Cormorant_Garamond';
-    src: url('../styles/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Cinzel_Decorative';
-    src: url('../styles/fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'DM_Serif_Display';
-    src: url('../styles/fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 .bg {
     display: flex;
     flex-direction: column;
@@ -100,7 +73,7 @@
     /* border : 2px solid black; */
 
     /* TEXT */
-    font-family: 'Cormorant_Garamond', serif;
+    font-family: 'SF Ironsides';
     font-size: 28px;
     font-weight: 400;
     line-height: 1;         /* IMPORTANT */
@@ -111,15 +84,6 @@
     /* EFFECT */
     filter: drop-shadow(0px -3.623px 3.623px #F2E279);
     cursor: pointer;
-    color: #F2E279;
-    transform: translatey(222px);
-    @media screen and (max-width: 600px) {
-        margin-top: 15px;
-        transform: scale(0.8);
-        background-image: url('/assets/new_home_phone_btn.png');
-
-
-    }
 }
 
 
@@ -127,7 +91,7 @@
     max-width: 320px;
     min-height: 94px;
     font-size: 26px;
-    filter: drop-shadow(0px -2.996px 2.996px #383736);
+    filter: drop-shadow(0px -2.996px 2.996px #F2E279);
 }
 
 
@@ -137,9 +101,8 @@
 .sexy_button:hover {
     /* filter: drop-shadow(0px -3.623px 3.623px #03fa24);
     color: var(--Color-Primary500, #00ff26); */
-    filter: drop-shadow(0px -5.623px 5.623px #313131);
-    scale: 1.02;
-    /* color: var(--Color-Primary500, #F2E279); */
+    filter: drop-shadow(0px -5.623px 5.623px #F2E279);
+    color: var(--Color-Primary500, #F2E279);
 }
 
 .sexy_button:active {
