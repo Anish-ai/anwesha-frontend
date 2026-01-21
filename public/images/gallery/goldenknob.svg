@@ -1,0 +1,86 @@
+<svg width="100%" height="100%" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dark gold knob dial" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Dark gold bezel gradient -->
+    <radialGradient id="bezelGradDark" cx="35%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#FFE29A"></stop>
+      <stop offset="28%" stop-color="#C99B2E"></stop>
+      <stop offset="58%" stop-color="#8A6311"></stop>
+      <stop offset="100%" stop-color="#2E1E05"></stop>
+    </radialGradient>
+
+    <!-- Dark gold dial gradient -->
+    <radialGradient id="dialGradDark" cx="40%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#FFD97A"></stop>
+      <stop offset="38%" stop-color="#B78418"></stop>
+      <stop offset="75%" stop-color="#6B470B"></stop>
+      <stop offset="100%" stop-color="#3A2506"></stop>
+    </radialGradient>
+
+    <!-- Metallic inner ring sheen -->
+    <radialGradient id="ringSheenDark" cx="40%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"></stop>
+      <stop offset="45%" stop-color="rgba(255,255,255,0.08)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.35)"></stop>
+    </radialGradient>
+
+    <!-- Soft shadow -->
+    <filter id="softShadowDark" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.45"></feDropShadow>
+    </filter>
+
+    <!-- Inner depth -->
+    <filter id="innerDepthDark" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#000" flood-opacity="0.35"></feDropShadow>
+    </filter>
+
+    <style>
+      .tickMain { stroke: rgba(25,18,6,0.75); stroke-width: 2.1; stroke-linecap: round; }
+      .tickSmall { stroke: rgba(25,18,6,0.6); stroke-width: 1.7; stroke-linecap: round; }
+    </style>
+
+    <!-- Center hole gradient -->
+    <radialGradient id="centerHoleDark" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#5C3F0B"></stop>
+      <stop offset="55%" stop-color="#2E1F05"></stop>
+      <stop offset="100%" stop-color="#120C02"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer bezel -->
+  <circle cx="60" cy="60" r="56" fill="url(#bezelGradDark)" filter="url(#softShadowDark)"></circle>
+
+  <!-- Bezel inner lip -->
+  <circle cx="60" cy="60" r="50" fill="url(#ringSheenDark)" opacity="0.98"></circle>
+
+  <!-- Main dial -->
+  <circle cx="60" cy="60" r="44" fill="url(#dialGradDark)" filter="url(#innerDepthDark)"></circle>
+
+  <!-- Dial border -->
+  <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="2"></circle>
+
+  <!-- Tick marks -->
+  <g>
+    <!-- Main cardinal ticks -->
+    <line x1="60" y1="14" x2="60" y2="23" class="tickMain"></line>
+    <line x1="106" y1="60" x2="97" y2="60" class="tickMain"></line>
+    <line x1="60" y1="106" x2="60" y2="97" class="tickMain"></line>
+    <line x1="14" y1="60" x2="23" y2="60" class="tickMain"></line>
+
+    <!-- Diagonal small ticks -->
+    <line x1="92.5" y1="27.5" x2="86.5" y2="33.5" class="tickSmall"></line>
+    <line x1="92.5" y1="92.5" x2="86.5" y2="86.5" class="tickSmall"></line>
+    <line x1="27.5" y1="92.5" x2="33.5" y2="86.5" class="tickSmall"></line>
+    <line x1="27.5" y1="27.5" x2="33.5" y2="33.5" class="tickSmall"></line>
+  </g>
+
+  <!-- Top indicator needle -->
+  <rect x="58.7" y="18" width="2.6" height="22" rx="1.3" fill="rgba(10,7,2,0.7)"></rect>
+  <rect x="59.45" y="18" width="1.1" height="22" rx="1" fill="rgba(255,255,255,0.08)"></rect>
+
+  <!-- Center knob hole -->
+  <circle cx="60" cy="60" r="9.2" fill="url(#centerHoleDark)"></circle>
+  <circle cx="60" cy="60" r="9.2" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1.2"></circle>
+
+  <!-- Gloss highlight -->
+  <path d="M26,50 C33,30 52,20 72,22 C86,23 95,31 98,42" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5" stroke-linecap="round" opacity="0.35"></path>
+</svg>
