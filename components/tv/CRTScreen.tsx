@@ -60,11 +60,11 @@ export function CRTScreen({ content, mode }: CRTScreenProps) {
   return (
     <div
       style={{
-        width: "640px",
-        height: "500px",
-        borderRadius: "32px",
+        width: "clamp(240px, 70vw, 640px)",
+        height: "clamp(180px, 50vw, 500px)",
+        borderRadius: "clamp(16px, 4vw, 32px)",
         background: "radial-gradient(circle at 30% 20%, #222, #050505 70%)",
-        border: "6px solid rgba(0,0,0,0.7)",
+        border: "clamp(3px, 1vw, 6px) solid rgba(0,0,0,0.7)",
         boxShadow:
           "inset 0 0 30px rgba(0,0,0,0.9), 0 12px 28px rgba(0,0,0,0.7)",
         overflow: "hidden",

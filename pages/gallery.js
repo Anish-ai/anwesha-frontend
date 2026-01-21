@@ -40,6 +40,21 @@ export default function GalleryPage() {
         <div className={styles.psyBackground}>
            <div className={styles.psyAurora}></div>
         </div>
+
+        {/* Vintage Background Images - Optimized for performance */}
+        {/* Corner decorative images */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[5]?.url}')`, left: '3%', top: '10%', width: '140px', height: '180px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[18]?.url}')`, right: '4%', top: '8%', width: '130px', height: '170px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[35]?.url}')`, left: '5%', bottom: '12%', width: '120px', height: '160px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[50]?.url}')`, right: '6%', bottom: '10%', width: '150px', height: '190px' }}></div>
+        
+        {/* Side accent images */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[12]?.url}')`, left: '2%', top: '50%', width: '100px', height: '140px', transform: 'translateY(-50%)' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[42]?.url}')`, right: '2%', top: '45%', width: '110px', height: '150px', transform: 'translateY(-50%)' }}></div>
+        
+        {/* Center subtle image */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[25]?.url}')`, left: '50%', bottom: '5%', width: '95px', height: '130px', transform: 'translateX(-50%)', opacity: 0.15 }}></div>
+        
         {/* Fullscreen Text with Fading Effect */}
         <div
           className={`${styles.fullscreenText} ${fadeOut ? styles.fadeOut : ""}`}
