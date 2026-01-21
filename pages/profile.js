@@ -21,10 +21,10 @@ function Profile() {
 
     const [tabIndex, setTabIndex] = useState(0)
     // const profDetails = userData.state.user;
-   
-const [profDetails, setProfDetails] = useState(
-    userData?.state?.user || {}
-)
+
+    const [profDetails, setProfDetails] = useState(
+        userData?.state?.user || {}
+    )
 
 
     const [formData, setFormData] = useState(profDetails)
@@ -67,20 +67,20 @@ const [profDetails, setProfDetails] = useState(
             .catch((error) => console.log('error', error))
     }
 
-  useEffect(() => {
-    if (!userData?.state?.user) return
+    useEffect(() => {
+        if (!userData?.state?.user) return
 
-    fetch(`${host}/user/editprofile`, {
-        method: 'GET',
-        credentials: 'include',
-        redirect: 'follow',
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            setProfDetails(result)
+        fetch(`${host}/user/editprofile`, {
+            method: 'GET',
+            credentials: 'include',
+            redirect: 'follow',
         })
-        .catch((error) => console.log('error', error))
-}, [userData])
+            .then((response) => response.json())
+            .then((result) => {
+                setProfDetails(result)
+            })
+            .catch((error) => console.log('error', error))
+    }, [userData])
 
     function regenrateqr() {
         fetch(`${host}/user/regenerateqr/`, {
@@ -95,16 +95,16 @@ const [profDetails, setProfDetails] = useState(
             .catch((error) => console.log('error', error))
     }
 
-   if (!userData?.state?.user) {
-    return null
-}
+    if (!userData?.state?.user) {
+        return null
+    }
 
 
     return (
         <>
             <Head>
-                <title>Profile - Anwesha 2025</title>
-                <meta name="description" content="Anwesha 2025" />
+                <title>Profile - Anwesha 2026</title>
+                <meta name="description" content="Anwesha 2026" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
             <ToastContainer
@@ -369,15 +369,15 @@ const [profDetails, setProfDetails] = useState(
                     </Tabs> */}
 
                     {/* design for the bottom pngs */}
-                        <div className={styles.bottomDesign}>
-                             <img
-                                    src={'/profile/bottom.png'}
-                                    width={800}
-                                    height={350}
-                                    alt="userImage"
-                                />
-                        </div>
-                        
+                    <div className={styles.bottomDesign}>
+                        <img
+                            src={'/profile/bottom.png'}
+                            width={800}
+                            height={350}
+                            alt="userImage"
+                        />
+                    </div>
+
                 </div>
             </div>
         </>

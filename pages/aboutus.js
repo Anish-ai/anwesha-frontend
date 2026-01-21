@@ -45,7 +45,7 @@ const Aboutus = () => {
                     <li className={styles.listitem}>
                         <p className={styles.para}>
                             With the expanding music palette of Indian audiences
-                            after the internet arrived, Anwesha 2025 is at the
+                            after the internet arrived, Anwesha 2026 is at the
                             converging point to introduce independent music and
                             art at college festivals.
                         </p>
