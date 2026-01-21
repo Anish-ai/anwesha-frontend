@@ -138,7 +138,7 @@ const [profDetails, setProfDetails] = useState(
                                     alt="userImage"
                                 />
                                 <img
-                                    src={'/pics/mascot 2.png'}
+                                    src={'/profile/profile.svg'}
                                     width={130}
                                     height={130}
                                     alt="userImage"
