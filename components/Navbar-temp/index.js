@@ -131,7 +131,7 @@ function Navigation() {
                         className='nav_logo'
                         src="/navbar/logo.svg"
                         alt="logo"
-                        width={180}
+                        width={130}
                         height={60}
                     />
                 </Link>

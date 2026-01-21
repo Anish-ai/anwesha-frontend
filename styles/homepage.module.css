@@ -13,6 +13,33 @@
     src: url('/font/Laila-Regular.ttf');
 }
 
+@font-face {
+    /* /Users/harishchandel/Documents/codes/web codes/anweshaaa/anwesha-frontend/styles/fonts/Cinzel_Decorative */
+    font-family: 'Lisu_Bosa';
+    src: url('../styles/fonts/Lisu_Bosa/LisuBosa-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cormorant_Garamond';
+    src: url('../styles/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cinzel_Decorative';
+    src: url('../styles/fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DM_Serif_Display';
+    src: url('../styles/fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .bg {
     display: flex;
     flex-direction: column;
@@ -39,42 +66,48 @@
 .sexy_button {
     /* USE TAILWIND I struggle to name classes :) */
     all: unset;
-    width: 300px;
-    height: auto;
-    aspect-ratio: 231.338 / 76.135;
-
-
+    width: 245.34px;
+    height: 76.135px;
+    font-family: 'Cormorant_Garamond', serif;
+    padding-left: 9px;
     /* flex-shrink: 0; */
-    background-image: url('/home/home_button.png');
-    /* background-color: #150318; */
+    background-image: url('/assets/new_home_btn.png');
     background-repeat: no-repeat;
-    background-size: 160%;
+    background-size: contain;
     background-clip: border-box;
     background-position: center;
-    fill: #000;
-    /* filter: drop-shadow(0px -3.623px 3.623px #55a826); */
-    filter: drop-shadow(0px -3.623px 3.623px #F2E279);
+    /* fill: #000; */
+    /* filter: drop-shadow(0px 0px 0px #ffffff); */
 
-    /* color: var(--Color-Primary500, #DEB25B); */
-    color: var(--Color-Primary500, #F2E279);
+    /* color: var(--Color-Primary500, #50FF00); */
+    /* color: #ffdd00; */
     text-align: center;
+    padding-top: 5px;
 
     /* SF/SF - 36 REG */
-    font-family: 'SF Ironsides';
-    font-size: 28px;
-    font-weight: 400;
+    /* font-family: "SF Ironsides"; */
+    font-size: 35px;
+    font-weight: 700;
     line-height: normal;
-    text-transform: uppercase;
-    /* border-radius: 20px; */
-
+    /* text-transform: uppercase; */
+    transition: all ease 0.2s;
     cursor: pointer;
+    color: #F2E279;
+    transform: translatey(222px);
+    @media screen and (max-width: 600px) {
+        margin-top: 15px;
+        transform: scale(0.8);
+        background-image: url('/assets/new_home_phone_btn.png');
+
+
+    }
 }
 
 .sexy_button_small {
     width: 201.315px;
     height: 102.963px;
     font-size: 28px;
-    filter: drop-shadow(0px -2.996px 2.996px #F2E279);
+    filter: drop-shadow(0px -2.996px 2.996px #383736);
     /* filter: drop-shadow(0px -2.996px 2.996px #55a826); */
 }
 
@@ -84,8 +117,9 @@
 .sexy_button:hover {
     /* filter: drop-shadow(0px -3.623px 3.623px #03fa24);
     color: var(--Color-Primary500, #00ff26); */
-    filter: drop-shadow(0px -5.623px 5.623px #F2E279);
-    color: var(--Color-Primary500, #F2E279);
+    filter: drop-shadow(0px -5.623px 5.623px #313131);
+    scale: 1.02;
+    /* color: var(--Color-Primary500, #F2E279); */
 }
 
 .sexy_button:active {
