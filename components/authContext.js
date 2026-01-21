@@ -10,13 +10,10 @@ const { Provider } = AuthContext
 
 const PrivateRoute = ({ children }) => {
     const router = useRouter()
-const auth = React.useContext(AuthContext)
-    const isDev = process.env.NODE_ENV === 'development'
+    const auth = React.useContext(AuthContext)
 
     useEffect(() => {
-        // Redirect to login if the user is unauthenticated and trying to access protected routes
         if (
-            !isDev &&
             !auth.isAuth &&
             [
                 '/event-registration',
@@ -92,8 +89,7 @@ const AuthProvider = ({ children }) => {
     }
 
     // Fetch user data on component mount
-useEffect(() => {
-    if (process.env.NODE_ENV === 'development') return
+    useEffect(() => {
     getUser()
 }, [])
 
