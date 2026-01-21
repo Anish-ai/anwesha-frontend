@@ -117,7 +117,7 @@ export default function Comingsoon() {
                                 style={{ color: '#CB4846' }}
                             >
                                 {' '}
-                                ‘23{' '}
+                                ‘26{' '}
                             </span>
                         </p>
                         <p className={styles.iitp}>IIT PATNA</p>
