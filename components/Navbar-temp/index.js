@@ -202,7 +202,7 @@ function Navigation() {
                                         }
                                         : null
                                 }
-                                href="/all-multicity"
+                                href="/coming-soon"
                             >
                                 Multicity
                             </Link>
