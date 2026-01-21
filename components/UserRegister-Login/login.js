@@ -210,8 +210,11 @@ const UserLoginForm = () => {
             >
                 <div className={styles.container}>
                     <div className={styles.form_login}>
+                        <p style={{ color: '#ffcc00', fontSize: '0.85rem', textAlign: 'center', marginBottom: '15px', lineHeight: '1.4', marginTop: '-20px' }}>
+                            <b>Note:</b> If you cannot login even after getting the "successfully logged in" notification, please go to <b>Site Information</b> (icon on the left of the URL bar) and turn on <b>Third-Party Cookies</b>. Then refresh the page and try logging in again.
+                        </p>
                         <h1
-                           className={styles.register_page_heading}
+                            className={styles.register_page_heading}
                         >
                             Welcome Back!
                         </h1>
