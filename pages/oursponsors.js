@@ -979,7 +979,7 @@ const Oursponsors = () => {
                         {' '}
                         OUR SPONSORS
                     </h2>
-                    <h4 className={styles.tittle_sponsors}>Tittle Sponsors</h4>
+                    <h4 className={styles.tittle_sponsors}>Title Sponsors</h4>
                     <div className={styles.dropdownContainer} ref={dropdownRef}>
                         <button
                             onClick={toggleDropdown}

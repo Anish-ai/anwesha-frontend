@@ -1,3 +1,4 @@
+/* Gallery Page Styles - Last updated */
 @import url(https://db.onlinewebfonts.com/c/c4edbff807a21e68cd990230dab176df?family=Anavio+Small+Capitals+W01+Rg);
 
 @import url('https://fonts.cdnfonts.com/css/sf-ironsides');
@@ -6,7 +7,8 @@
     position: relative;
     width: 100%;
     background-color: #000;
-    overflow: visible;
+    overflow-x: hidden;
+    min-height: 80vh;
 }
 
 .fullscreenText {
@@ -24,6 +26,13 @@
     transition: opacity 0.5s ease-out;
     animation: zoomIn 1.5s ease-out; /* Smooth entrance */
     pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .fullscreenText {
+        justify-content: flex-start;
+        padding-top: clamp(30px, 8vh, 60px);
+    }
 }
 
 .fadeOut {
@@ -144,7 +153,10 @@
 
 @media (max-width: 640px) {
     .glimpse {
-        margin-top: 14vh;
+        margin-top: 7vh;
+        font-size: calc(16px + (50 - 16) * ((100vw - 300px) / (640 - 300)));
+        margin-right: 0;
+        text-align: center;
     }
 }
 
@@ -178,3 +190,141 @@
     }
   }
 /* vi: set et sw=4: */
+
+/* ✅ TV Wrapper */
+.tvWrapper {
+  width: 100%;
+  min-height: clamp(80vh, 140vh, 200vh);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  /* pushes the TV below fixed "GLIMPSE" overlay */
+  padding-top: clamp(60vh, 120vh, 150vh);
+  padding-bottom: clamp(20px, 40px, 60px);
+
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .tvWrapper {
+    min-height: auto;
+    padding-top: 50vh;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tvWrapper {
+    min-height: auto;
+    padding-top: 40vh;
+    padding-bottom: 15px;
+  }
+}
+
+/* ✅ Psychedelic Animated Background */
+.psyBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Big moving glow blobs */
+.psyBackground::before,
+.psyBackground::after {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.35;
+  animation: psyMove 12s ease-in-out infinite alternate;
+}
+
+/* Left blob */
+.psyBackground::before {
+  top: -200px;
+  left: -200px;
+  background: radial-gradient(circle, rgba(255, 0, 200, 0.55), transparent 70%);
+}
+
+/* Right blob */
+.psyBackground::after {
+  bottom: -200px;
+  right: -200px;
+  background: radial-gradient(circle, rgba(0, 255, 200, 0.55), transparent 70%);
+}
+
+/* Slow animated aurora overlay */
+.psyAurora {
+  position: fixed;
+  inset: -30%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(160, 0, 255, 0.18),
+    rgba(0, 255, 220, 0.16),
+    rgba(255, 255, 0, 0.12),
+    rgba(255, 0, 120, 0.16),
+    rgba(160, 0, 255, 0.18)
+  );
+  filter: blur(90px);
+  opacity: 0.7;
+  animation: auroraSpin 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes psyMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(220px, 120px) scale(1.2);
+  }
+}
+
+@keyframes auroraSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ✅ Vintage Background Images */
+.vintageImage {
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+  pointer-events: none;
+  
+  /* Performance optimizations */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  
+  /* Simplified vintage effect */
+  filter: grayscale(0.5) sepia(0.2) brightness(0.9);
+  
+  border-radius: 1px;
+}
+
+/* Grain removed for performance */
+
+@media (max-width: 768px) {
+  .vintageImage {
+    opacity: 0.15;
+    display: none;
+  }
+}

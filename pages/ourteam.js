@@ -33,7 +33,7 @@ function CoordCard({ data, title }) {
                             </div>
                             <div className={styles.flipBack}>
                                 <Image
-                                    src={item.cardBack || '/CardBack.png'}
+                                    src={item.cardBack || '/assets/gola.png'}
                                     alt="Card Back"
                                     className={styles.cardBack}
                                     height={360}
@@ -147,7 +147,7 @@ export default function Ourteam() {
                 email: '2201cb59_shubhankar@iitp.ac.in',
             },
             {
-                name: 'Akshat Awasthi',
+                name: 'Akshat Jha',
                 image: '/team/chirag.png',
                 instagram: 'https://www.instagram.com/chiraaag.004/',
                 linkedin: 'https://linkedin.com/in/username',
@@ -644,15 +644,15 @@ export default function Ourteam() {
 
                     <CoordCard
                         data={data.sponsAdvisory}
-                        title="Spons Committee"
+                        title="Spons"
                     />
-                    <CoordCard data={data.mprAdvisory} title="MPR Committee" />
+                    <CoordCard data={data.mprAdvisory} title="MPR" />
                     <CoordCard data={data.webnappAdvisory} title="Web & App" />
                     <CoordCard
                         data={data.eventsAdvisory}
-                        title="Events Committee"
+                        title="Events"
                     />
-                    <CoordCard data={data.rspAdvisory} title="RSP  Committee" />
+                    <CoordCard data={data.rspAdvisory} title="RSP" />
                     <CoordCard
                         data={data.hospiAdvisory}
                         title="Hospitality"

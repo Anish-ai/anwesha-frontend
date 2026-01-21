@@ -101,12 +101,11 @@
 }
 
 .sexy_title>h2 {
-    color: #DEB25B;
+    color: #FFFFFF;
     text-align: center;
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
-    font-size: 64px;
+    font-size: 50px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -190,7 +189,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.45) 30%, rgba(0, 0, 0, 0.45) 70%, rgba(0, 0, 0, 0.9) 100%);
     z-index: 1;
 }
 
@@ -381,7 +380,7 @@
 
 .events_title>div {
     display: flex;
-    width: 398px;
+    width: auto;
     flex-direction: column;
     align-items: center;
     gap: 4px;
@@ -389,12 +388,11 @@
 
 .events_title>div>h2 {
     align-self: stretch;
-    color: var(--Color-Primary500, #DEB25B);
-    text-align: right;
+    color: #FFFFFF;
+    text-align: center;
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
-    font-size: 64px;
+    font-size: 50px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -666,11 +664,10 @@
 
 .merch_body>div>h2 {
     align-self: stretch;
-    color: var(--Color-Primary500, #DEB25B);
+    color: #FFFFFF;
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
-    font-size: 64px;
+    font-size: 50px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -728,6 +725,7 @@
     background-position: center;
     animation: rotateAnimation 15s linear infinite;
     mix-blend-mode: screen;
+    margin-top: 30px;
 }
 
 .merch_hero_fix {
@@ -857,7 +855,7 @@
         background-image: radial-gradient(45vw 45vw at 50% 50%,
                 rgba(0, 0, 0, 0) 50%,
                 #000 100%),
-            url('/pics/circle_full.png');
+            url('/home/home_circle.png');
     }
 
     .merch_body {
@@ -886,12 +884,16 @@
     .merch_hero {
         margin-top: -30px;
         height: calc(400px + 43vw);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .merch_hero_fix {
         margin-top: 0;
-        height: 100%;
-        padding-top: 130px;
+        height: auto;
+        padding-top: 0;
         width: 75vw;
         max-width: 515px;
     }
@@ -928,7 +930,7 @@
         background-image: radial-gradient(50vw 50vw at 50% 50%,
                 rgba(0, 0, 0, 0) 50%,
                 #000 100%),
-            url('/pics/circle_full.png');
+            url('/home/home_circle.png');
     }
 
     .merch_body {
@@ -1014,7 +1016,7 @@
 }
 
 .moments_images_curve {
-    background-color: #0E0117;
+    /* background-color: #0E0117; */
     width: 120%;
     margin-left: -10%;
     height: 60px;
@@ -1023,12 +1025,14 @@
 }
 
 .moments_images_top_curve {
+    background: linear-gradient(180deg, #0E0117 80%, rgba(14, 1, 23, 0.8) 100%);
     border-bottom-left-radius: 50% 100%;
     border-bottom-right-radius: 50% 100%;
     margin-bottom: -90px;
 }
 
 .moments_images_bottom_curve {
+    background: linear-gradient(180deg, #0E0117 100%, rgba(14, 1, 23, 0.5) 50%);
     border-top-left-radius: 50% 100%;
     border-top-right-radius: 50% 100%;
     margin-top: -90px;
@@ -1279,12 +1283,17 @@
 }
 
 .cta_body_left {
-    /* width: 626px;
-    height: 626px;
-    flex-shrink: 0; */
+    width: 450px;
+    height: 450px;
+    flex-shrink: 0;
     overflow: hidden;
     border-radius: 9999px;
     position: relative;
+    mix-blend-mode: screen;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .cta_body_left > svg{
@@ -1292,14 +1301,31 @@
 } */
 .cta_image {
     position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 125px;
-    padding-left: 65px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme_circle {
+    opacity: 0.3;
+    animation: rotateAnimation 15s linear infinite;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    /* Optional: filter: brightness(100%); if mix-blend-mode affects it oddly */
 }
 
 .cta_image>img {
-    filter: brightness(60%);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
 }
 
 .rotating_circle {
@@ -1344,7 +1370,9 @@
     }
 
     .cta_body_left {
-        margin-top: -50px;
+        margin-top: 20px;
+        width: 380px;
+        height: 380px;
     }
 }
 
@@ -1365,19 +1393,19 @@
         max-width: 600px;
     }
 
-    .cta_body_left>svg {
-        width: 550px;
-        height: 550px;
+    .cta_body_left {
+        width: 300px;
+        height: 300px;
     }
 
     .cta_image {
-        padding-top: 125px;
-        padding-left: 65px;
+        width: 250px;
+        height: 250px;
     }
 
     .cta_image>img {
-        width: 400px;
-        height: 400px;
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 
@@ -1392,6 +1420,22 @@
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 24px;
+    }
+
+    .cta_body_left {
+        width: 250px;
+        height: 250px;
+        margin-top: 15px;
+    }
+
+    .cta_image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cta_image>img {
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 
@@ -1418,11 +1462,10 @@
 }
 
 .sponsors_title>h2 {
-    color: var(--Color-Primary500, #F2E279);
+    color: #FFFFFF;
 
     /* SF/SF - 64 Reg */
-    font-family: 'SF Ironsides';
-    font-size: 64px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
@@ -1502,7 +1545,7 @@
     }
 
     .sponsors_title>h2 {
-        font-size: 48px;
+        font-size: 32px;
     }
 
     .sponsors_title>h3 {

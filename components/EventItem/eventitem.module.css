@@ -2,59 +2,77 @@
 @import url('https://fonts.cdnfonts.com/css/laila');
 
 @font-face {
-    font-family: 'AnavioSmallCapitalsW01-Bold'; /* Name for the font */
-    src: url('/font/Anavio_Small_Capitals_W01_Bold.ttf') format('truetype'); /* Path to the font */
-    font-weight: normal; /* Define the weight */
-    font-style: normal;  /* Define the style */
+	font-family: 'AnavioSmallCapitalsW01-Bold';
+	/* Name for the font */
+	src: url('/font/Anavio_Small_Capitals_W01_Bold.ttf') format('truetype');
+	/* Path to the font */
+	font-weight: normal;
+	/* Define the weight */
+	font-style: normal;
+	/* Define the style */
 }
+
 .card {
 	background-color: black;
 	width: fit-content;
+	max-width: 90vw;
 	height: fit-content;
 	border-radius: 15px;
 	box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.15);
-	
+
 }
 
 .imageWrap {
 	width: 319.61px;
-height: 358.481px;
-flex-shrink: 0;
-border-radius: 8px;
-background: #FFF;
-display: flex;
-justify-content: center;
-align-items: flex-end;
-padding-bottom: 33px;
-transition: transform 0.3s ease, filter 0.3s ease; /* Add smooth transition */
-position: relative; /* Ensures innerShadow is properly positioned */
+	max-width: 100%;
+	height: 358.481px;
+	flex-shrink: 0;
+	border-radius: 8px;
+	background: #FFF;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding-bottom: 33px;
+	transition: transform 0.3s ease, filter 0.3s ease;
+	/* Add smooth transition */
+	position: relative;
+	/* Ensures innerShadow is properly positioned */
 }
 
-.imageWrap:hover{
-	transform: scale(1.10); /* Slightly zoom on hover */
-    border-radius: 7.357px; /* Slightly reduce border radius */
-	border: 2px solid #9333EA; /* Purple border on hover */
-    transition: all 0.3s ease; /* Smooth transition for all changes */
+.imageWrap:hover {
+	transform: scale(1.10);
+	/* Slightly zoom on hover */
+	border-radius: 7.357px;
+	/* Slightly reduce border radius */
+	border: 2px solid #9333EA;
+	/* Purple border on hover */
+	transition: all 0.3s ease;
+	/* Smooth transition for all changes */
 
 }
+
 .innerShadow {
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 40%; /* Increased height for a more prominent shadow */
-	background: linear-gradient(
-		to top,
-		rgba(0, 0, 0, 0.7) 0%, /* Darker at the bottom */
-		rgba(0, 0, 0, 0.0) 100% /* Transparent at the top */
-	);
+	height: 40%;
+	/* Increased height for a more prominent shadow */
+	background: linear-gradient(to top,
+			rgba(0, 0, 0, 0.7) 0%,
+			/* Darker at the bottom */
+			rgba(0, 0, 0, 0.0) 100%
+			/* Transparent at the top */
+		);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	pointer-events: none; /* Prevent interference with interactions */
-	border-radius: 0 0 8px 8px; /* Matches card border-radius */
-  }
+	pointer-events: none;
+	/* Prevent interference with interactions */
+	border-radius: 0 0 8px 8px;
+	/* Matches card border-radius */
+}
 
 .item {
 	height: 100%;
@@ -89,7 +107,8 @@ position: relative; /* Ensures innerShadow is properly positioned */
 } */
 
 .eventName {
-	color: #FFF; /* White text */
+	color: #FFF;
+	/* White text */
 	text-align: center;
 	font-family: "AnavioSmallCapitalsW01-Bold";
 	font-size: 24px;
@@ -100,21 +119,47 @@ position: relative; /* Ensures innerShadow is properly positioned */
 }
 
 .smalldescription {
-	color: #FFF; /* White text */
+	color: #FFF;
+	/* White text */
 	text-align: center;
 	font-family: laila;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 150%; /* 24px */
+	line-height: 150%;
+	/* 24px */
 }
 
-.eventDescription{
+.eventDescription {
 	display: flex;
 	width: 90%;
 	flex-direction: column;
 	align-items: center;
 	gap: 8px;
-	
-	
+}
+
+/* Mobile responsive card sizing */
+@media screen and (max-width: 550px) {
+	.imageWrap {
+		width: 240px;
+		max-width: 100%;
+		height: 270px;
+		padding-bottom: 25px;
+	}
+
+	.eventName {
+		font-size: 18px;
+	}
+
+	.smalldescription {
+		font-size: 14px;
+	}
+}
+
+/* Tablet responsive card sizing */
+@media screen and (min-width: 551px) and (max-width: 1024px) {
+	.imageWrap {
+		width: 280px;
+		height: 315px;
+	}
 }

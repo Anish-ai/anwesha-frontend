@@ -17,7 +17,7 @@
     align-items: center;
     color: #ffffff;
     margin-bottom: 0;
-    background-image: url('../images/background.png');
+    background-image: url('/assets/background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -78,7 +78,7 @@
     font-family: 'Outfit', sans-serif;
     margin-top: 0;
     padding-top: 100px;
-    background-image: url('../images/aboutusBg.png');
+    background-image: url('/assets/aboutusBg.png');
     position: relative;
     background-size: 100%;
     background-attachment: fixed;
@@ -133,16 +133,16 @@
     position: relative;
     text-transform: uppercase;
 
-    background-image: url('../images/sidebar.png'),
-        url('../images/sidebarR.png');
+    background-image: url('/assets/sidebar.png'),
+        url('/assets/sidebarR.png');
 
     background-repeat: no-repeat, no-repeat;
-    background-size: 95px, 95px; /* adjust size */
+    background-size: 80px, 80px; /* adjust size */
     background-position:
-    calc(50% - 200px) center,
-    calc(50% + 200px) center;
+    calc(50% - 165px) center,
+    calc(50% + 165px) center;
 
-    padding: 20px 160px; /* ensures text doesn’t overlap */
+    padding: 20px 100px; /* ensures text doesn’t overlap */
 }
 
 .picContainer {

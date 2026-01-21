@@ -26,10 +26,10 @@ const Footer = () => {
       <div className={clsx(styles.footer, isCA_page && "w-[100vw]")}>
         <div className={styles.right_helobean}>
           <Image
-            src="/footer/footer_flower.png"
+            src="/footer/flower.svg"
             alt="Image description"
-            width={300}
-            height={200}
+            width={180}
+            height={120}
           />
         </div>
         <div className={styles.footer_content}>
@@ -50,10 +50,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/footer/gmail.png"
+                    src="/footer/gmail.svg"
                     alt="Image description"
-                    width={62.173}
-                    height={49.173}
+                    width={90}
+                    height={72}
                   />
                 </a>
                 <a
@@ -62,10 +62,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/footer/insta.png"
+                    src="/footer/instagram.svg"
                     alt="Image description"
-                    width={62.173}
-                    height={49.173}
+                    width={90}
+                    height={72}
                   />
                 </a>
               </div>
@@ -76,10 +76,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/footer/facebook.png"
+                    src="/footer/facebook.svg"
                     alt="Image description"
-                    width={63.173}
-                    height={49.173}
+                    width={91}
+                    height={72}
                   />
                 </a>
               </div>
@@ -90,10 +90,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="/footer/twitter.png"
+                    src="/footer/twitter.svg"
                     alt="Image description"
-                    width={63.173}
-                    height={49.173}
+                    width={91}
+                    height={72}
                   />
                 </a>
                 <a
@@ -102,10 +102,10 @@ const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <Image
-                    src="/footer/youtube.png"
+                    src="/footer/youtube.svg"
                     alt="Image description"
-                    width={63.173}
-                    height={49.173}
+                    width={91}
+                    height={72}
                   />
                 </a>
               </div>
