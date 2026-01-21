@@ -1091,7 +1091,7 @@ const IndexPage = () => {
                     {/* The Aftermovie */}
                     <section className={styles.aftermovie}>
                         <div className={styles.sexy_title}>
-                            <h2 className={dmSerif.className}>Anwesha 2024: The Aftermovie</h2>
+                            <h2 className={dmSerif.className}>Anwesha 2026: The Aftermovie</h2>
                             <h3>Last Year&apos;s Magic in 3 Minutes</h3>
                         </div>
                         <div className={styles.aftermovie_video}>
