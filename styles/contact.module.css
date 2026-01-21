@@ -78,7 +78,7 @@
 }
 .title {
     color: var(--Color-Primary500, #fff);
-    font-family: 'SF Ironsides';
+    font-family: 'Cinzel', serif;
     font-size: 72px;
     font-style: normal;
     font-weight: 400;
