@@ -1,6 +1,6 @@
 .container_register {
     font-family: 'Poppins', sans-serif;
-    background-image: url('/assets/registration.png');
+    background-image: url('/assets/register_new_bg.png');
     background-repeat: no-repeat; /* Prevents duplication */
     background-size: cover; /* Ensures the image stretches to cover the entire page */
     /* background-image: url("/bg.png"); */

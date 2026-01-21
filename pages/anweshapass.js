@@ -520,7 +520,7 @@ function Anweshapass() {
 
                 <div className={styles.Melody_Night_hero}>
                     <div className={styles.Melody_Night_background} />
-                    <div className={styles.Melody_Night_imgbg}><img src='/passes/melody_night_poster2.png' width="370"></img></div>
+                    {/* <div className={styles.Melody_Night_imgbg}><img src='/passes/melody_night_poster2.png' width="370"></img></div> */}
 
                 </div>
                 <div className={styles.Melody_Night_body}>
@@ -548,7 +548,7 @@ function Anweshapass() {
                 </div>
                 <div className={styles.cultural_Night_hero}>
                     <div className={styles.cultural_Night_background} />
-                    <div className={styles.cultural_Night_imgbg}><img src='/passes/dj_Night.png' width="370"></img></div>
+                    {/* <div className={styles.cultural_Night_imgbg}><img src='' width="370"></img></div> */}
                 </div>
             </section>
 

@@ -129,10 +129,10 @@ function Navigation() {
                 >
                     <Image
                         className='nav_logo'
-                        src="/newlogo.svg"
+                        src="/navbar/logo.svg"
                         alt="logo"
-                        width={110}
-                        height={85}
+                        width={180}
+                        height={60}
                     />
                 </Link>
                 <div className={styles.navLinks}>
@@ -373,7 +373,7 @@ function Navigation() {
                                 router.push('/anweshapass')
                             }}
                         >
-                            GET PASSES
+                            Get Passes
                         </button>
                     </div>
 
@@ -387,7 +387,7 @@ function Navigation() {
                                 styles.sexy_button_small
                             )}
                         >
-                            {!userData.isAuth ? 'LOGIN' : 'PROFILE'}
+                            {!userData.isAuth ? 'Login' : 'Profile'}
                         </button>
                     </div>
 
@@ -400,7 +400,7 @@ function Navigation() {
                                 )}
                                 onClick={handleLogout}
                             >
-                                LOGOUT
+                                Log Out
                             </button>
                         </div>
                     )}
@@ -581,7 +581,7 @@ export default Navigation
 //   const pathname = usePathname();
 
 //   // MOCK STATE: Set to 'false' to show LOGIN, 'true' to show Profile icons
-//   const isLoggedIn = false; 
+//   const isLoggedIn = false;
 
 //   const [drawerOpen, setDrawerOpen] = useState(false);
 //   const [showDropdown, setShowDropdown] = useState(false);

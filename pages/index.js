@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { DM_Serif_Display } from "next/font/google";
 // import Link from 'next/link'
 // import { Josefin_Sans } from '@next/font/google'
 // import HomeBackgroundAnimation from '../components/Rive/homeBackgrounAnim'
@@ -26,6 +27,11 @@ import CountdownTimer from './jumscaretimeout'
 import HeroSection from '../components/Hero/Hero'
 // import Spline from '@splinetool/react-spline';
 import { useRouter } from 'next/router'
+
+const dmSerif = DM_Serif_Display({
+    subsets: ["latin"],
+    weight: "400",
+});
 
 const cn = (...classes) => {
     return classes.filter(Boolean).join(' ')
@@ -267,7 +273,7 @@ const ImageWithText = ({
             style={{
                 width: width || (active ? '370px' : '319.61px'),
                 height: height || (active ? '414px' : '358.481px'),
-                backgroundImage: `url(${url})`,
+                backgroundImage: `url("${url}")`,
                 ...(style || {}), // Merge additional styles
             }}
             className={styles.events_image}
@@ -321,7 +327,7 @@ const EventSlider = ({
             imageRefs.current[
                 prevprev
             ].current.style.transform = `translateY(-50%) translateX(calc(-50% - ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[prev].current.style.zIndex = '2'
             imageRefs.current[
                 prev
@@ -338,7 +344,7 @@ const EventSlider = ({
             imageRefs.current[
                 nextnext
             ].current.style.transform = `translateY(-50%) translateX(calc(-50% + ${2 * offset
-                }px))`
+            }px))`
         } else if (
             currIndex === oldIndex - 1 ||
             (currIndex === images.length - 1 && oldIndex === 0)
@@ -348,7 +354,7 @@ const EventSlider = ({
             imageRefs.current[
                 prevprev
             ].current.style.transform = `translateY(-50%) translateX(calc(-50% - ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[prev].current.style.zIndex = '2'
             imageRefs.current[
                 prev
@@ -365,7 +371,7 @@ const EventSlider = ({
             imageRefs.current[
                 nextnext
             ].current.style.transform = `translateY(-50%) translateX(calc(-50% + ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[nextnextnext].current.style.zIndex = '-1'
         }
         setOldIndex(currIndex)
@@ -439,6 +445,7 @@ const EventSlider = ({
                         transition:
                             'transform .15s linear, width .15s linear, height .15s linear', // Smooth transition
                     }}
+                    onClick={() => router.push(`/events/${image.id}`)}
                 />
             ))}
         </div>
@@ -526,12 +533,12 @@ const ImagesSlider = ({
             imageRefs.current[
                 prevprevprev
             ].current.style.transform = `translateX(calc(-50% + ${3 * offset
-                }px))`
+            }px))`
             imageRefs.current[prevprev].current.style.zIndex = '4'
             imageRefs.current[
                 prevprev
             ].current.style.transform = `translateX(calc(-50% - ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[prev].current.style.zIndex = '3'
             imageRefs.current[
                 prev
@@ -548,7 +555,7 @@ const ImagesSlider = ({
             imageRefs.current[
                 nextnext
             ].current.style.transform = `translateX(calc(-50% + ${2 * offset
-                }px))`
+            }px))`
         } else if (
             currIndex === oldIndex - 1 ||
             (currIndex === images.length - 1 && oldIndex === 0)
@@ -558,7 +565,7 @@ const ImagesSlider = ({
             imageRefs.current[
                 prevprev
             ].current.style.transform = `translateX(calc(-50% - ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[prev].current.style.zIndex = '2'
             imageRefs.current[
                 prev
@@ -575,12 +582,12 @@ const ImagesSlider = ({
             imageRefs.current[
                 nextnext
             ].current.style.transform = `translateX(calc(-50% + ${2 * offset
-                }px))`
+            }px))`
             imageRefs.current[nextnextnext].current.style.zIndex = '-1'
             imageRefs.current[
                 nextnextnext
             ].current.style.transform = `translateX(calc(-50% - ${3 * offset
-                }px))`
+            }px))`
         }
         setOldIndex(currIndex)
     }, [currIndex])
@@ -707,6 +714,7 @@ const IndexPage = () => {
             url: event.poster,
             title: event.name.split('#')[0],
             body: event.name.split('#')[1],
+            id: event._id,
         })),
         6
     )
@@ -903,8 +911,8 @@ const IndexPage = () => {
             {countdownTimer && <CountdownTimer />}
 
             <Head>
-                <title>Anwesha 2025</title>
-                <meta name="description" content="Anwesha 2025" />
+                <title>Anwesha 2026</title>
+                <meta name="description" content="Anwesha 2026" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
 
@@ -928,18 +936,18 @@ const IndexPage = () => {
                         height={313}/>
 
                          */}
-                        {/* <Image
+                {/* <Image
                             src={'/pics/hero_image-export.svg'}
                             width={1047}
                             height={589}
                         /> */}
-                        {/* <div style={{height: 570, width: 570, zIndex: 9, overflow: 'hidden', borderRadius: "9999px"}}>
+                {/* <div style={{height: 570, width: 570, zIndex: 9, overflow: 'hidden', borderRadius: "9999px"}}>
                         <div style={{height: 589, width: 589}}>
                             <Spline scene="https://prod.spline.design/0cIZkQpUYfHX-VX8/scene.splinecode" width="589" height="589"/>
                         </div>
                     </div> */}
-                        {/* <h2>Welcome To Your Nightmare</h2> */}
-                    {/* </div>
+                {/* <h2>Welcome To Your Nightmare</h2> */}
+                {/* </div>
                     <div className={styles.hero_button}>
                         <button
                             className={cn(
@@ -969,41 +977,41 @@ const IndexPage = () => {
                 </HeroSection> */}
 
                 <HeroSection className={styles.hero}>
-    {/* BACKGROUND VIDEO */}
-    <video
-        className={styles.hero_video}
-        autoPlay
-        muted
-        loop
-        playsInline
-    >
-        <source src="/home/hero_bg.mp4" type="video/mp4" />
-    </video>
+                    {/* BACKGROUND VIDEO */}
+                    <video
+                        className={styles.hero_video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    >
+                        <source src="/home/hero_bg.mp4" type="video/mp4" />
+                    </video>
 
-    {/* HERO CONTENT */}
-    <div className={styles.hero_text}>
-        <Image
-            src={'/home/title_text_home.png'}
-            width={1000}
-            height={313}
-        />
-    </div>
+                    {/* HERO CONTENT */}
+                    <div className={styles.hero_text}>
+                        <Image
+                            src={'/home/title_text_home.png'}
+                            width={1000}
+                            height={313}
+                        />
+                    </div>
 
-    <div className={styles.hero_button}>
-        <button
-            className={cn(styles.sexy_button, styles.sexy_button_small)}
-            onClick={() => router.push('/userRegister')}
-        >
-            REGISTER
-        </button>
-        <button
-            className={cn(styles.sexy_button, styles.sexy_button_small)}
-            onClick={() => router.push('/userRegister')}
-        >
-            GET PASSES
-        </button>
-    </div>
-</HeroSection>
+                    <div className={styles.hero_button}>
+                        <button
+                            className={cn(styles.sexy_button, styles.sexy_button_small)}
+                            onClick={() => router.push('/userRegister')}
+                        >
+                            REGISTER
+                        </button>
+                        <button
+                            className={cn(styles.sexy_button, styles.sexy_button_small)}
+                            onClick={() => router.push('/userRegister')}
+                        >
+                            GET PASSES
+                        </button>
+                    </div>
+                </HeroSection>
 
 
 
@@ -1014,7 +1022,7 @@ const IndexPage = () => {
                         <div className={styles.events_title}>
                             {/* <FireSkullHeadLeft /> */}
                             <div>
-                                <h2>Explore the Events</h2>
+                                <h2 className={dmSerif.className}>Explore the Events</h2>
                                 {/* <h3>Dare to face the Unseen</h3> */}
                             </div>
                             {/* <FireSkullHeadRight /> */}
@@ -1058,7 +1066,7 @@ const IndexPage = () => {
                     <section className={styles.merch} id="merch">
                         <div className={styles.merch_body}>
                             <div>
-                                <h2>Anwesha 2025 Official Merchandise</h2>
+                                <h2 className={dmSerif.className}>Anwesha 2025 Official Merchandise</h2>
                                 <h3>Own the Unforgettable Experience</h3>
                             </div>
                             <p>
@@ -1099,7 +1107,7 @@ const IndexPage = () => {
                     {/* Anwesha Through the Lens */}
                     <section className={styles.moments}>
                         <div className={styles.sexy_title}>
-                            <h2>Anwesha Through the Lens</h2>
+                            <h2 className={dmSerif.className}>Anwesha Through the Lens</h2>
                             <h3>Relive the Moments That Defined Us</h3>
                         </div>
                         <div className={styles.moments_images_parent}>
@@ -1153,7 +1161,7 @@ const IndexPage = () => {
                     {/* The Aftermovie */}
                     <section className={styles.aftermovie}>
                         <div className={styles.sexy_title}>
-                            <h2>Anwesha 2024: The Aftermovie</h2>
+                            <h2 className={dmSerif.className}>Anwesha 2024: The Aftermovie</h2>
                             <h3>Last Year&apos;s Magic in 3 Minutes</h3>
                         </div>
                         <div className={styles.aftermovie_video}>
@@ -1195,31 +1203,33 @@ const IndexPage = () => {
                     {/* CTA or This Year's Theme */}
                     <section className={styles.cta}>
                         <div className={styles.sexy_title}>
-                            <h2>This Year&apos;s Theme</h2>
+                            <h2 className={dmSerif.className}>This Year&apos;s Theme</h2>
                             <h3>Palingenesis reverie</h3>
                         </div>
                         <div className={styles.cta_body}>
-                            {/* <div className={styles.cta_body_left}> */}
-                               
-                                {/* <Image
-                                    src={'/home/home_circle.png'}
-                                    width={474.386}
-                                    height={474.386}
+                            <div className={styles.cta_body_left}>
+                                <Image
+                                    src={'/home/circle.png'}
+                                    width={450}
+                                    height={450}
+                                    alt="Theme Circle"
+                                    className={styles.theme_circle}
                                 />
-                            </div> */}
+                                <div className={styles.cta_image}>
+                                    <Image
+                                        src="/home/mascott.png"
+                                        alt="Mascot"
+                                        width={320}
+                                        height={320}
+                                    />
+                                </div>
+                            </div>
                             <div className={styles.cta_body_right}>
                                 <p>
-                                    Meet <span>Grimmy</span>, a lone skeleton
-                                    wandering the Abyss, where whispers of forgotten
-                                    souls linger. In this realm of shadows and
-                                    echoes, he unravels haunting secrets, braving
-                                    eerie landscapes and unseen terrors. Join Grimmy
-                                    as he dares to uncover the mysteries buried in
-                                    the depths of the Abyss!
+                                    From the hush of winter’s wane, Anwesha blooms when all seemed finished. Rising from the abyss, broken threads come together, and what once fractured begins to heal. Where the dark once called us, we now move toward the light, dreaming of becoming again.
                                     <br />
                                     <br />
-                                    Join Grimmy on this fun adventure and let your
-                                    imagination soar beyond the ordinary!
+                                    Anwesha returns not as an ending, but as a rebirth. This is Palingenesis Reverie, a quiet renewal, a sacred remembering, and a promise that even after everything, we rise again.
                                 </p>
 
                                 <div className={styles.cta_button}>
@@ -1243,7 +1253,7 @@ const IndexPage = () => {
 
                     <section className={styles.sponsors}>
                         <div className={styles.sponsors_title}>
-                            <h2>Our Proud Sponsors</h2>
+                            <h2 className={dmSerif.className}>Our Proud Sponsors</h2>
                             <h3>Strengthening the Vision Together</h3>
                         </div>
                         <div className={styles.sponsors_images_slider}>

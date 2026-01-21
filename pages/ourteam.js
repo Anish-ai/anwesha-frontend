@@ -33,7 +33,7 @@ function CoordCard({ data, title }) {
                             </div>
                             <div className={styles.flipBack}>
                                 <Image
-                                    src={item.cardBack || '/CardBack.png'}
+                                    src={item.cardBack || '/assets/gola.png'}
                                     alt="Card Back"
                                     className={styles.cardBack}
                                     height={360}
@@ -140,14 +140,14 @@ export default function Ourteam() {
     const data = {
         festcoord: [
             {
-                name: 'Shubhankar Ray',
+                name: 'Sparsh Choudhary',
                 image: '/team/shubhankar.jpeg',
                 instagram: 'https://instagram.com/username',
                 linkedin: 'https://linkedin.com/in/username',
                 email: '2201cb59_shubhankar@iitp.ac.in',
             },
             {
-                name: 'Chirag Gupta',
+                name: 'Akshat Jha',
                 image: '/team/chirag.png',
                 instagram: 'https://www.instagram.com/chiraaag.004/',
                 linkedin: 'https://linkedin.com/in/username',
@@ -156,263 +156,158 @@ export default function Ourteam() {
         ],
         webnapp: [
             {
-                name: 'Rudra Goyal',
-                image: '/team/rudra.jpg',
+                name: 'Diptanshu Saurav',
+                image: '/team/diptanshuSaurav.jpeg',
                 instagram:
-                    'https://www.instagram.com/solo.rudra?igsh=Z21wenl6NzAzbWJz',
-                linkedin: 'https://in.linkedin.com/in/rudra-goyal-b6036a285',
-                email: '2201mm26_rudra@iitp.ac.in',
+                    'https://www.instagram.com/dip.sauravvv_/',
+                linkedin: 'https://www.linkedin.com/in/diptanshu-saurav-697495287/',
+                email: 'diptanshu_2301mm32@iitp.ac.in ',
             },
             {
-                name: 'Harshvardhan Singh',
-                image: '/team/harshvardhan.jpg',
-                instagram: 'https://instagram.com/username',
+                name: 'Anish Kumar',
+                image: '/team/anishKumar.jpg',
+                instagram: 'https://www.instagram.com/light.anish',
                 linkedin:
-                    'https://www.linkedin.com/in/harshvardhan-singh-42b660211',
-                email: '2201cs92_harshvardhan@iitp.ac.in',
+                    'https://www.linkedin.com/in/anish-kumar-71779326a',
+                email: 'anish_2301mc40@iitp.ac.in',
             },
             {
-                name: 'Swayam Jain',
-                image: '/team/swayam.jpg',
-                instagram: 'https://instagram.com/swayam_jain244',
-                linkedin: 'https://www.linkedin.com/in/swayam-jain-157052259/',
-                email: '2201ee72_swayam@iitp.ac.in',
+                name: 'Parv Agarwal',
+                image: '/team/parvAgarwal.jpeg',
+                instagram: 'https://www.instagram.com/z.e.r.o01?igsh=b3Zhd3BldmV1YzBv',
+                linkedin: 'https://www.linkedin.com/in/parvagarwal',
+                email: 'parv_pa2503mth244@iitp.ac.in',
             },
         ],
-        spons: [
+        mpr: [
             {
-                name: 'Aakash Shankar Prasad',
-                image: '/team/aakash.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Kshitij Vasule',
+                image: '/team/kshitij Vasule.jpeg',
+                instagram: 'https://www.instagram.com/kshitij__121104?igsh=MW42a3hkb3RwYXFtbA%3D%3D&utm_source=qr',
+                linkedin: 'https://www.linkedin.com/in/kshitij-vasule-36a19a294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+                email: 'kshitij_2301me26@iitp.ac.in',
             },
             {
-                name: 'Kr Nalin Singh',
-                image: '/team/nalin.jpeg',
-                instagram: 'https://www.instagram.com/knalins/',
-                linkedin: 'https://www.linkedin.com/in/knalins/',
-                email: '2201mm17_kumar@iitp.ac.in',
+                name: 'Mihika ',
+                image: '/team/mihikaSaxena.jpg',
+                instagram: 'https://www.instagram.com/mihika_saxena11?igsh=ZTRscnM2enN3d2Zv',
+                linkedin: 'https://www.linkedin.com/in/mihika-saxena-b5bb8a28b/',
+                email: 'mihika_2301cs31@iitp.ac.in',
             },
             {
-                name: 'Manas Gupta',
-                image: '/team/manas.jpg',
+                name: 'Vansh Shrivastava ',
+                image: '/team/vanshShrivastava.jpeg',
+                instagram: 'https://www.instagram.com/yrulikedisvansh',
+                linkedin: 'https://www.linkedin.com/in/vansh-shrivastava-a07866290',
+                email: 'vansh_2301ec34@iitp.ac.in',
+            },
+            {
+                name: 'Saksham Srivastava ',
+                image: '/team/sakshamSrivastava.jpeg',
                 instagram:
-                    'https://www.instagram.com/_manas.gupta_?igsh=MXB5cWxyaDE5cGNsZQ==',
+                    'https://www.instagram.com/saksham_iitp/',
                 linkedin:
-                    'https://www.linkedin.com/in/manas-gupta21?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-                email: '2201ph16_manas@iitp.ac.in',
+                    'https://www.linkedin.com/in/saksham-srivastava-28ba99296/',
+                email: 'saksham_2301ec56@iitp.ac.in',
             },
         ],
         TV: [],
         events: [
             {
-                name: 'Sriyash Bhaskaruni',
-                image: '/team/sriyash.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Chaitanya Saagar',
+                image: '/team/chaitanyaSaagar.jpeg',
+                instagram: 'https://www.instagram.com/chad._.saagar',
+                linkedin: 'https://www.linkedin.com/in/chaitanya-saagar-476b562a2',
+                email: 'chaitanya_2301cs77@iitp.ac.in',
             },
             {
-                name: 'Tanishq Sharma',
-                image: '/team/tanishq.webp',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Kumar Aryan Raj',
+                image: '/team/aryanRaj.jpg',
+                instagram: 'https://www.instagram.com/aryan_4.5.3_/',
+                linkedin: 'https://www.linkedin.com/in/aryan-raj-46a519298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'kumar_2301cb22@iitp.ac.in',
             },
             {
-                name: 'Luqman Motiwala',
-                image: '/team/laqman.jpg',
-                instagram: 'https://instagram.com/username',
+                name: 'Garvit Dua',
+                image: '/team/garvitDua.jpg',
+                instagram: 'https://www.instagram.com/duagarvit_04/',
                 linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Anurag Singh',
-                image: '/team/Anurag1.png',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Divyam Walia',
-                image: '/team/Profile.png',
-                instagram:
-                    'https://www.instagram.com/divyam_walia?igsh=MWN0cXF5ZGE5aWRwcg==',
-                linkedin: 'https://www.linkedin.com/in/divyamwalia/',
-                email: '2201ce16_divyam@iitp.ac.in',
-            },
-            {
-                name: 'Mihir Bairathi',
-                image: '/team/mihir.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201ee38_mihir@iitp.ac.in',
+                email: 'garvit_2301mc42@iitp.ac.in',
             },
         ],
         rsp: [
             {
-                name: 'Sakshi Srivastava',
-                image: '/team/sakshi_eee.jpg',
+                name: 'Ananya Maldyar ',
+                image: '/team/ananya.jpg',
                 instagram:
-                    'https://www.instagram.com/isakshi_shrivastava?utm_source=qr&igsh=MWY1OXp1ZHljbnRwMA==',
+                    'https://www.instagram.com/annie._.2303?igsh=MW55bjVsdGVseTZmcA==',
                 linkedin:
-                    'https://www.linkedin.com/in/sakshi-shrivastava-05649925a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-                email: '2201ee81_sakshi@iitp.ac.in',
+                    'https://www.linkedin.com/in/ananya-maldyar-132505298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'ananya_2301ee06@iitp.ac.in',
             },
             {
-                name: 'Harsh Mittal',
-                image: '/team/harshm.jpg',
+                name: 'Ajay Kumar saini ',
+                image: '/team/gauravSaini.jpg',
                 instagram:
-                    'https://www.instagram.com/harshmittal2309?igsh=MWcxazQ5dWhjODVxOQ==',
+                    'https://www.instagram.com/saini.4_?igsh=bmh1ZmlzNzkwam82',
                 linkedin:
-                    'https://www.linkedin.com/in/harsh-mittal-7490a7254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-                email: '2201me31_harsh@iitp.ac.in',
-            },
-            {
-                name: 'Yeshwanth',
-                image: '/team/yeshwanth.jpeg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201mm27_sai@iitp.ac.in',
-            },
-            {
-                name: 'Ayush Kumar',
-                image: '/team/Ayush.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                    'https://www.linkedin.com/in/ajay-kumar-saini-44b99a284',
+                email: 'ajay_2301mm03@iitp.ac.in',
             },
         ],
         hospi: [
             {
-                name: 'Nirjay Kumar',
-                image: '/team/nirjay.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Garvit B Nahta',
+                image: '/team/garvitNahta.webp',
+                instagram: 'https://www.instagram.com/garvit_n05?igsh=MTdyZHJ1dXpvYTl4OQ==',
+                linkedin: 'https://www.linkedin.com/in/garvit-b-nahta-4731ab291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'garvit_2301ce10@iitp.ac.in',
             },
             {
-                name: 'Devankar Raj',
-                image: '/team/devankar.jpg',
-                instagram: 'https://instagram.com/username',
+                name: 'Aditi Jana',
+                image: '/team/aditiJana.jpeg',
+                instagram: 'https://www.instagram.com/anwesha_iitpatna/',
                 linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                email: 'aditi_2302vl01@iitp.ac.in',
             },
             {
-                name: 'Dolly Singh',
-                image: '/team/dolly.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Gargi Tiwari',
+                image: '/team/gargiTiwari.png',
+                instagram: 'https://www.instagram.com/gargitiwari09?igsh=MWNnaHo2YWZmM2swaw==',
+                linkedin: 'https://www.linkedin.com/in/gargi-tiwari-b3b7a3295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'gargi_2303me06@iitp.ac.in',
             },
             {
-                name: 'Sakshi Sinha',
-                image: '/team/sakshi.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Abhishek Jaiswal',
-                image: '/team/abhishek.png',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
+                name: 'Shubham Agrawal',
+                image: '/team/shubhamAgrawal.jpg',
+                instagram: 'https://www.instagram.com/shubham._agrawal',
+                linkedin: 'https://www.linkedin.com/in/shubham-agrawal-27a4a6281',
+                email: 'shubham_2301ai44@iitp.ac.in',
             },
         ],
-        mpr: [
+        spons: [
             {
-                name: 'Harsh Raj',
-                image: '/team/harsh.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201ee28_harsh@iitp.ac.in',
-            },
-            {
-                name: 'Raunak',
-                image: '/team/raunak.jpg',
-                instagram:
-                    'https://www.instagram.com/raunak_04_?igsh=OGQ5ZDc2ODk2ZA==',
-                linkedin: 'https://www.linkedin.com/in/raunak-bansod-718b30259',
-                email: '2201mm39_raunak@iitp.ac.in',
-            },
-            {
-                name: 'Chanchal Tolani',
-                image: '/team/chanchal.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Samyak Gupta',
-                image: '/team/samyak.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Vihaan Agrawal',
-                image: '/team/vihaan.jpg',
-                instagram:
-                    'https://www.instagram.com/vihaanagrwl?igsh=MnhoengxOWN3OXF0',
-                linkedin:
-                    'https://www.linkedin.com/in/vihaan-agrawal-354997253/',
-                email: '2201ee98_vihaan@iitp.ac.in  ',
-            },
-            {
-                name: 'Sujal Pachori',
-                image: '/team/sujal.jpg',
-                instagram:
-                    'https://www.instagram.com/sujalxpachori/profilecard/?igsh=MWU1NHRiZ2YyOWUweA==',
-                linkedin:
-                    'https://www.linkedin.com/in/sujal-pachori-a15b96261/',
-                email: '2201ee70_sujal@iitp.ac.in',
+                name: 'Somya Shourya',
+                image: '/team/somyaShourya.jpg',
+                instagram: 'https://www.instagram.com/anwesha_iitpatna/',
+                linkedin: 'https://www.linkedin.com/in/somya-shourya-99806b28b',
+                email: 'somya_2301me46@iitp.ac.in',
             },
         ],
         cnd: [
             {
-                name: 'Ansh Singh',
-                image: '/team/ansh.jpeg',
-                instagram: 'https://www.instagram.com/anshnvm',
-                linkedin: 'https://in.linkedin.com/in/anshnvm',
-                email: '2201me12_ansh@iitp.ac.in',
+                name: 'Yuvan Vanapalli',
+                image: '/team/yuvanV.jpg',
+                instagram: 'https://www.instagram.com/yuvan_29_2005/',
+                linkedin: 'https://www.linkedin.com/in/yuvan-vanapalli-2912yv05/',
+                email: 'yuvan_2301ee43@iitp.ac.in',
             },
             {
-                name: 'Himani Yadav',
-                image: '/team/himani1.jpg',
-                instagram:
-                    'https://www.instagram.com/nira_ushi/?show_story_unavailable=1',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201ai16_himani@iitp.ac.in',
-            },
-            {
-                name: 'Pradhuman Nayak',
-                image: '/team/pradhuman1.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Kunjal Singh',
-                image: '/team/kunjal.jpeg',
-                instagram: 'https://www.instagram.com/kuhiiiii__/',
-                linkedin: 'www.linkedin.com/in/kunjalsingh',
-                email: '2201mm18_kunjal@iitp.ac.in',
-            },
-            {
-                name: 'Piyush Sanywal',
-                image: '/team/piyush.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: 'user@example.com',
-            },
-            {
-                name: 'Swastik Vishwakarma',
-                image: '/team/swastik.jpg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201me72_swastik@iitp.ac.in',
+                name: 'Lochan Bhaskaruni',
+                image: '/team/LochanBhaskaruni.jpg',
+                instagram: 'https://www.instagram.com/lochan_25526/',
+                linkedin: 'https://www.linkedin.com/in/lochan-bhaskaruni-10176b283/',
+                email: 'lochan_2301me28@iitp.ac.in',
             },
         ],
         convenor: [
@@ -749,15 +644,15 @@ export default function Ourteam() {
 
                     <CoordCard
                         data={data.sponsAdvisory}
-                        title="Spons Committee"
+                        title="Spons"
                     />
-                    <CoordCard data={data.mprAdvisory} title="MPR Committee" />
+                    <CoordCard data={data.mprAdvisory} title="MPR" />
                     <CoordCard data={data.webnappAdvisory} title="Web & App" />
                     <CoordCard
                         data={data.eventsAdvisory}
-                        title="Events Committee"
+                        title="Events"
                     />
-                    <CoordCard data={data.rspAdvisory} title="RSP  Committee" />
+                    <CoordCard data={data.rspAdvisory} title="RSP" />
                     <CoordCard
                         data={data.hospiAdvisory}
                         title="Hospitality"
