@@ -86,7 +86,7 @@ export default function Comingsoon() {
             />
             <Head>
                 <title>Anwesha 2026</title>
-                <meta name="description" content="Anwesha 2024" />
+                <meta name="description" content="Anwesha 2026" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
 

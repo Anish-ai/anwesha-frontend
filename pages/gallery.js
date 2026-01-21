@@ -1,172 +1,80 @@
-import Head from 'next/head'
-import { useState, useEffect } from 'react'
-import styles from '../styles/gallery.module.css'
+import Head from "next/head";
+import { useState, useEffect } from "react";
+import styles from "../styles/gallery.module.css";
 
-// Component to render a row of images
-function GalleryRow({ images }) {
-    return (
-        <div className={styles.galleryRow}>
-            {images.map((src, idx) => (
-                <div key={idx} className={styles.galleryCard}>
-                    <img
-                        src={src}
-                        alt="Gallery Image" // No index numbers in alt
-                        className={styles.image}
-                    />
-                </div>
-            ))}
+import { VintageTV } from "../components/tv/VintageTV";
+import { galleryImagesManifest } from "../components/Gallery/galleryImagesManifest";
+
+export default function GalleryPage() {
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setFadeOut(scrollPosition > window.innerHeight / 9);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // ✅ Convert manifest into objects expected by VintageTV
+  const tvImages = galleryImagesManifest.map((url, i) => ({
+    name: `Image ${i + 1}`,
+    url,
+  }));
+
+  // ✅ Put your youtube links here
+  const youtubeLinks = [
+    "https://www.youtube.com/watch?v=S-ukmg7hPnk",
+    "https://www.youtube.com/watch?v=FSBZHSo1zVw",
+  ];
+
+  return (
+    <>
+      <Head>
+        <title>Anwesha 2026 Glimpse</title>
+      </Head>
+
+      <div className={styles.container}>
+        <div className={styles.psyBackground}>
+           <div className={styles.psyAurora}></div>
         </div>
-    )
+
+        {/* Vintage Background Images - Optimized for performance */}
+        {/* Corner decorative images */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[5]?.url}')`, left: '3%', top: '10%', width: '140px', height: '180px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[18]?.url}')`, right: '4%', top: '8%', width: '130px', height: '170px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[35]?.url}')`, left: '5%', bottom: '12%', width: '120px', height: '160px' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[50]?.url}')`, right: '6%', bottom: '10%', width: '150px', height: '190px' }}></div>
+        
+        {/* Side accent images */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[12]?.url}')`, left: '2%', top: '50%', width: '100px', height: '140px', transform: 'translateY(-50%)' }}></div>
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[42]?.url}')`, right: '2%', top: '45%', width: '110px', height: '150px', transform: 'translateY(-50%)' }}></div>
+        
+        {/* Center subtle image */}
+        <div className={styles.vintageImage} style={{ backgroundImage: `url('${tvImages[25]?.url}')`, left: '50%', bottom: '5%', width: '95px', height: '130px', transform: 'translateX(-50%)', opacity: 0.15 }}></div>
+        
+        {/* Fullscreen Text with Fading Effect */}
+        <div
+          className={`${styles.fullscreenText} ${fadeOut ? styles.fadeOut : ""}`}
+        >
+          <div className={styles.glimpse}>GLIMPSE</div>
+          <div className={styles.anwesha}>
+            <span className={styles.anweshaA}>A</span>
+            NWESHA
+            <span className={styles.anwesha24}>&apos;25</span>
+          </div>
+        </div>
+
+        {/* ✅ TV Section */}
+        <div className={styles.tvWrapper}>
+          {/* ✅ Debug line (open console) */}
+          {console.log("✅ Images passed to TV:", tvImages.length, tvImages[0])}
+
+          <VintageTV images={tvImages} youtubeLinks={youtubeLinks} />
+        </div>
+      </div>
+    </>
+  );
 }
-
-// Main GalleryPage component
-export default function GalleryPage({ folderLinks }) {
-    const [fadeOut, setFadeOut] = useState(false)
-
-    // Handling fade-out effect on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY
-            setFadeOut(scrollPosition > window.innerHeight / 9)
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    const allImages = folderLinks.flatMap((folder) => folder.links)
-
-    return (
-        <>
-            <Head>
-                <title>Anwesha 2024 Glimpse</title>
-            </Head>
-
-            <div className={styles.container}>
-                {/* Fullscreen Text with Fading Effect */}
-                <div
-                    className={`${styles.fullscreenText} ${
-                        fadeOut ? styles.fadeOut : ''
-                    }`}
-                >
-                    <div className={styles.glimpse}>
-                        GLIMPSE
-                    </div>
-                    <div className={styles.anwesha}>
-                        <span className={styles.anweshaA}>
-                            A
-                        </span>
-                        NWESHA
-                                                <span className={styles.anwesha24}>
-                                                    &apos;24
-                                                </span>
-                    </div>
-                </div>
-
-                {/* Stacked Image Section */}
-                <div className={styles.imageStack}>
-                    <img
-                        src="/gallery/_DC_4278.JPG"
-                        alt="Stacked Image 1"
-                        className={styles.stackedImage}
-                        style={{ '--i': -3 }}
-                    />
-                    <img
-                        src="/gallery/_DSC_4142.png"
-                        alt="Stacked Image 2"
-                        className={styles.stackedImage}
-                        style={{ '--i': -2 }}
-                    />
-                    <img
-                        src="/gallery/_DSC2495.JPG"
-                        alt="Stacked Image 3"
-                        className={styles.stackedImage}
-                        style={{ '--i': -1 }}
-                    />
-                    <img
-                        src="/gallery/Screenshot 2024-12-16 at 1.27.35 AM.png"
-                        alt="Stacked Image 4"
-                        className={styles.stackedImage}
-                        style={{ '--i': 0 }}
-                    />
-                    <img
-                        src="/gallery/Screenshot 2024-12-16 at 1.13.18 AM.png"
-                        alt="Stacked Image 5"
-                        className={styles.stackedImage}
-                        style={{ '--i': 1 }}
-                    />
-                </div>
-
-                <div className={styles.galleryContainer}>
-                    {/* Left Column */}
-                    <div className={styles.leftColumn}>
-                        <img src="/gallery/_DC_4278.JPG" alt="Left Image 1" />
-                        <img src="/gallery/Frame 239513.png" alt="Left Image 2" />
-                        <img src="/gallery/_DC_4278.JPG" alt="Left Image 3" />
-                        <img src="/gallery/Frame 239513.png" alt="Left Image 4" />
-                    </div>
-
-                    {/* Middle Overlapping Column */}
-                    <div className={styles.middleColumn}>
-                        <div className={styles.textBlock}>
-                            <div className={styles.mainTitle}>ANWESHA 2024</div>
-                            <div className={styles.subTitle}>GLIMPSE</div>
-                        </div>
-                        <img
-                            src="/gallery/Frame 239513.png"
-                            alt="Middle Image 1"
-                        />
-                        <img
-                            src="/gallery/Frame 239517.png"
-                            alt="Middle Image 2"
-                        />
-                        <img
-                            src="/gallery/Frame 239513.png"
-                            alt="Middle Image 3"
-                        />
-                    </div>
-
-                    {/* Right Column */}
-                    <div className={styles.rightColumn}>
-                        <img
-                            src="/gallery/Frame 239514.png"
-                            alt="Right Image 2"
-                        />
-                        <img
-                            src="/gallery/Frame 239516.png"
-                            alt="Right Image 2"
-                        />
-                        <img
-                            src="/gallery/Frame 239514.png"
-                            alt="Right Image 2"
-                        />
-                        <img
-                            src="/gallery/Frame 239516.png"
-                            alt="Right Image 2"
-                        />
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
-
-// Fetching folder links
-export async function getServerSideProps() {
-    const folderLinks = [
-        {
-            name: 'Gallery Section 1',
-            links: ['/gallery/_DC_4278.JPG', '/gallery/_DSC_4142.png'],
-        },
-        {
-            name: 'Gallery Section 2',
-            links: [
-                '/gallery/_middle_left_1.JPG',
-                '/gallery/_middle_right_1.JPG',
-            ],
-        },
-    ]
-
-    return { props: { folderLinks } }
-}
-/* vi: set et sw=4: */
