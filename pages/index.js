@@ -250,6 +250,19 @@ function all(iterable) {
     return true
 }
 
+const makePosterUrl = (url) => {
+    if (!url) return '/events/poster.png'
+    
+    // If it's already an absolute URL, return as-is
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+        return url
+    }
+    
+    // If it's a relative path, prepend NEXT_PUBLIC_MEDIA_BASE
+    const mediaBase = process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://storage.googleapis.com/anwesha-storage-bucket'
+    return `${mediaBase}/${url}`
+}
+
 const ImageWithText = ({
     url,
     title,
@@ -261,13 +274,14 @@ const ImageWithText = ({
     onClick,
     style,
 }) => {
+    const posterUrl = makePosterUrl(url)
     return (
         <div
             ref={divRef}
             style={{
                 width: width || (active ? '370px' : '319.61px'),
                 height: height || (active ? '414px' : '358.481px'),
-                backgroundImage: `url(${url})`,
+                backgroundImage: `url(${posterUrl})`,
                 ...(style || {}), // Merge additional styles
             }}
             className={styles.events_image}
@@ -699,15 +713,19 @@ const IndexPage = () => {
         }
         callAPI()
     }, [])
-    // url - events[<index>].poster
+    // url - events[<index>].poster_file || events[<index>].poster (prioritize poster_file)
     // title - events[<index>].name.split('#')[0]
     // body - events[<index>].name.split('#')[1]
     const pseudoEventImage = adjustList(
-        events.map((event) => ({
-            url: event.poster,
-            title: event.name.split('#')[0],
-            body: event.name.split('#')[1],
-        })),
+        events.map((event, idx) => {
+            const posterUrl = event.poster_file || event.poster || '/events/poster.png'
+            console.log(`[HomePage] Event ${idx} poster:`, posterUrl)
+            return {
+                url: posterUrl,
+                title: event.name.split('#')[0],
+                body: event.name.split('#')[1],
+            }
+        }),
         6
     )
     // const pseudoEventImage = adjustList(_pseudoEventImage, 6);
