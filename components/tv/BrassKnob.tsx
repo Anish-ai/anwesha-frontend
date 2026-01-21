@@ -12,31 +12,32 @@ export function BrassKnob({
   active?: boolean;
 }) {
   return (
-    <button
-      onClick={onClick}
-      type="button"
+    <div
       style={{
         border: "none",
         background: "transparent",
         padding: 0,
-        cursor: "pointer",
+        margin: 0,
         outline: "none",
+        display: "block",
       }}
     >
       <img
+        onClick={onClick}
         src="/images/gallery/goldenknob.svg"
         alt="Knob"
         draggable={false}
         style={{
-          width: "86px",
-          height: "86px",
+          width: "clamp(60px, 14vw, 100px)",
+          height: "clamp(60px, 14vw, 100px)",
           transform: `rotate(${rotation}deg)`,
           transition: "transform 160ms ease-out",
+          cursor: "pointer",
           filter: active
             ? "drop-shadow(0 0 14px rgba(255, 210, 90, 0.45))"
             : "drop-shadow(0 0 8px rgba(0,0,0,0.35))",
         }}
       />
-    </button>
+    </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { BrassKnob } from "./BrassKnob";
 import { CRTScreen } from "./CRTScreen";
+import styles from "./VintageTV.module.css";
 
 export type TVImageInput = {
   name?: string;
@@ -111,18 +112,18 @@ export function VintageTV({
       <div
         style={{
           position: "absolute",
-          top: "-140px",
+          top: "clamp(-80px, -15vw, -140px)",
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
-          gap: "80px",
+          gap: "clamp(40px, 10vw, 80px)",
           pointerEvents: "none",
         }}
       >
         <div
           style={{
-            width: "4px",
-            height: "140px",
+            width: "3px",
+            height: "clamp(70px, 20vw, 140px)",
             background: "linear-gradient(to top, #8b7355, #c0c0c0)",
             transform: "rotate(-22deg)",
             borderRadius: "3px",
@@ -130,8 +131,8 @@ export function VintageTV({
         />
         <div
           style={{
-            width: "4px",
-            height: "140px",
+            width: "3px",
+            height: "clamp(70px, 20vw, 140px)",
             background: "linear-gradient(to top, #8b7355, #c0c0c0)",
             transform: "rotate(22deg)",
             borderRadius: "3px",
@@ -142,10 +143,10 @@ export function VintageTV({
       {/* Main TV chassis */}
       <div
         style={{
-          width: "960px",
-          height: "680px",
-          borderRadius: "52px",
-          padding: "18px",
+          width: "clamp(280px, 80vw, 820px)",
+          height: "clamp(200px, 60vw, 600px)",
+          borderRadius: "clamp(24px, 5vw, 52px)",
+          padding: "clamp(8px, 1.5vw, 12px)",
           background: "linear-gradient(135deg,#111,#050505,#111)",
           boxShadow:
             "0 30px 70px rgba(0,0,0,0.85), inset 0 2px 6px rgba(255,255,255,0.08)",
@@ -157,8 +158,8 @@ export function VintageTV({
           style={{
             position: "absolute",
             inset: 0,
-            borderRadius: "52px",
-            border: "5px solid #d4af37",
+            borderRadius: "clamp(24px, 5vw, 52px)",
+            border: "clamp(2px, 0.5vw, 5px) solid #d4af37",
             pointerEvents: "none",
             opacity: 0.9,
           }}
@@ -169,24 +170,27 @@ export function VintageTV({
           style={{
             width: "100%",
             height: "100%",
-            borderRadius: "48px",
-            padding: "36px",
+            borderRadius: "clamp(20px, 4.5vw, 48px)",
+            padding: "clamp(10px, 2vw, 20px)",
             background:
               "linear-gradient(135deg, #3e2723 0%, #5d4037 25%, #4e342e 50%, #3e2723 75%, #2c1810 100%)",
             position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
           }}
         >
           {/* Mode indicator */}
           <div
             style={{
               position: "absolute",
-              top: 18,
+              top: "clamp(10px, 2vw, 18px)",
               left: "50%",
               transform: "translateX(-50%)",
               display: "flex",
-              gap: 16,
+              gap: "clamp(8px, 2vw, 16px)",
               fontFamily: "Georgia, serif",
-              fontSize: 12,
+              fontSize: "clamp(9px, 2vw, 12px)",
               color: "rgba(255,215,140,0.6)",
             }}
           >
@@ -203,10 +207,11 @@ export function VintageTV({
             style={{
               display: "flex",
               alignItems: "center",
-              height: "100%",
-              justifyContent: "space-between",
-              gap: 30,
+              justifyContent: "center",
+              gap: "clamp(12px, 3vw, 30px)",
+              width: "100%",
             }}
+            className={styles.tvLayout}
           >
             {/* Screen */}
             <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
@@ -216,12 +221,12 @@ export function VintageTV({
             {/* Knobs */}
             <div
               style={{
-                width: "150px",
+                width: "clamp(80px, 20vw, 150px)",
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
-                gap: "36px",
+                gap: "clamp(16px, 4vw, 36px)",
               }}
+              className={styles.tvKnobs}
             >
               <div style={{ textAlign: "center" }}>
                 <BrassKnob
@@ -231,10 +236,10 @@ export function VintageTV({
                 />
                 <div
                   style={{
-                    marginTop: 10,
+                    marginTop: "clamp(6px, 1.5vw, 10px)",
                     color: "rgba(255,215,140,0.75)",
                     fontFamily: "Georgia, serif",
-                    fontSize: 12,
+                    fontSize: "clamp(9px, 2vw, 12px)",
                     letterSpacing: "0.14em",
                   }}
                 >
@@ -250,10 +255,10 @@ export function VintageTV({
                 />
                 <div
                   style={{
-                    marginTop: 10,
+                    marginTop: "clamp(6px, 1.5vw, 10px)",
                     color: "rgba(255,215,140,0.75)",
                     fontFamily: "Georgia, serif",
-                    fontSize: 12,
+                    fontSize: "clamp(9px, 2vw, 12px)",
                     letterSpacing: "0.14em",
                   }}
                 >
@@ -267,13 +272,13 @@ export function VintageTV({
           <div
             style={{
               position: "absolute",
-              bottom: 18,
+              bottom: "clamp(10px, 2vw, 18px)",
               left: "50%",
               transform: "translateX(-50%)",
-              color: "rgba(255,215,140,0.55)",
+              color: "rgba(255,215,140,0.9)",
               fontFamily: "Georgia, serif",
               letterSpacing: "0.25em",
-              fontSize: 13,
+              fontSize: "clamp(9px, 1.5vw, 13px)",
             }}
           >
             RETROVIEW ◆ 1974
