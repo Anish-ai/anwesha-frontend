@@ -1283,14 +1283,17 @@
 }
 
 .cta_body_left {
-    /* width: 626px;
-    height: 626px;
-    flex-shrink: 0; */
+    width: 450px;
+    height: 450px;
+    flex-shrink: 0;
     overflow: hidden;
     border-radius: 9999px;
     position: relative;
     mix-blend-mode: screen;
     margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .cta_body_left > svg{
@@ -1298,20 +1301,31 @@
 } */
 .cta_image {
     position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 72px;
-    padding-left: 62px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .theme_circle {
     opacity: 0.3;
     animation: rotateAnimation 15s linear infinite;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
     /* Optional: filter: brightness(100%); if mix-blend-mode affects it oddly */
 }
 
 .cta_image>img {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
 }
 
 .rotating_circle {
@@ -1357,6 +1371,8 @@
 
     .cta_body_left {
         margin-top: 20px;
+        width: 380px;
+        height: 380px;
     }
 }
 
@@ -1377,21 +1393,19 @@
         max-width: 600px;
     }
 
-    .cta_body_left>svg {
-        width: 550px;
-        height: 550px;
+    .cta_body_left {
+        width: 300px;
+        height: 300px;
     }
 
     .cta_image {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0;
+        width: 250px;
+        height: 250px;
     }
 
     .cta_image>img {
-        width: 250px;
-        height: 250px;
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 
@@ -1406,6 +1420,22 @@
         padding-left: 12px;
         padding-right: 12px;
         padding-bottom: 24px;
+    }
+
+    .cta_body_left {
+        width: 250px;
+        height: 250px;
+        margin-top: 15px;
+    }
+
+    .cta_image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .cta_image>img {
+        width: 100% !important;
+        height: 100% !important;
     }
 }
 
