@@ -63,7 +63,7 @@ export default function GalleryPage() {
           <div className={styles.anwesha}>
             <span className={styles.anweshaA}>A</span>
             NWESHA
-            <span className={styles.anwesha24}>&apos;24</span>
+            <span className={styles.anwesha24}>&apos;26</span>
           </div>
         </div>
 
