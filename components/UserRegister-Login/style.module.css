@@ -63,11 +63,11 @@
     background-size: contain;
     background-clip: border-box;
     background-position: center;
-    fill: #000;
+    /* fill: #000; */
     filter: drop-shadow(0px 0px 0px #ffffff);
 
     /* color: var(--Color-Primary500, #50FF00); */
-    color: #ffdd00;
+    /* color: #ffdd00; */
     text-align: center;
     padding-top: 5px;
 
@@ -79,6 +79,7 @@
     text-transform: uppercase;
     transition: all ease 0.2s;
     cursor: pointer;
+   
 }
 .register_button_small{
     width: 191.315px;
@@ -89,7 +90,7 @@
 
 .register_button:hover{
     filter: drop-shadow(0px -3.623px 3.623px #f2e279);
-    color: #f2e279;
+    /* color: #f2e279; */
     transform: scale(97%);
 }
 .register_button:active{
@@ -222,14 +223,16 @@
     flex-direction: column;
     align-content: center;
     max-width: 550px;
-    min-height: 60vh;
+    /* min-height: 60vh; */
     color: #ffffff;
     width: 100%;
     align-items: center;
     padding-block-start: 70px;
     padding-inline: 20px;
     padding-block-end: 30px;
+    padding-block-end: 5vh;
     font-family: 'Lisu_Bosa', serif;
+  
 }
 .form_reset {
     background: rgba(0, 0, 0, 0.75); /* Reduced opacity for more transparency */
@@ -505,3 +508,28 @@
 }
 
 
+/* --------------------- 404 page -------------------------------- */
+
+.dont_loss{
+    position: absolute;
+    bottom: 200px;
+    font-family: 'Cinzel_Decorative', sans-serif;
+    color: white;
+    font-size: 2.2rem;
+    /* font-weight: bold; */  /* Uncomment if needed */
+    text-align: center;
+    width: 100%;
+    @media screen and (max-width: 600px) {
+        font-size: 1.2rem;
+    }
+}
+
+.homepage_btn{
+    font-family: 'Cormorant_Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+    padding: 10px 20px;
+    padding-block-start: 14px;
+    padding-inline-start: 27px;
+}

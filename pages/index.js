@@ -933,16 +933,16 @@ const IndexPage = () => {
 
                     <div className={styles.hero_button}>
                         <button
-                            className={cn(styles.sexy_button, styles.sexy_button_small)}
+                            className={cn(styles.sexy_button)}
                             onClick={() => router.push('/userRegister')}
                         >
-                            REGISTER
+                            Register
                         </button>
                         <button
                             className={cn(styles.sexy_button, styles.sexy_button_small)}
                             onClick={() => router.push('/anweshapass')}
                         >
-                            GET PASSES
+                            Get Passes
                         </button>
                     </div>
                 </HeroSection>
@@ -999,7 +999,7 @@ const IndexPage = () => {
                     <section className={styles.merch} id="merch">
                         <div className={styles.merch_body}>
                             <div>
-                                <h2 className={dmSerif.className}>Anwesha 2025 Official Merchandise</h2>
+                                <h2 className={dmSerif.className}>Anwesha 2026 Official Merchandise</h2>
                                 <h3>Own the Unforgettable Experience</h3>
                             </div>
                             <p>

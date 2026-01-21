@@ -19,8 +19,8 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Anwesha 2024</title>
-                <meta name="description" content="Anwesha 2024" />
+                <title>Anwesha 2026</title>
+                <meta name="description" content="Anwesha 2026" />
                 <link rel="icon" href="/AnweshaIcon.png" />
             </Head>
             <div className={styles.hero}>
