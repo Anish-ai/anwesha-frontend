@@ -33,6 +33,13 @@ function Profile() {
     )
     const [qrLoading, setQrLoading] = useState(false)
 
+    // Sync formData when profDetails updates
+    useEffect(() => {
+        if (profDetails && Object.keys(profDetails).length > 0) {
+            setFormData(profDetails)
+        }
+    }, [profDetails])
+
     const [edit, setEdit] = useState(false)
 
     const [isEditing, setIsEditing] = useState(false) // Toggle edit mode
@@ -48,6 +55,12 @@ function Profile() {
         setIsEditing(false)
         var myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
+        const authHeaders = userData?.getAuthHeaders
+            ? userData.getAuthHeaders()
+            : {}
+        Object.entries(authHeaders).forEach(([k, v]) =>
+            myHeaders.append(k, v)
+        )
 
         var raw = JSON.stringify({
             full_name: formData.full_name,
@@ -59,7 +72,6 @@ function Profile() {
             headers: myHeaders,
             body: raw,
             redirect: 'follow',
-            credentials: 'include',
         }
 
         fetch(`${host}/user/editprofile`, requestOptions)
@@ -69,54 +81,22 @@ function Profile() {
     }
 
     useEffect(() => {
-        if (!userData?.state?.user) return
-
-    // Fetch profile data including signed QR code URL from /user/profile/
-    fetch(`${host}/user/profile/`, {
-        method: 'GET',
-        credentials: 'include',
-        redirect: 'follow',
-    })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`API error: ${response.status}`)
+        // Just use data from authContext instead of fetching again
+        if (userData?.state?.user) {
+            setProfDetails(userData.state.user)
+            if (userData.state.user.qr_code) {
+                setQrcode(userData.state.user.qr_code)
             }
-            return response.json()
-        })
-        .then((result) => {
-            console.log('[Profile] Fetched profile data:', result)
-            setProfDetails(result)
-            // Set QR code from signed URL in the response
-            if (result.qr_code) {
-                console.log('[Profile] QR Code URL:', result.qr_code)
-                console.log('QR Link:', result.qr_code)
-                setQrcode(result.qr_code)
-            }
-        })
-        .catch((error) => {
-            console.error('[Profile] Error fetching profile:', error)
-            // Fallback to /user/editprofile if /user/profile/ not available
-            fetch(`${host}/user/editprofile`, {
-                method: 'GET',
-                credentials: 'include',
-                redirect: 'follow',
-            })
-                .then((response) => response.json())
-                .then((result) => {
-                    setProfDetails(result)
-                    if (result.qr_code) {
-                        console.log('QR Link (fallback):', result.qr_code)
-                        setQrcode(result.qr_code)
-                    }
-                })
-                .catch((err) => console.error('[Profile] Fallback also failed:', err))
-        })
-}, [userData])
+        }
+    }, [userData?.state?.user])
 
     function regenrateqr() {
+        const authHeaders = userData.getAuthHeaders()
         fetch(`${host}/user/regenerateqr/`, {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                ...authHeaders,
+            },
             redirect: 'follow',
         })
             .then((response) => response.json())

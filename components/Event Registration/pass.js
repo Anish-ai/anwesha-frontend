@@ -26,6 +26,10 @@ const GetPass = () => {
     async function event() {
         var myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
+        const token = localStorage.getItem('anwesha_token')
+        if (token) {
+            myHeaders.append('Authorization', `Bearer ${token}`)
+        }
 
         var raw = JSON.stringify({
             anwesha_id: userData.state.user.anwesha_id,
@@ -35,7 +39,6 @@ const GetPass = () => {
             headers: myHeaders,
             body: raw,
             redirect: 'follow',
-            credentials: 'include',
         }
 
         const data = await fetch(`${host}/festpasses/get`, requestOptions)

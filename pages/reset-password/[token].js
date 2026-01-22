@@ -77,7 +77,6 @@ const ResetPassword = () => {
                     token: token,
                     password: password,
                 }),
-                credentials: 'include',
             })
 
             const data = await response.json()

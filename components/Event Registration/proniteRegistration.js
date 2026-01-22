@@ -36,6 +36,13 @@ async function proniteRegistration(
 ) {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token =
+        typeof window !== 'undefined'
+            ? localStorage.getItem('anwesha_token')
+            : null
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
     if (usertype == 'iitp_student') {
         toast.warn("IITP students don't need to buy pass", {
             position: 'top-right',
@@ -64,7 +71,6 @@ async function proniteRegistration(
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
     }
     console.log(raw);
 
