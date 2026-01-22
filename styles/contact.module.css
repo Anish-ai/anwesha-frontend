@@ -78,11 +78,14 @@
 }
 .title {
     color: var(--Color-Primary500, #fff);
-    font-family: 'Cinzel', serif;
+    font-family: "DM Serif Display", serif;
     font-size: 72px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
 }
 .description {
     width: 451px;
