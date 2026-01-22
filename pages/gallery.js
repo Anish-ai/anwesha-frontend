@@ -26,8 +26,8 @@ export default function GalleryPage() {
 
   // ✅ Put your youtube links here
   const youtubeLinks = [
-    "https://www.youtube.com/watch?v=S-ukmg7hPnk",
-    "https://www.youtube.com/watch?v=FSBZHSo1zVw",
+    "https://www.youtube.com/embed/A-5KI2vCuZI?si=6c4y6Hb8b_iumBmG",
+    "https://www.youtube.com/embed/A-5KI2vCuZI?si=6c4y6Hb8b_iumBmG",
   ];
 
   return (
