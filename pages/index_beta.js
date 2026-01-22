@@ -19,7 +19,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Anwesha 2024</title>
+                <title>Anwesha 2026</title>
                 <meta name="description" content="Anwesha 2024" />
                 <link rel="icon" href="/AnweshaIcon.png" />
             </Head>

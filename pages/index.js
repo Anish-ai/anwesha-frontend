@@ -1066,7 +1066,7 @@ const IndexPage = () => {
                     <section className={styles.merch} id="merch">
                         <div className={styles.merch_body}>
                             <div>
-                                <h2 className={dmSerif.className}>Anwesha 2025 Official Merchandise</h2>
+                                <h2 className={dmSerif.className}>Anwesha 2026 Official Merchandise</h2>
                                 <h3>Own the Unforgettable Experience</h3>
                             </div>
                             <p>
@@ -1161,7 +1161,7 @@ const IndexPage = () => {
                     {/* The Aftermovie */}
                     <section className={styles.aftermovie}>
                         <div className={styles.sexy_title}>
-                            <h2 className={dmSerif.className}>Anwesha 2024: The Aftermovie</h2>
+                            <h2 className={dmSerif.className}>Anwesha 2025: The Aftermovie</h2>
                             <h3>Last Year&apos;s Magic in 3 Minutes</h3>
                         </div>
                         <div className={styles.aftermovie_video}>

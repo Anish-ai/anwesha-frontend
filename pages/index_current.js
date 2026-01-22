@@ -85,7 +85,7 @@ export default function Comingsoon() {
                 theme="light"
             />
             <Head>
-                <title>Anwesha 2024</title>
+                <title>Anwesha 2026</title>
                 <meta name="description" content="Anwesha 2024" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
@@ -117,7 +117,7 @@ export default function Comingsoon() {
                                 style={{ color: '#CB4846' }}
                             >
                                 {' '}
-                                ‘23{' '}
+                                ‘26{' '}
                             </span>
                         </p>
                         <p className={styles.iitp}>IIT PATNA</p>
