@@ -1093,7 +1093,7 @@ const IndexPage = () => {
                                         className={styles.sexy_button}
                                         onClick={() =>
                                             window.open(
-                                                'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
+                                                // 'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
                                             )
                                         }
                                     >
