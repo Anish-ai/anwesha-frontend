@@ -31,6 +31,7 @@ const [profDetails, setProfDetails] = useState(
     const [qrcode, setQrcode] = useState(
         userData ? userData.state.user?.qr_code : ''
     )
+    const [qrLoading, setQrLoading] = useState(false)
 
     const [edit, setEdit] = useState(false)
 
@@ -70,16 +71,46 @@ const [profDetails, setProfDetails] = useState(
   useEffect(() => {
     if (!userData?.state?.user) return
 
-    fetch(`${host}/user/editprofile`, {
+    // Fetch profile data including signed QR code URL from /user/profile/
+    fetch(`${host}/user/profile/`, {
         method: 'GET',
         credentials: 'include',
         redirect: 'follow',
     })
-        .then((response) => response.json())
-        .then((result) => {
-            setProfDetails(result)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status}`)
+            }
+            return response.json()
         })
-        .catch((error) => console.log('error', error))
+        .then((result) => {
+            console.log('[Profile] Fetched profile data:', result)
+            setProfDetails(result)
+            // Set QR code from signed URL in the response
+            if (result.qr_code) {
+                console.log('[Profile] QR Code URL:', result.qr_code)
+                console.log('QR Link:', result.qr_code)
+                setQrcode(result.qr_code)
+            }
+        })
+        .catch((error) => {
+            console.error('[Profile] Error fetching profile:', error)
+            // Fallback to /user/editprofile if /user/profile/ not available
+            fetch(`${host}/user/editprofile`, {
+                method: 'GET',
+                credentials: 'include',
+                redirect: 'follow',
+            })
+                .then((response) => response.json())
+                .then((result) => {
+                    setProfDetails(result)
+                    if (result.qr_code) {
+                        console.log('QR Link (fallback):', result.qr_code)
+                        setQrcode(result.qr_code)
+                    }
+                })
+                .catch((err) => console.error('[Profile] Fallback also failed:', err))
+        })
 }, [userData])
 
     function regenrateqr() {
@@ -90,9 +121,36 @@ const [profDetails, setProfDetails] = useState(
         })
             .then((response) => response.json())
             .then((result) => {
-                setQrcode(result.qr_code)
+                console.log('[Profile] Regenerated QR:', result)
+                // Result should contain signed URL
+                if (result.qr_code) {
+                    console.log('QR Link (regenerated):', result.qr_code)
+                    setQrcode(result.qr_code)
+                    toast.success('QR code regenerated successfully', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                }
             })
-            .catch((error) => console.log('error', error))
+            .catch((error) => {
+                console.error('[Profile] QR regeneration failed:', error)
+                toast.error('Failed to regenerate QR code', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                })
+            })
     }
 
    if (!userData?.state?.user) {
@@ -138,7 +196,7 @@ const [profDetails, setProfDetails] = useState(
                                     alt="userImage"
                                 />
                                 <img
-                                    src={'/profile/profile.svg'}
+                                    src={'/pics/mascot 2.png'}
                                     width={130}
                                     height={130}
                                     alt="userImage"
@@ -265,7 +323,35 @@ const [profDetails, setProfDetails] = useState(
                             </div>
                         </div>
                         <div className={styles.qrcode}>
-                            <img src={qrcode} width={200} height={200} alt="" />
+                            {qrLoading ? (
+                                <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span>Loading QR...</span>
+                                </div>
+                            ) : qrcode ? (
+                                <img 
+                                    src={qrcode} 
+                                    width={200} 
+                                    height={200} 
+                                    alt="QR Code"
+                                    onError={() => {
+                                        console.error('[Profile] Failed to load QR image')
+                                        toast.error('Failed to load QR code. Please refresh.', {
+                                            position: 'top-right',
+                                            autoClose: 3000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: 'light',
+                                        })
+                                    }}
+                                />
+                            ) : (
+                                <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f0f0', borderRadius: '15px' }}>
+                                    <span>No QR code</span>
+                                </div>
+                            )}
                             <Link
                                 href="/anweshapass"
                                 style={{ color: 'black', fontWeight: 'bold' }}
