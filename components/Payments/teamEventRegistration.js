@@ -31,6 +31,10 @@ async function teamEventRegistration(userData, eventID, teamName, teamMembers) {
     }
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token = localStorage.getItem('anwesha_token')
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
 
     var raw = JSON.stringify({
         event_id: eventID,
@@ -43,7 +47,6 @@ async function teamEventRegistration(userData, eventID, teamName, teamMembers) {
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
     }
 
     const data = await fetch(
@@ -88,6 +91,10 @@ async function teamEventRegistration(userData, eventID, teamName, teamMembers) {
         handler: function (response) {
             var myHeaders = new Headers()
             myHeaders.append('Content-Type', 'application/json')
+            const token = localStorage.getItem('anwesha_token')
+            if (token) {
+                myHeaders.append('Authorization', `Bearer ${token}`)
+            }
 
             var raw = JSON.stringify({
                 razorpay_payment_id: response.razorpay_payment_id,
@@ -100,7 +107,6 @@ async function teamEventRegistration(userData, eventID, teamName, teamMembers) {
                 headers: myHeaders,
                 body: raw,
                 redirect: 'follow',
-                credentials: 'include',
             }
 
             fetch(`${host}/event/registration/verification`, requestOptions)

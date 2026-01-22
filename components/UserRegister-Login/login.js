@@ -46,38 +46,39 @@ const UserLoginForm = () => {
     }, []);
 
 
-    useEffect(() => {
-        const frame = document.createElement('iframe')
-        frame.id = '3pc'
-        frame.src = 'https://chamithrepo.github.io/create-third-party-cookie/' //Add your hosted domain url here
-        frame.style.display = 'none'
-        frame.style.position = 'fixed'
-        document.body.appendChild(frame)
+    // No longer needed - using bearer tokens instead of cookies
+    // useEffect(() => {
+    //     const frame = document.createElement('iframe')
+    //     frame.id = '3pc'
+    //     frame.src = 'https://chamithrepo.github.io/create-third-party-cookie/'
+    //     frame.style.display = 'none'
+    //     frame.style.position = 'fixed'
+    //     document.body.appendChild(frame)
 
-        window.addEventListener(
-            'message',
-            function listen(event) {
-                if (event.data === '3pcUnsupported') {
-                    document.body.removeChild(frame)
-                    window.removeEventListener('message', listen)
-                    toast.error(
-                        'Please Enable third party cookies to be able to Login (go to browser settings)',
-                        {
-                            position: 'top-right',
-                            autoClose: 10000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: 'light',
-                        }
-                    )
-                }
-            },
-            false
-        )
-    }, [])
+    //     window.addEventListener(
+    //         'message',
+    //         function listen(event) {
+    //             if (event.data === '3pcUnsupported') {
+    //                 document.body.removeChild(frame)
+    //                 window.removeEventListener('message', listen)
+    //                 toast.error(
+    //                     'Please Enable third party cookies to be able to Login (go to browser settings)',
+    //                     {
+    //                         position: 'top-right',
+    //                         autoClose: 10000,
+    //                         hideProgressBar: false,
+    //                         closeOnClick: true,
+    //                         pauseOnHover: true,
+    //                         draggable: true,
+    //                         progress: undefined,
+    //                         theme: 'light',
+    //                     }
+    //                 )
+    //             }
+    //         },
+    //         false
+    //     )
+    // }, [])
 
     const handleSubmit = async (event) => {
         setloaded(true)
@@ -104,7 +105,6 @@ const UserLoginForm = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(body),
-                credentials: 'include',
             })
 
             //check if request is successful
@@ -113,6 +113,21 @@ const UserLoginForm = () => {
             if (response.status === 200 || response.status === 201) {
                 const data = await response.json()
                 if (data.success === true) {
+                    const token = data.token || data.access_token
+                    if (!token) {
+                        toast.error('Login response missing token', {
+                            position: 'top-right',
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: 'light',
+                        })
+                        return
+                    }
+                    context.persistToken(token)
                     toast.success('You are successfully logged in', {
                         position: 'top-right',
                         autoClose: 3000,
@@ -123,7 +138,10 @@ const UserLoginForm = () => {
                         progress: undefined,
                         theme: 'light',
                     })
-                    context.getUser()
+                    // Defer getUser to allow state update to complete
+                    setTimeout(() => {
+                        context.getUser()
+                    }, 100)
                 } else {
                     toast.error(data.message, {
                         position: 'top-right',
@@ -210,9 +228,6 @@ const UserLoginForm = () => {
             >
                 <div className={styles.container}>
                     <div className={styles.form_login}>
-                        <p style={{ color: '#ffcc00', fontSize: '0.85rem', textAlign: 'center', marginBottom: '15px', lineHeight: '1.4', marginTop: '-20px' }}>
-                            <b>Note:</b> If you cannot login even after getting the "successfully logged in" notification, please go to <b>Site Information</b> (icon on the left of the URL bar) and turn on <b>Third-Party Cookies</b>. Then refresh the page and try logging in again.
-                        </p>
                         <h1
                             className={styles.register_page_heading}
                         >
