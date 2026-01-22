@@ -141,7 +141,7 @@ export default function Ourteam() {
         festcoord: [
             {
                 name: 'Akshat Jha',
-                image: '/team/akshat.jpeg',
+                image: '/team/akshatFC.jpeg',
                 instagram:
                     'https://www.instagram.com/_the__akshat?igsh=MXFyMHFtejMxZHV2aQ%3D%3D&utm_source=qr',
                 linkedin:
@@ -150,7 +150,7 @@ export default function Ourteam() {
             },
             {
                 name: 'Sparsh Choudhary',
-                image: '/team/sparsh.jpeg',
+                image: '/team/sparshFC.jpeg',
                 instagram: 'https://www.instagram.com/sparsh.5_',
                 linkedin:
                     'https://www.linkedin.com/in/sparsh-choudhary-7604aa28a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
