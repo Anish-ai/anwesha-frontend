@@ -1021,11 +1021,13 @@ const IndexPage = () => {
                                         className={cn(styles.sexy_button,
                                             styles.merch_grab_button)
                                         }
-                                        onClick={() =>
-                                            window.open(
-                                                'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
-                                            )
-                                        }
+                                        // onClick={() =>
+                                        //     window.open(
+                                        //         'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
+                                        //     )
+                                        // }
+
+                                        onClick={() => router.push('/merch')}
                                     >
                                         GRAB NOW
                                     </button>
