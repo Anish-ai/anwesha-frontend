@@ -33,7 +33,7 @@ function CoordCard({ data, title }) {
                             </div>
                             <div className={styles.flipBack}>
                                 <Image
-                                    src={item.cardBack || '/CardBack.png'}
+                                    src={item.cardBack || '/team/gola.png'}
                                     alt="Card Back"
                                     className={styles.cardBack}
                                     height={360}
@@ -140,41 +140,51 @@ export default function Ourteam() {
     const data = {
         festcoord: [
             {
-                name: 'Sparsh Choudhary',
-                image: '/team/shubhankar.jpeg',
-                instagram: 'https://instagram.com/username',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201cb59_shubhankar@iitp.ac.in',
+                name: 'Akshat Jha',
+                image: '/team/akshat.jpeg',
+                instagram:
+                    'https://www.instagram.com/_the__akshat?igsh=MXFyMHFtejMxZHV2aQ%3D%3D&utm_source=qr',
+                linkedin:
+                    'https://www.linkedin.com/in/akshat-jha-2a3a63291/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+                email: 'akshat@akshatjha.in',
             },
             {
-                name: 'Akshat Awasthi',
-                image: '/team/chirag.png',
-                instagram: 'https://www.instagram.com/chiraaag.004/',
-                linkedin: 'https://linkedin.com/in/username',
-                email: '2201mc12_chirag@iitp.ac.in',
+                name: 'Sparsh Choudhary',
+                image: '/team/sparsh.jpeg',
+                instagram: 'https://www.instagram.com/sparsh.5_',
+                linkedin:
+                    'https://www.linkedin.com/in/sparsh-choudhary-7604aa28a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'sparsh_2301me56@iitp.ac.in',
             },
         ],
         webnapp: [
             {
                 name: 'Diptanshu Saurav',
                 image: '/team/diptanshuSaurav.jpeg',
-                instagram:
-                    'https://www.instagram.com/dip.sauravvv_/',
-                linkedin: 'https://www.linkedin.com/in/diptanshu-saurav-697495287/',
+                instagram: 'https://www.instagram.com/dip.sauravvv_/',
+                linkedin:
+                    'https://www.linkedin.com/in/diptanshu-saurav-697495287/',
                 email: 'diptanshu_2301mm32@iitp.ac.in ',
             },
             {
                 name: 'Anish Kumar',
                 image: '/team/anishKumar.jpg',
                 instagram: 'https://www.instagram.com/light.anish',
-                linkedin:
-                    'https://www.linkedin.com/in/anish-kumar-71779326a',
+                linkedin: 'https://www.linkedin.com/in/anish-kumar-71779326a',
                 email: 'anish_2301mc40@iitp.ac.in',
+            },
+            {
+                name: 'Jatin Kumar',
+                image: '/team/jatin.jpeg',
+                instagram: 'https://www.instagram.com/Jatin_16_kumar',
+                linkedin: 'https://www.linkedin.com/in/jatin-kumar-4357b72a7',
+                email: 'jatin_2301ec12@iitp.ac.in',
             },
             {
                 name: 'Parv Agarwal',
                 image: '/team/parvAgarwal.jpeg',
-                instagram: 'https://www.instagram.com/z.e.r.o01?igsh=b3Zhd3BldmV1YzBv',
+                instagram:
+                    'https://www.instagram.com/z.e.r.o01?igsh=b3Zhd3BldmV1YzBv',
                 linkedin: 'https://www.linkedin.com/in/parvagarwal',
                 email: 'parv_pa2503mth244@iitp.ac.in',
             },
@@ -183,29 +193,33 @@ export default function Ourteam() {
             {
                 name: 'Kshitij Vasule',
                 image: '/team/kshitij Vasule.jpeg',
-                instagram: 'https://www.instagram.com/kshitij__121104?igsh=MW42a3hkb3RwYXFtbA%3D%3D&utm_source=qr',
-                linkedin: 'https://www.linkedin.com/in/kshitij-vasule-36a19a294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+                instagram:
+                    'https://www.instagram.com/kshitij__121104?igsh=MW42a3hkb3RwYXFtbA%3D%3D&utm_source=qr',
+                linkedin:
+                    'https://www.linkedin.com/in/kshitij-vasule-36a19a294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
                 email: 'kshitij_2301me26@iitp.ac.in',
             },
             {
                 name: 'Mihika ',
                 image: '/team/mihikaSaxena.jpg',
-                instagram: 'https://www.instagram.com/mihika_saxena11?igsh=ZTRscnM2enN3d2Zv',
-                linkedin: 'https://www.linkedin.com/in/mihika-saxena-b5bb8a28b/',
+                instagram:
+                    'https://www.instagram.com/mihika_saxena11?igsh=ZTRscnM2enN3d2Zv',
+                linkedin:
+                    'https://www.linkedin.com/in/mihika-saxena-b5bb8a28b/',
                 email: 'mihika_2301cs31@iitp.ac.in',
             },
             {
                 name: 'Vansh Shrivastava ',
                 image: '/team/vanshShrivastava.jpeg',
                 instagram: 'https://www.instagram.com/yrulikedisvansh',
-                linkedin: 'https://www.linkedin.com/in/vansh-shrivastava-a07866290',
+                linkedin:
+                    'https://www.linkedin.com/in/vansh-shrivastava-a07866290',
                 email: 'vansh_2301ec34@iitp.ac.in',
             },
             {
                 name: 'Saksham Srivastava ',
                 image: '/team/sakshamSrivastava.jpeg',
-                instagram:
-                    'https://www.instagram.com/saksham_iitp/',
+                instagram: 'https://www.instagram.com/saksham_iitp/',
                 linkedin:
                     'https://www.linkedin.com/in/saksham-srivastava-28ba99296/',
                 email: 'saksham_2301ec56@iitp.ac.in',
@@ -217,14 +231,16 @@ export default function Ourteam() {
                 name: 'Chaitanya Saagar',
                 image: '/team/chaitanyaSaagar.jpeg',
                 instagram: 'https://www.instagram.com/chad._.saagar',
-                linkedin: 'https://www.linkedin.com/in/chaitanya-saagar-476b562a2',
+                linkedin:
+                    'https://www.linkedin.com/in/chaitanya-saagar-476b562a2',
                 email: 'chaitanya_2301cs77@iitp.ac.in',
             },
             {
                 name: 'Kumar Aryan Raj',
                 image: '/team/aryanRaj.jpg',
                 instagram: 'https://www.instagram.com/aryan_4.5.3_/',
-                linkedin: 'https://www.linkedin.com/in/aryan-raj-46a519298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                linkedin:
+                    'https://www.linkedin.com/in/aryan-raj-46a519298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
                 email: 'kumar_2301cb22@iitp.ac.in',
             },
             {
@@ -259,8 +275,10 @@ export default function Ourteam() {
             {
                 name: 'Garvit B Nahta',
                 image: '/team/garvitNahta.webp',
-                instagram: 'https://www.instagram.com/garvit_n05?igsh=MTdyZHJ1dXpvYTl4OQ==',
-                linkedin: 'https://www.linkedin.com/in/garvit-b-nahta-4731ab291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                instagram:
+                    'https://www.instagram.com/garvit_n05?igsh=MTdyZHJ1dXpvYTl4OQ==',
+                linkedin:
+                    'https://www.linkedin.com/in/garvit-b-nahta-4731ab291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
                 email: 'garvit_2301ce10@iitp.ac.in',
             },
             {
@@ -273,15 +291,18 @@ export default function Ourteam() {
             {
                 name: 'Gargi Tiwari',
                 image: '/team/gargiTiwari.png',
-                instagram: 'https://www.instagram.com/gargitiwari09?igsh=MWNnaHo2YWZmM2swaw==',
-                linkedin: 'https://www.linkedin.com/in/gargi-tiwari-b3b7a3295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                instagram:
+                    'https://www.instagram.com/gargitiwari09?igsh=MWNnaHo2YWZmM2swaw==',
+                linkedin:
+                    'https://www.linkedin.com/in/gargi-tiwari-b3b7a3295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
                 email: 'gargi_2303me06@iitp.ac.in',
             },
             {
                 name: 'Shubham Agrawal',
                 image: '/team/shubhamAgrawal.jpg',
                 instagram: 'https://www.instagram.com/shubham._agrawal',
-                linkedin: 'https://www.linkedin.com/in/shubham-agrawal-27a4a6281',
+                linkedin:
+                    'https://www.linkedin.com/in/shubham-agrawal-27a4a6281',
                 email: 'shubham_2301ai44@iitp.ac.in',
             },
         ],
@@ -299,14 +320,16 @@ export default function Ourteam() {
                 name: 'Yuvan Vanapalli',
                 image: '/team/yuvanV.jpg',
                 instagram: 'https://www.instagram.com/yuvan_29_2005/',
-                linkedin: 'https://www.linkedin.com/in/yuvan-vanapalli-2912yv05/',
+                linkedin:
+                    'https://www.linkedin.com/in/yuvan-vanapalli-2912yv05/',
                 email: 'yuvan_2301ee43@iitp.ac.in',
             },
             {
                 name: 'Lochan Bhaskaruni',
                 image: '/team/LochanBhaskaruni.jpg',
                 instagram: 'https://www.instagram.com/lochan_25526/',
-                linkedin: 'https://www.linkedin.com/in/lochan-bhaskaruni-10176b283/',
+                linkedin:
+                    'https://www.linkedin.com/in/lochan-bhaskaruni-10176b283/',
                 email: 'lochan_2301me28@iitp.ac.in',
             },
         ],
@@ -565,21 +588,22 @@ export default function Ourteam() {
                         }
                     />
                     <hr className={styles.teamHeadingBar} />
+
                     <CoordCard
-                        data={data.spons}
+                        data={data.mpr}
                         title={
                             <>
-                                <span>Spons</span>
+                                <span>MPR</span>
                                 <br />
                                 <span>Committee</span>
                             </>
                         }
                     />
                     <CoordCard
-                        data={data.mpr}
+                        data={data.spons}
                         title={
                             <>
-                                <span>MPR</span>
+                                <span>Spons</span>
                                 <br />
                                 <span>Committee</span>
                             </>
@@ -636,7 +660,7 @@ export default function Ourteam() {
                         }
                     />
 
-                    <h2 className={styles.teamHeader}>Fest Convenor</h2>
+                    {/* <h2 className={styles.teamHeader}>Fest Convenor</h2>
                     <hr className={styles.teamHeadingBar} />
                     <CoordCard data={data.convenor} title="Convenor" />
                     <h2 className={styles.teamHeader}>Advisory</h2>
@@ -644,21 +668,21 @@ export default function Ourteam() {
 
                     <CoordCard
                         data={data.sponsAdvisory}
-                        title="Spons Committee"
+                        title="Spons"
                     />
-                    <CoordCard data={data.mprAdvisory} title="MPR Committee" />
+                    <CoordCard data={data.mprAdvisory} title="MPR" />
                     <CoordCard data={data.webnappAdvisory} title="Web & App" />
                     <CoordCard
                         data={data.eventsAdvisory}
-                        title="Events Committee"
+                        title="Events "
                     />
-                    <CoordCard data={data.rspAdvisory} title="RSP  Committee" />
+                    <CoordCard data={data.rspAdvisory} title="RSP" />
                     <CoordCard
                         data={data.hospiAdvisory}
                         title="Hospitality"
                     />
                     <CoordCard data={data.TVAdvisory} title="Anwesha TV" />
-                    <CoordCard data={data.PnDAdvisory} title="Prod & Design" />
+                    <CoordCard data={data.PnDAdvisory} title="Prod & Design" /> */}
                 </div>
             </div>
         </div>

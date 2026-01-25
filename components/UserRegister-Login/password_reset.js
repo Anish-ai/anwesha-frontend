@@ -52,7 +52,6 @@ const ChangePassword = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(body),
-                credentials: 'include',
             })
 
             //check if request is successful

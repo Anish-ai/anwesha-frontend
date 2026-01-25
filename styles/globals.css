@@ -1,6 +1,10 @@
 /* CSS reset  */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -27,6 +31,7 @@ h6 {
         opacity: 0;
         transform: translateY(20px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -37,6 +42,7 @@ h6 {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -102,7 +108,7 @@ h6 {
     }
 }
 
-.multicity-input-group-flex > div {
+.multicity-input-group-flex>div {
     flex: 1;
 }
 
@@ -393,6 +399,13 @@ h6 {
     background: linear-gradient(to right, #41d7b7, #095db7);
 }
 
+
 .multicity-step-line.inactive {
     background-color: #9ca3af;
+}
+
+/* Toast Container Override */
+.Toastify__toast-container {
+    z-index: 9999999 !important;
+    top: 100px !important;
 }

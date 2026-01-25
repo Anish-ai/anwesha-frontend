@@ -24,7 +24,7 @@ const Aboutus = () => {
                 </p>
                 <br />
                 <p className={styles.para}>
-                    Anwesha 2025 is envisioned to be an innovative and cultural
+                    Anwesha 2026 is envisioned to be an innovative and cultural
                     uplifting festival of togetherness in not just the state or
                     region, but the whole nation. We have reimagined the lens
                     through which we understand culture and celebration,
@@ -45,7 +45,7 @@ const Aboutus = () => {
                     <li className={styles.listitem}>
                         <p className={styles.para}>
                             With the expanding music palette of Indian audiences
-                            after the internet arrived, Anwesha 2025 is at the
+                            after the internet arrived, Anwesha 2026 is at the
                             converging point to introduce independent music and
                             art at college festivals.
                         </p>
@@ -69,7 +69,7 @@ const Aboutus = () => {
                             As a major festival with massive footfall, we are
                             aware of the enormous resource consumption and
                             consequent waste generated throughout this festival.
-                            Anwesha&#39;25 shall focus on bringing a sustainable
+                            Anwesha&#39;26 shall focus on bringing a sustainable
                             lifestyle & culture to the mainstream.
                         </p>
                     </li>
@@ -98,7 +98,7 @@ const Aboutus = () => {
                             The folk culture in Bihar is immense - from
                             Madhubani to Yampuri, Jat-Jatin to bamboo & pottery
                             craft; we would be delighted to accommodate it all
-                            in Anwesha 2k25.
+                            in Anwesha 2k26.
                         </p>
                     </li>
                 </ul>

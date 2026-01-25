@@ -100,11 +100,36 @@ function Navigation() {
     }
 
     const handleLogout = () => {
-        fetch(`${host}/user/logout`, {
-            method: 'POST',
-            redirect: 'follow',
-            credentials: 'include',
-        }).then(() => userData.getUser())
+        const authHeaders = userData?.getAuthHeaders
+            ? userData.getAuthHeaders()
+            : {}
+        
+        // Call backend logout if token exists
+        if (userData?.token) {
+            fetch(`${host}/user/logout`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...authHeaders,
+                },
+                redirect: 'follow',
+            })
+                .then(() => {
+                    console.log('[Navbar] Logged out successfully')
+                })
+                .catch((err) => {
+                    console.error('[Navbar] Logout API error:', err)
+                })
+                .finally(() => {
+                    // Clear token and user from context regardless of API success
+                    userData.logout()
+                    router.push('/userLogin')
+                })
+        } else {
+            // No token, just clear locally
+            userData.logout()
+            router.push('/userLogin')
+        }
     }
 
     return (
@@ -131,7 +156,7 @@ function Navigation() {
                         className='nav_logo'
                         src="/navbar/logo.svg"
                         alt="logo"
-                        width={180}
+                        width={130}
                         height={60}
                     />
                 </Link>
@@ -202,7 +227,7 @@ function Navigation() {
                                         }
                                         : null
                                 }
-                                href="/all-multicity"
+                                href="/coming-soon"
                             >
                                 Multicity
                             </Link>
@@ -501,7 +526,7 @@ function Navigation() {
                         </Link>
                     </li>
                     <li>
-                        {userData.isAuth ? (
+                        {userData.isAuth && userData.state?.user ? (
                             <div className={styles.user_container}>
                                 <Link
                                     className={styles.user_info}
@@ -510,10 +535,10 @@ function Navigation() {
                                 >
                                     <div>
                                         <span className={styles.user_name}>
-                                            {userData.state.user.full_name}
+                                            {userData.state.user.full_name || ''}
                                         </span>
                                         <span className={styles.user_id}>
-                                            {userData.state.user.anwesha_id}
+                                            {userData.state.user.anwesha_id || ''}
                                         </span>
                                     </div>
                                 </Link>

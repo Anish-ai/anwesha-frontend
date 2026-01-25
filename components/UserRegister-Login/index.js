@@ -289,8 +289,8 @@ const UserRegisterForm = () => {
                                 name="Email_Id"
                                 placeholder={
                                     usertype === 'iitp_student'
-                                        ? 'Eg: 2001me85_rishiraj'
-                                        : 'Eg: mohit.sharma@gmail.com'
+                                        ? 'Eg: anish_2301mc40'
+                                        : 'Eg: aniskum59431@gmail.com'
                                 }
                                 onChange={(e) => {
                                     if (usertype === 'iitp_student') {
@@ -419,10 +419,11 @@ const UserRegisterForm = () => {
                                 onClick={handleSubmit}
                                 className={cn(
                                     styles.register_button,
-                                    
                                 )}
+                                style={loading ? { letterSpacing: '-0.1ch' } : {}}
+
                             >
-                                {!loading ? 'REGISTER' : 'REGISTERING..'}
+                                {!loading ? 'REGISTER' : 'REGISTERING'}
                             </button>
                         </div>
                         <br />
