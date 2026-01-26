@@ -48,7 +48,6 @@ function Razor() {
             headers: myHeaders,
             body: raw,
             redirect: 'follow',
-            credentials: 'include',
         }
 
         const data = await fetch(

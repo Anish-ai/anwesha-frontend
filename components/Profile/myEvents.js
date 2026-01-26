@@ -8,10 +8,13 @@ function MyEvents() {
     const [events, setEvents] = useState({ solo: [], team: [] })
     const [passes, setPasses] = useState([])
     const userData = useContext(AuthContext)
+    const authHeaders = userData?.getAuthHeaders ? userData.getAuthHeaders() : {}
     var requestOptions = {
         method: 'GET',
         redirect: 'follow',
-        credentials: 'include',
+        headers: {
+            ...authHeaders,
+        },
     }
     useEffect(() => {
         const res = fetch(`${host}/event/myevents`, requestOptions)
@@ -27,8 +30,16 @@ function MyEvents() {
     useEffect(() => {
         const fetchFestPasses = async () => {
             try {
+                if (!userData.state?.user?.anwesha_id) {
+                    console.warn('[MyEvents] No anwesha_id available')
+                    return
+                }
+
                 var myHeaders = new Headers()
                 myHeaders.append('Content-Type', 'application/json')
+                Object.entries(authHeaders).forEach(([k, v]) =>
+                    myHeaders.append(k, v)
+                )
 
                 var raw = JSON.stringify({
                     anwesha_id: userData.state.user.anwesha_id,
@@ -39,13 +50,17 @@ function MyEvents() {
                     headers: myHeaders,
                     body: raw,
                     redirect: 'follow',
-                    credentials: 'include',
                 }
 
                 const response = await fetch(
                     `${host}/festpasses/get`,
                     requestOptions
                 )
+
+                if (response.status === 404) {
+                    console.warn('[MyEvents] /festpasses/get not found, endpoint may not exist yet')
+                    return
+                }
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`)
@@ -60,12 +75,14 @@ function MyEvents() {
                     ])
                 }
             } catch (error) {
-                console.error('Error fetching fest passes:', error)
+                console.error('[MyEvents] Error fetching fest passes:', error)
             }
         }
 
-        fetchFestPasses()
-    }, [])
+        if (userData.state?.user) {
+            fetchFestPasses()
+        }
+    }, [userData.state?.user?.anwesha_id])
 
     return (
         // <div>

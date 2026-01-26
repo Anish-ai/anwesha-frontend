@@ -121,7 +121,7 @@ const Footer = () => {
                 >
                   Contact us :
                 </span>
-                +91 0123456789
+                +91 7564985810
               </h4>
             </div>
           </div>

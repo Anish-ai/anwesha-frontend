@@ -21,16 +21,24 @@ function Profile() {
 
     const [tabIndex, setTabIndex] = useState(0)
     // const profDetails = userData.state.user;
-   
-const [profDetails, setProfDetails] = useState(
-    userData?.state?.user || {}
-)
+
+    const [profDetails, setProfDetails] = useState(
+        userData?.state?.user || {}
+    )
 
 
     const [formData, setFormData] = useState(profDetails)
     const [qrcode, setQrcode] = useState(
         userData ? userData.state.user?.qr_code : ''
     )
+    const [qrLoading, setQrLoading] = useState(false)
+
+    // Sync formData when profDetails updates
+    useEffect(() => {
+        if (profDetails && Object.keys(profDetails).length > 0) {
+            setFormData(profDetails)
+        }
+    }, [profDetails])
 
     const [edit, setEdit] = useState(false)
 
@@ -47,6 +55,12 @@ const [profDetails, setProfDetails] = useState(
         setIsEditing(false)
         var myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
+        const authHeaders = userData?.getAuthHeaders
+            ? userData.getAuthHeaders()
+            : {}
+        Object.entries(authHeaders).forEach(([k, v]) =>
+            myHeaders.append(k, v)
+        )
 
         var raw = JSON.stringify({
             full_name: formData.full_name,
@@ -58,7 +72,6 @@ const [profDetails, setProfDetails] = useState(
             headers: myHeaders,
             body: raw,
             redirect: 'follow',
-            credentials: 'include',
         }
 
         fetch(`${host}/user/editprofile`, requestOptions)
@@ -67,44 +80,69 @@ const [profDetails, setProfDetails] = useState(
             .catch((error) => console.log('error', error))
     }
 
-  useEffect(() => {
-    if (!userData?.state?.user) return
-
-    fetch(`${host}/user/editprofile`, {
-        method: 'GET',
-        credentials: 'include',
-        redirect: 'follow',
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            setProfDetails(result)
-        })
-        .catch((error) => console.log('error', error))
-}, [userData])
+    useEffect(() => {
+        // Just use data from authContext instead of fetching again
+        if (userData?.state?.user) {
+            setProfDetails(userData.state.user)
+            if (userData.state.user.qr_code) {
+                setQrcode(userData.state.user.qr_code)
+            }
+        }
+    }, [userData?.state?.user])
 
     function regenrateqr() {
+        const authHeaders = userData.getAuthHeaders()
         fetch(`${host}/user/regenerateqr/`, {
             method: 'GET',
-            credentials: 'include',
+            headers: {
+                ...authHeaders,
+            },
             redirect: 'follow',
         })
             .then((response) => response.json())
             .then((result) => {
-                setQrcode(result.qr_code)
+                console.log('[Profile] Regenerated QR:', result)
+                // Result should contain signed URL
+                if (result.qr_code) {
+                    console.log('QR Link (regenerated):', result.qr_code)
+                    setQrcode(result.qr_code)
+                    toast.success('QR code regenerated successfully', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                }
             })
-            .catch((error) => console.log('error', error))
+            .catch((error) => {
+                console.error('[Profile] QR regeneration failed:', error)
+                toast.error('Failed to regenerate QR code', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                })
+            })
     }
 
-   if (!userData?.state?.user) {
-    return null
-}
+    if (!userData?.state?.user) {
+        return null
+    }
 
 
     return (
         <>
             <Head>
-                <title>Profile - Anwesha 2025</title>
-                <meta name="description" content="Anwesha 2025" />
+                <title>Profile - Anwesha 2026</title>
+                <meta name="description" content="Anwesha 2026" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
             <ToastContainer
@@ -132,15 +170,15 @@ const [profDetails, setProfDetails] = useState(
                         >
                             <div className={styles.userImage}>
                                 <img
-                                    src={'/profile/profile.png'}
+                                    src={'/home/circle.png'}
                                     width={180}
                                     height={180}
                                     alt="userImage"
                                 />
                                 <img
-                                    src={'/profile/profile.svg'}
-                                    width={130}
-                                    height={130}
+                                    src={'/home/mascott.png'}
+                                    width={150}
+                                    height={150}
                                     alt="userImage"
                                 />
                             </div>
@@ -265,7 +303,35 @@ const [profDetails, setProfDetails] = useState(
                             </div>
                         </div>
                         <div className={styles.qrcode}>
-                            <img src={qrcode} width={200} height={200} alt="" />
+                            {qrLoading ? (
+                                <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <span>Loading QR...</span>
+                                </div>
+                            ) : qrcode ? (
+                                <img 
+                                    src={qrcode} 
+                                    width={200} 
+                                    height={200} 
+                                    alt="QR Code"
+                                    onError={() => {
+                                        console.error('[Profile] Failed to load QR image')
+                                        toast.error('Failed to load QR code. Please refresh.', {
+                                            position: 'top-right',
+                                            autoClose: 3000,
+                                            hideProgressBar: false,
+                                            closeOnClick: true,
+                                            pauseOnHover: true,
+                                            draggable: true,
+                                            progress: undefined,
+                                            theme: 'light',
+                                        })
+                                    }}
+                                />
+                            ) : (
+                                <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f0f0f0', borderRadius: '15px' }}>
+                                    <span>No QR code</span>
+                                </div>
+                            )}
                             <Link
                                 href="/anweshapass"
                                 style={{ color: 'black', fontWeight: 'bold' }}
@@ -369,15 +435,15 @@ const [profDetails, setProfDetails] = useState(
                     </Tabs> */}
 
                     {/* design for the bottom pngs */}
-                        <div className={styles.bottomDesign}>
-                             <img
-                                    src={'/profile/bottom.png'}
-                                    width={800}
-                                    height={350}
-                                    alt="userImage"
-                                />
-                        </div>
-                        
+                    <div className={styles.bottomDesign}>
+                        <img
+                            src={'/profile/bottom.png'}
+                            width={800}
+                            height={350}
+                            alt="userImage"
+                        />
+                    </div>
+
                 </div>
             </div>
         </>

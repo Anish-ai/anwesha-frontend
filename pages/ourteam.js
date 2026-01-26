@@ -224,6 +224,13 @@ export default function Ourteam() {
                     'https://www.linkedin.com/in/saksham-srivastava-28ba99296/',
                 email: 'saksham_2301ec56@iitp.ac.in',
             },
+             {
+                name: 'Kushal Kesharwani ',
+                image: '/team/kushal.jpg',
+                instagram: 'https://www.instagram.com/anwesha_iitpatna/',
+                linkedin: 'https://linkedin.com/in/username',
+                email: 'kushal_2301mc57@iitp.ac.in',
+            },
         ],
         TV: [],
         events: [
@@ -308,6 +315,13 @@ export default function Ourteam() {
         ],
         spons: [
             {
+                name: 'Tanish Chordiya',
+                image: '/team/tanish.jpeg',
+                instagram: 'https://www.instagram.com/tanish.chordiya?igsh=MWxocGdqbXloOXo4YQ%3D%3D&utm_source=qr',
+                linkedin: 'https://www.linkedin.com/in/tanish-chordiya-70a985322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
+                email: 'tanish_2301me49@iitp.ac.in',
+            },
+            {
                 name: 'Somya Shourya',
                 image: '/team/somyaShourya.jpg',
                 instagram: 'https://www.instagram.com/anwesha_iitpatna/',
@@ -331,6 +345,30 @@ export default function Ourteam() {
                 linkedin:
                     'https://www.linkedin.com/in/lochan-bhaskaruni-10176b283/',
                 email: 'lochan_2301me28@iitp.ac.in',
+            },
+            {
+                name: 'Koushik Kondaveti',
+                image: '/team/koushik.jpg',
+                instagram: 'https://www.instagram.com/ft.koushik_lee?igsh=Y29kOTlyZjNzYXo5',
+                linkedin:
+                    'https://www.linkedin.com/in/kondaveti-koushik-83631a285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'koushik_2301me25@iitp.ac.in',
+            },
+            {
+                name: 'Tushar Shrivastav',
+                image: '/team/tushar.webp',
+                instagram: 'https://www.instagram.com/kanha_shrivastav05?igsh=Z2M0dzhuaGI1dWFz',
+                linkedin:
+                    'https://www.linkedin.com/in/tushar-shrivastav-7333b9298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'Tushar_2301cb44@iitp.ac.in',
+            },
+            {
+                name: 'Jyoti Shikha',
+                image: '/team/jyoti.jpg',
+                instagram: 'https://www.instagram.com/jyoti.s.207?igsh=MjNobWQycG1maDI0',
+                linkedin:
+                    'https://www.linkedin.com/in/jyoti-shikha2007?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+                email: 'jyoti_2301mm08@iitp.ac.in',
             },
         ],
         convenor: [

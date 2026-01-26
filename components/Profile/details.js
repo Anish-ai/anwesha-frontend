@@ -13,6 +13,12 @@ function Details() {
     function editProfile() {
         var myHeaders = new Headers()
         myHeaders.append('Content-Type', 'application/json')
+        const authHeaders = userData?.getAuthHeaders
+            ? userData.getAuthHeaders()
+            : {}
+        Object.entries(authHeaders).forEach(([k, v]) =>
+            myHeaders.append(k, v)
+        )
 
         var raw = JSON.stringify({
             full_name: formData.full_name,
@@ -25,7 +31,6 @@ function Details() {
             headers: myHeaders,
             body: raw,
             redirect: 'follow',
-            credentials: 'include',
         }
 
         fetch(`${host}/user/editprofile`, requestOptions)

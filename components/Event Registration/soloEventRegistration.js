@@ -37,6 +37,13 @@ async function soloEventRegistration(
 ) {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token =
+        typeof window !== 'undefined'
+            ? localStorage.getItem('anwesha_token')
+            : null
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
 
     var raw = JSON.stringify({
         event_id: eventID,
@@ -51,7 +58,6 @@ async function soloEventRegistration(
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
     }
 
     const data = await fetch(`${host}/atompay/`, requestOptions)
@@ -96,6 +102,13 @@ async function soloEventRegistration(
 async function soloEventRegistrationiitp(eventID, router, closeHandler) {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token =
+        typeof window !== 'undefined'
+            ? localStorage.getItem('anwesha_token')
+            : null
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     var raw = JSON.stringify({
@@ -107,7 +120,6 @@ async function soloEventRegistrationiitp(eventID, router, closeHandler) {
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
     }
     const data = await fetch(`${host}/event/registration/solo`, requestOptions)
         .then((response) => response.json())

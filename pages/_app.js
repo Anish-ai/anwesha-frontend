@@ -8,6 +8,7 @@ import { AuthUserProvider } from '../lib/multicity/context/AuthUserContext'
 import { useRouter } from 'next/router'
 import styles from '../styles/comingsoon.module.css'
 import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import RegisterPage from './multicity/multicityRegistration/RegisterPage'
 import Step1EmailPassword from './multicity/multicityRegistration/Step1Email'
 import Step2Personal from './multicity/multicityRegistration/Step2Personal'
@@ -57,6 +58,16 @@ function MyApp({ Component, pageProps }) {
         `}
                 </Script>
                 <AuthProvider>
+                    {showHeader && <Navbar />}
+                    {/* {showHeader && <div style={{height: '30%'}}/>} */}
+                    <div className={styles.main_component}>
+                        <PrivateRoute>
+                            <Component {...pageProps} />
+                            <Analytics />
+                        </PrivateRoute>
+                    </div>
+                    <Footer />
+
                     <ToastContainer
                         position="top-right"
                         autoClose={3000}
@@ -69,15 +80,6 @@ function MyApp({ Component, pageProps }) {
                         pauseOnHover
                         theme="light"
                     />
-                    {showHeader && <Navbar />}
-                    {/* {showHeader && <div style={{height: '30%'}}/>} */}
-                    <div className={styles.main_component}>
-                        <PrivateRoute>
-                            <Component {...pageProps} />
-                            <Analytics />
-                        </PrivateRoute>
-                    </div>
-                    <Footer />
 
                     {/* <RegisterPage />
                     <Step1EmailPassword />

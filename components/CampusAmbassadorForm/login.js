@@ -36,6 +36,13 @@ const CampusAmbassadorLogin = () => {
                 setFailure(false)
                 setErrorMsg('')
                 const data = await response.json()
+                
+                // Store JWT token from response
+                if (data.token || data.access_token) {
+                    const token = data.token || data.access_token
+                    localStorage.setItem('anwesha_token', token)
+                }
+                
                 toast.success('You are successfully logged in', {
                     position: 'top-right',
                     autoClose: 3000,

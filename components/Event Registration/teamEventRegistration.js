@@ -40,6 +40,13 @@ async function teamEventRegistration(
 ) {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token =
+        typeof window !== 'undefined'
+            ? localStorage.getItem('anwesha_token')
+            : null
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
     var raw = JSON.stringify({
         event_id: eventID,
         team_name: teamName,
@@ -57,7 +64,6 @@ async function teamEventRegistration(
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
     }
 
     const data = await fetch(`${host}/atompay/`, requestOptions)
@@ -157,6 +163,10 @@ async function teamEventRegistrationiitp(
 ) {
     var myHeaders = new Headers()
     myHeaders.append('Content-Type', 'application/json')
+    const token = localStorage.getItem('anwesha_token')
+    if (token) {
+        myHeaders.append('Authorization', `Bearer ${token}`)
+    }
     const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     var raw = JSON.stringify({
@@ -170,7 +180,7 @@ async function teamEventRegistrationiitp(
         headers: myHeaders,
         body: raw,
         redirect: 'follow',
-        credentials: 'include',
+
     }
 
     const data = await fetch(`${host}/event/registration/team`, requestOptions)
