@@ -167,3 +167,17 @@ export default function VerifyEmail() {
         </div>
     )
 }
+
+// Required for dynamic routes in Next.js
+export async function getStaticPaths() {
+    return {
+        paths: [],
+        fallback: 'blocking',
+    }
+}
+
+export async function getStaticProps() {
+    return {
+        props: {},
+    }
+}

@@ -9,64 +9,82 @@ function MyEvents() {
     const [passes, setPasses] = useState([])
     const userData = useContext(AuthContext)
     const authHeaders = userData?.getAuthHeaders ? userData.getAuthHeaders() : {}
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow',
-        headers: {
-            ...authHeaders,
-        },
-    }
-    useEffect(() => {
-        const res = fetch(`${host}/event/myevents`, requestOptions)
-            .then((response) => response.json())
-            .then((result) => {
-                let arr = []
-                setEvents(result)
-                console.log(result)
+    // Fallback to old endpoint for backward compatibility
+    async function fetchEventMyEventsOldEndpoint() {
+        try {
+            const res = await fetch(`${host}/event/myevents`, {
+                method: 'GET',
+                redirect: 'follow',
+                headers: {
+                    ...authHeaders,
+                },
             })
-            .catch((error) => console.log('error', error))
-    }, [])
+            const result = await res.json()
+            console.log('[MyEvents] Using fallback /event/myevents:', result)
+            setEvents(result)
+        } catch (error) {
+            console.error('[MyEvents] Fallback also failed:', error)
+        }
+    }
 
     useEffect(() => {
-        const fetchFestPasses = async () => {
+        const fetchUserRegistrations = async () => {
             try {
                 if (!userData.state?.user?.anwesha_id) {
                     console.warn('[MyEvents] No anwesha_id available')
                     return
                 }
 
-                var myHeaders = new Headers()
-                myHeaders.append('Content-Type', 'application/json')
-                Object.entries(authHeaders).forEach(([k, v]) =>
-                    myHeaders.append(k, v)
-                )
-
-                var raw = JSON.stringify({
-                    anwesha_id: userData.state.user.anwesha_id,
+                // Use new unified registrations endpoint
+                const response = await fetch(`${host}/user/registrations/`, {
+                    method: 'GET',
+                    headers: {
+                        ...authHeaders,
+                        'Content-Type': 'application/json',
+                    },
                 })
-
-                var requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow',
-                }
-
-                const response = await fetch(
-                    `${host}/festpasses/get`,
-                    requestOptions
-                )
-
-                if (response.status === 404) {
-                    console.warn('[MyEvents] /festpasses/get not found, endpoint may not exist yet')
-                    return
-                }
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`)
                 }
+
                 const data = await response.json()
-                if (data.message == 'You are already registered') {
+                console.log('[MyEvents] Registrations data:', data)
+
+                // Map response to events and passes state
+                const soloEvents = (data.solo_registrations || []).map((reg) => ({
+                    event_id: reg.event_id,
+                    event_name: reg.event_name,
+                    event_venue: reg.event_category,
+                    registration_fee: reg.registration_fee,
+                    payment_done: reg.payment_done,
+                    event_start_time: reg.event_start_time,
+                    event_end_time: reg.event_end_time,
+                    payment_url: reg.payment_url,
+                }))
+
+                const teamEvents = (data.team_registrations || []).map((reg) => ({
+                    team_id: reg.team_id,
+                    team_name: reg.team_name,
+                    event_id: reg.event_id,
+                    event_name: reg.event_name,
+                    event_venue: reg.event_category,
+                    registration_fee: reg.registration_fee,
+                    payment_done: reg.payment_done,
+                    event_start_time: reg.event_start_time,
+                    event_end_time: reg.event_end_time,
+                    payment_url: reg.payment_url,
+                    is_leader: reg.is_leader,
+                    team_members: reg.team_members || [],
+                }))
+
+                setEvents({
+                    solo: soloEvents,
+                    team: teamEvents,
+                })
+
+                // Set festpass if available
+                if (data.festpass && data.festpass.payment_done) {
                     setPasses([
                         {
                             event_name: 'Festival Pass',
@@ -75,12 +93,14 @@ function MyEvents() {
                     ])
                 }
             } catch (error) {
-                console.error('[MyEvents] Error fetching fest passes:', error)
+                console.error('[MyEvents] Error fetching registrations:', error)
+                // Fallback to old endpoint if new one fails
+                fetchEventMyEventsOldEndpoint()
             }
         }
 
-        if (userData.state?.user) {
-            fetchFestPasses()
+        if (userData.state?.user?.anwesha_id) {
+            fetchUserRegistrations()
         }
     }, [userData.state?.user?.anwesha_id])
 
@@ -414,7 +434,6 @@ function MyEvents() {
                                     >
                                         {e.event_name}
                                     </div>
-                                    <div>8 & 9 Feb, 8 PM Onwards</div>
                                 </div>
                             </div>
                         )
@@ -439,55 +458,6 @@ function MyEvents() {
                                     >
                                         {e.event_name}
                                     </div>
-                                    <div>
-                                        {new Date(
-                                            e.event_start_time
-                                        ).toLocaleString('default', {
-                                            day: 'numeric',
-                                        })}{' '}
-                                        {new Date(
-                                            e.event_start_time
-                                        ).toLocaleString('default', {
-                                            month: 'short',
-                                        })}
-                                        {' , '}
-                                        {new Date(
-                                            e.event_start_time
-                                        ).toLocaleString('default', {
-                                            hour: 'numeric',
-                                            minute: 'numeric',
-                                        })}
-                                        {' - '}
-                                        {new Date(
-                                            e.event_end_time
-                                        ).toLocaleString('default', {
-                                            day: 'numeric',
-                                        })}{' '}
-                                        {new Date(
-                                            e.event_end_time
-                                        ).toLocaleString('default', {
-                                            month: 'short',
-                                        })}
-                                        {' , '}
-                                        {new Date(
-                                            e.event_end_time
-                                        ).toLocaleString('default', {
-                                            hour: 'numeric',
-                                            minute: 'numeric',
-                                        })}{' '}
-                                        {`(${e.event_venue})`}
-                                    </div>
-                                    <div>
-                                        {e.payment_url != '' ? (
-                                            <a
-                                                href={e.payment_url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Submission link
-                                            </a>
-                                        ) : null}
-                                    </div>
                                 </div>
                             </div>
                         )
@@ -507,55 +477,19 @@ function MyEvents() {
                                         </div>
                                         <div>
                                             Team : {e.team_name}
-                                            &nbsp;&nbsp;
-                                            {e.payment_url != '' ? (
-                                                <a
-                                                    href={e.payment_url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    Submission link
-                                                </a>
-                                            ) : null}
                                         </div>
-                                        <div>
-                                            {new Date(
-                                                e.event_start_time
-                                            ).toLocaleString('default', {
-                                                day: 'numeric',
-                                            })}{' '}
-                                            {new Date(
-                                                e.event_start_time
-                                            ).toLocaleString('default', {
-                                                month: 'short',
-                                            })}
-                                            {' , '}
-                                            {new Date(
-                                                e.event_start_time
-                                            ).toLocaleString('default', {
-                                                hour: 'numeric',
-                                                minute: 'numeric',
-                                            })}
-                                            {' - '}
-                                            {new Date(
-                                                e.event_end_time
-                                            ).toLocaleString('default', {
-                                                day: 'numeric',
-                                            })}{' '}
-                                            {new Date(
-                                                e.event_end_time
-                                            ).toLocaleString('default', {
-                                                month: 'short',
-                                            })}
-                                            {' , '}
-                                            {new Date(
-                                                e.event_end_time
-                                            ).toLocaleString('default', {
-                                                hour: 'numeric',
-                                                minute: 'numeric',
-                                            })}{' '}
-                                            {`(${e.event_venue})`}
-                                        </div>
+                                        {e.team_members && e.team_members.length > 0 && (
+                                            <div style={{ fontSize: '0.9rem', marginTop: '8px', color: '#ccc' }}>
+                                                <strong>Team Members (Anwesha IDs):</strong>
+                                                <div style={{ marginTop: '4px', paddingLeft: '10px' }}>
+                                                    {e.team_members.map((member, idx) => (
+                                                        <div key={idx}>
+                                                            {member.anwesha_id || member}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             )
