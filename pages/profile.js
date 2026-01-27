@@ -273,15 +273,15 @@ function Profile() {
                         >
                             <div className={styles.userImage}>
                                 <img
-                                    src={'/profile/profile.png'}
+                                    src={'/home/circle.png'}
                                     width={180}
                                     height={180}
                                     alt="userImage"
                                 />
                                 <img
-                                    src={'/pics/mascot 2.png'}
-                                    width={130}
-                                    height={130}
+                                    src={'/home/mascott.png'}
+                                    width={150}
+                                    height={150}
                                     alt="userImage"
                                 />
                             </div>

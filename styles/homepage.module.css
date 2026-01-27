@@ -1167,7 +1167,7 @@
     /* background-color: #0E0117; */
     width: 120%;
     margin-left: -10%;
-    height: 60px;
+    height: clamp(24px, 6vw, 60px);
     z-index: 10;
     position: relative;
 }
@@ -1194,7 +1194,8 @@
 
     margin-top: 32px;
     margin-bottom: 32px;
-    height: 546px;
+    /* height: 546px; */
+    height: clamp(260px, 55vw, 546px);
     overflow: hidden;
     user-select: none;
 
@@ -1204,6 +1205,26 @@
             #000 97%,
             transparent 100%);
 }
+
+@media only screen and (max-width: 768px) {
+    .moments_images_top_curve {
+        margin-bottom: -40px;
+    }
+
+    .moments_images_bottom_curve {
+        margin-top: -40px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .moments_images_top_curve {
+        margin-bottom: -45x;
+    }
+
+    .moments_images_bottom_curve {
+        margin-top: -45px;
+    }
+}
+
 
 .moments_button {
     display: flex;
