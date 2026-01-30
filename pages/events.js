@@ -271,6 +271,10 @@ const Events = () => {
                         )}
                     </div>
                 </div>
+
+
+                <div className={styles.eventsPanel}>
+                <div className={styles.eventsPanelTitle}>EVENTS</div>
                 <div className={styles.hero_button}>
                     <button
                         className={styles.sexy_button}
@@ -279,10 +283,6 @@ const Events = () => {
                         Rulebook
                     </button>
                 </div>
-
-
-                <div className={styles.eventsPanel}>
-                <div className={styles.eventsPanelTitle}>EVENTS</div>
                 <div className={styles.cardContainer}>
                     {events.map((item, idx) => (
                         <Card
