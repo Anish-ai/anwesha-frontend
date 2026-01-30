@@ -50,10 +50,6 @@ const dmSerif = DM_Serif_Display({
     weight: "400",
 });
 
-const cn = (...classes) => {
-    return classes.filter(Boolean).join(' ')
-}
-
 const SponsorsSlider = ({ images, animation_duration = -1 }) => {
     const width = 127.381; // IF YOU CHANGE THIS THEN CHANGE IT INSIDE autoScrollSponseAnimation ALSO
     const heigth = 127.381;

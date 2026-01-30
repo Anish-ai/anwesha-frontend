@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Lisu+Bosa&display=swap');
 
 .parentContainer {
-    background-color: #000000;
+    /* background-color: #000000; */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -30,7 +30,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
+    height: 120px;
     background: linear-gradient(
         to top,
         rgba(0, 0, 0, 1) 0%,
@@ -76,8 +76,8 @@
 
 .container {
     font-family: 'Outfit', sans-serif;
-    margin-top: 0;
-    padding-top: 100px;
+    margin-top: 10px;
+    padding-top: 18px;
     background-image: url('/assets/aboutusBg.png');
     position: relative;
     background-size: 100%;
@@ -91,14 +91,10 @@
     left: 0;
     width: 100%;
     height: 50px;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(91, 91, 91, 0) 80%
-    );
+    
 }
 
 .teamHeader {
@@ -133,14 +129,11 @@
     position: relative;
     text-transform: uppercase;
 
-    background-image: url('/assets/sidebar.png'),
-        url('/assets/sidebarR.png');
+    background-image: url('/assets/sidebar.png'), url('/assets/sidebarR.png');
 
     background-repeat: no-repeat, no-repeat;
     background-size: 80px, 80px; /* adjust size */
-    background-position:
-    calc(50% - 165px) center,
-    calc(50% + 165px) center;
+    background-position: calc(50% - 165px) center, calc(50% + 165px) center;
 
     padding: 20px 100px; /* ensures text doesn’t overlap */
 }
@@ -328,10 +321,46 @@
         max-width: 360px;
     }
 }
+@media (max-width: 600px) {
+    .fullPageTitle {
+        height: 45vh;
+    }
+}
+@media (max-width: 500px) {
+    .fullPageTitle {
+        height: 38vh;
+    }
+}
 .titleOverlay {
     transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
 
 .fullPageTitle {
     transition: background-size 0.2s ease-out;
+}
+.fullPageTitle {
+    position: relative;
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Black blend overlay */
+.fullPageTitle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        /* rgba(0, 0, 0, 0.5) 20%, */
+        rgba(0, 0, 0, 0.4) 50%,
+        /* rgba(0, 0, 0, 0.7) 75%, */
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
 }

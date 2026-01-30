@@ -14,6 +14,21 @@ const nextConfig = {
             { protocol: 'https', hostname: 'i.ibb.co' },
             { protocol: 'https', hostname: 'kvibbihar.com' },
         ],
+
+    },
+    async redirects() {
+        return [
+            {
+                source: '/multicity',
+                destination: '/coming-soon',
+                permanent: false,
+            },
+            {
+                source: '/all-multicity',
+                destination: '/coming-soon',
+                permanent: false,
+            },
+        ]
     },
 }
 

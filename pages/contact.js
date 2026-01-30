@@ -1,9 +1,15 @@
 import React, { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import styles from '../styles/contact.module.css'
+import { DM_Serif_Display } from 'next/font/google'
 import { ToastContainer, toast } from 'react-toastify'
 // import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+
+const dmSerif = DM_Serif_Display({
+    subsets: ["latin"],
+    weight: "400",
+});
 
 const Contact = () => {
     const form = useRef()
@@ -44,7 +50,7 @@ const Contact = () => {
                     <div className={styles.leftcontainer}>
                         <div className={styles.leftinnercontainer}>
                             <div className={styles.titleBox}>
-                                <div className={styles.title}>Contact Us</div>
+                                <div className={`${styles.title} ${dmSerif.className}`}>CONTACT US</div>
                                 <div className={styles.description}>
                                     Not sure about something? The team at Anwesha,
                                     IIT Patna is here to listen and help you out.

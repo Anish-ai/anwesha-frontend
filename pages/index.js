@@ -258,12 +258,12 @@ function all(iterable) {
 
 const makePosterUrl = (url) => {
     if (!url) return '/events/poster.png'
-    
+
     // If it's already an absolute URL, return as-is
     if (url.startsWith('http://') || url.startsWith('https://')) {
         return url
     }
-    
+
     // If it's a relative path, prepend NEXT_PUBLIC_MEDIA_BASE
     const mediaBase = process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://storage.googleapis.com/anwesha-storage-bucket'
     return `${mediaBase}/${url}`
@@ -954,10 +954,10 @@ const IndexPage = () => {
                     {/* Events */}
                     <section className={styles.events}>
                         <div className={styles.events_title}>
-                
+
                             <div>
                                 <h2 className={dmSerif.className}>Explore the Events</h2>
-            
+
                             </div>
                         </div>
                         <div className={styles.events_images_parent}>
@@ -1019,13 +1019,15 @@ const IndexPage = () => {
                                 <div className={styles.merch_button}>
                                     <button
                                         className={cn(styles.sexy_button,
-                                             styles.merch_grab_button)
-                                            }
-                                        onClick={() =>
-                                            window.open(
-                                                'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
-                                            )
+                                            styles.merch_grab_button)
                                         }
+                                        // onClick={() =>
+                                        //     window.open(
+                                        //         'https://docs.google.com/forms/d/1B6yMQs6Y8UV5GDrnxYipGIrDWCY4mcZZvPVboi5Q1nU/edit'
+                                        //     )
+                                        // }
+
+                                        onClick={() => router.push('/merch')}
                                     >
                                         GRAB NOW
                                     </button>
@@ -1091,11 +1093,11 @@ const IndexPage = () => {
                     {/* The Aftermovie */}
                     <section className={styles.aftermovie}>
                         <div className={styles.sexy_title}>
-                            <h2 className={dmSerif.className}>Anwesha 2026: The Aftermovie</h2>
+                            <h2 className={dmSerif.className}>Anwesha 2025: The Aftermovie</h2>
                             <h3>Last Year&apos;s Magic in 3 Minutes</h3>
                         </div>
                         <div className={styles.aftermovie_video}>
-                    
+
                             <video
                                 ref={videoRef}
                                 autoPlay
@@ -1109,7 +1111,7 @@ const IndexPage = () => {
                                     type="video/mp4"
                                 />
                             </video>
-        
+
                             <div>
                                 <button
                                     onClick={toggleMute}
@@ -1186,7 +1188,7 @@ const IndexPage = () => {
                         </div>
                     </section>
 
-    
+
                     {loadimg && (
                         <img width={200} src="/pics/jump.gif" alt="Scary GIF" />
                     )}

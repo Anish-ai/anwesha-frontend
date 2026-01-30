@@ -39,29 +39,49 @@ const PrivateRoute = ({ children }) => {
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [token, setToken] = useState(null)
     const router = useRouter()
+
+    const persistToken = (value) => {
+        setToken(value)
+        if (value) {
+            localStorage.setItem('anwesha_token', value)
+        } else {
+            localStorage.removeItem('anwesha_token')
+        }
+    }
+
+    const getAuthHeaders = () => {
+        if (!token) return {}
+        return { Authorization: `Bearer ${token}` }
+    }
+
+    const logout = () => {
+        persistToken(null)
+        setUser(null)
+    }
 
     // Function to fetch user data and update the state
     const getUser = async () => {
+        const currentToken = token || localStorage.getItem('anwesha_token')
+        if (!currentToken) {
+            console.warn('[Auth] No token available for getUser')
+            setUser(null)
+            return
+        }
         try {
-            const response = await fetch(`${host}/user/editprofile`, {
+            const headers = {
+                Authorization: `Bearer ${currentToken}`,
+            }
+
+            const response = await fetch(`${host}/user/profile/`, {
                 method: 'GET',
-                credentials: 'include',
+                headers,
                 redirect: 'follow',
             })
-            const result = await response.json()
 
-            // Check for specific unauthenticated messages
-            if (
-                result.message ===
-                    'You are unauthenticated. Please log in first.' ||
-                result.message ===
-                    'Your token is expired. Please generate a new one.' ||
-                result.message === 'Your token is expired. Please log in again.'
-            ) {
-                setUser(null) // Mark the user as unauthenticated
-
-                // Show error message if accessing restricted routes
+            if (response.status === 401 || response.status === 403) {
+                logout()
                 if (
                     [
                         '/profile',
@@ -69,7 +89,7 @@ const AuthProvider = ({ children }) => {
                         '/event-registrations',
                     ].includes(router.pathname)
                 ) {
-                    toast.error(result.message, {
+                    toast.error('Session expired. Please login again.', {
                         position: 'top-right',
                         autoClose: 3000,
                         hideProgressBar: false,
@@ -80,19 +100,52 @@ const AuthProvider = ({ children }) => {
                         theme: 'light',
                     })
                 }
-            } else {
-                setUser(result) // Successfully authenticated, set the user data
+                return
             }
+
+            // 404 or other error: fall back to /user/editprofile
+            if (!response.ok) {
+                console.warn(`[Auth] /user/profile/ returned ${response.status}, falling back to /user/editprofile`)
+                const fallbackResponse = await fetch(`${host}/user/editprofile`, {
+                    method: 'GET',
+                    headers,
+                    redirect: 'follow',
+                })
+                if (!fallbackResponse.ok) {
+                    console.error(`[Auth] /user/editprofile also failed with ${fallbackResponse.status}`)
+                    setUser(null)
+                    return
+                }
+                const fallbackResult = await fallbackResponse.json()
+                console.log('[Auth] User data loaded (fallback):', fallbackResult)
+                setUser(fallbackResult)
+                return
+            }
+
+            const result = await response.json()
+            console.log('[Auth] User data loaded:', result)
+            setUser(result) // Successfully authenticated, set the user data
         } catch (error) {
-            console.error('Error fetching user data:', error)
+            console.error('[Auth] Error fetching user data:', error)
         }
     }
 
-    // Fetch user data on component mount
+    // Load token on mount
     useEffect(() => {
-    getUser()
-}, [])
+        const stored = localStorage.getItem('anwesha_token')
+        if (stored) {
+            setToken(stored)
+        }
+    }, [])
 
+    // Fetch user data when token changes
+    useEffect(() => {
+        if (token) {
+            getUser()
+        } else {
+            setUser(null)
+        }
+    }, [token])
 
     return (
         <>
@@ -100,8 +153,12 @@ const AuthProvider = ({ children }) => {
                 value={{
                     state: { user },
                     setUser,
-                    isAuth: user !== null, // Ensure isAuth is correctly tied to user state
+                    token,
+                    isAuth: Boolean(token),
                     getUser,
+                    persistToken,
+                    logout,
+                    getAuthHeaders,
                 }}
             >
                 {children}

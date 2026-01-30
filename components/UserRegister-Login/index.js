@@ -26,6 +26,7 @@ const UserRegisterForm = () => {
     const [password, setPassword] = React.useState('')
     const [college, setCollege] = React.useState('')
     const [cnfPassword, setCnfPassword] = React.useState('')
+    const [aadhaar, setAadhaar] = React.useState('')
     const [passwordShown, setPasswordShown] = React.useState(false)
     const [usertype, setUserType] = React.useState('student')
     const [college_name, setCollegeName] = React.useState('')
@@ -110,6 +111,18 @@ const UserRegisterForm = () => {
                 theme: 'light',
             })
             return
+        } else if (aadhaar.match(/^[0-9]{12}$/) == null) {
+            toast.warning('Aadhaar number must be exactly 12 digits', {
+                position: 'top-right',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+            })
+            return
         }
         let isproff = ''
         for (let i = 0; i < details.length; i++) {
@@ -124,6 +137,7 @@ const UserRegisterForm = () => {
             full_name: name,
             email_id: email.toLowerCase(),
             password: password,
+            aadhaar_number: aadhaar,
             user_type: isproff ? isproff : usertype,
             college_name: usertype == 'iitp_student' ? 'IIT Patna' : college_name,
         }
@@ -163,29 +177,59 @@ const UserRegisterForm = () => {
             } else if (response.status === 409) {
                 const data = await response.json()
                 setLoading(false)
-                toast.error(data.message || 'Unable to register', {
-                    position: 'top-right',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'light',
-                })
+                // Check for Aadhaar-specific errors
+                const errorMessage = data.message || 'Unable to register'
+                if (errorMessage.toLowerCase().includes('aadhaar')) {
+                    toast.error(errorMessage, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                } else {
+                    toast.error(errorMessage, {
+                        position: 'top-right',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                }
             } else {
                 const data = await response.json()
                 setLoading(false)
-                toast.error(data.message, {
-                    position: 'top-right',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'light',
-                })
+                // Check for Aadhaar validation errors
+                const errorMessage = data.message || 'Registration failed'
+                if (data.aadhaar_number || errorMessage.toLowerCase().includes('aadhaar')) {
+                    toast.error(data.aadhaar_number || errorMessage, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                } else {
+                    toast.error(errorMessage, {
+                        position: 'top-right',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                    })
+                }
             }
         } catch (err) {
             toast.error('Unable to register. check your internet connection', {
@@ -289,8 +333,8 @@ const UserRegisterForm = () => {
                                 name="Email_Id"
                                 placeholder={
                                     usertype === 'iitp_student'
-                                        ? 'Eg: 2001me85_rishiraj'
-                                        : 'Eg: mohit.sharma@gmail.com'
+                                        ? 'Eg: anish_2301mc40'
+                                        : 'Eg: aniskum59431@gmail.com'
                                 }
                                 onChange={(e) => {
                                     if (usertype === 'iitp_student') {
@@ -376,6 +420,36 @@ const UserRegisterForm = () => {
                                 />
                                 <br />
                             </div>
+                            <div className={styles.field}>
+                                <label htmlFor="Aadhaar_number">
+                                    Aadhaar Number
+                                </label>
+                                <br />
+                                <input
+                                    type="text"
+                                    name="Aadhaar_Number"
+                                    placeholder="Enter 12-digit Aadhaar number"
+                                    required
+                                    maxLength="12"
+                                    onChange={(e) => {
+                                        const value = e.target.value.replace(/\D/g, '')
+                                        setAadhaar(value)
+                                    }}
+                                    value={aadhaar}
+                                    style={{
+                                        borderColor: aadhaar && aadhaar.length !== 12 ? '#ff4444' : ''
+                                    }}
+                                />
+                                {aadhaar && aadhaar.length !== 12 && (
+                                    <span style={{ color: '#ff4444', fontSize: '0.8rem' }}>
+                                        Must be 12 digits
+                                    </span>
+                                )}
+                                <br />
+                            </div>
+                        </div>
+                        <br />
+                        <div className={styles.row}>
                             <div className={styles.field}>
                                 <label htmlFor="College">College</label>
                                 <br />
