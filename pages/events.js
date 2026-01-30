@@ -271,6 +271,15 @@ const Events = () => {
                         )}
                     </div>
                 </div>
+                <div className={styles.hero_button}>
+                    <button
+                        className={styles.sexy_button}
+                        onClick={() => window.open('/Anwesha_26_EVENTS_RULEBOOK.pdf', '_blank')}
+                    >
+                        Rulebook
+                    </button>
+                </div>
+
 
                 <div className={styles.eventsPanel}>
                 <div className={styles.eventsPanelTitle}>EVENTS</div>

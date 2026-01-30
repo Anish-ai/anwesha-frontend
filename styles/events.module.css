@@ -739,3 +739,80 @@
         width: 95vw;
     }
 }
+
+
+.sexy_button {
+    all: unset;
+
+    /* REQUIRED RESET AFTER unset */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    /* 🔥 SIZE (THIS FIXES height = 0) */
+    width: 100%;
+    min-width: 250px;
+    min-height: 250px;        /* IMPORTANT */
+        
+
+    /* BACKGROUND */
+    background-image: url('/events/home_button.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    /* border : 2px solid black; */
+
+    /* TEXT */
+    font-family: 'SF Ironsides';
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1;         /* IMPORTANT */
+    text-transform: uppercase;
+    color: var(--Color-Primary500, #F2E279);
+    text-align: center;
+
+    /* EFFECT */
+    filter: drop-shadow(0px -3.623px 3.623px #F2E279);
+    cursor: pointer;
+}
+.sexy_button_small {
+    max-width: 320px;
+    min-height: 94px;
+    font-size: 26px;
+    filter: drop-shadow(0px -2.996px 2.996px #F2E279);
+}
+
+.sexy_button:hover {
+    /* filter: drop-shadow(0px -3.623px 3.623px #03fa24);
+    color: var(--Color-Primary500, #00ff26); */
+    filter: drop-shadow(0px -5.623px 5.623px #F2E279);
+    color: var(--Color-Primary500, #F2E279);
+}
+
+.sexy_button:active {
+    filter: drop-shadow(1px 1px 1px white);
+}
+
+@media (max-width: 568px) {
+    .sexy_button,
+    .sexy_button_small {
+        width: 100%;
+        max-width: 100%;
+        min-height: 94px;
+        font-size: 24px;
+    }
+}
+
+
+
+@media (max-width: 568px) {
+    .hero_button {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .hero_button > button {
+        width: 100%;
+    }
+}
