@@ -753,7 +753,7 @@
     /* 🔥 SIZE (THIS FIXES height = 0) */
     width: 100%;
     min-width: 250px;
-    min-height: 250px;        /* IMPORTANT */
+    min-height: 35px;        /* IMPORTANT */
         
 
     /* BACKGROUND */
