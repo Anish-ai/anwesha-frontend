@@ -348,6 +348,25 @@ const Modal = (props) => {
                                     </p>
                                 </div>
                             ) : null}
+                            {props.body.end_time && ((props.body.venue && props.body.venue.toLowerCase() === 'online') || (props.body.Venue && props.body.Venue.toLowerCase() === 'online')) ? (
+                                <div
+                                    className={styles.team_pay}
+                                // style={{ flexDirection: 'row' }}
+                                >
+                                    <p>
+                                        {/* <img src="/assets/alert.svg" /> */}
+                                        Submission deadline&nbsp;
+                                        <span style={{ fontWeight: '600' }}>
+                                            {new Date(
+                                                props.body.end_time
+                                            ).toDateString('default', {
+                                                day: 'numeric',
+                                                month: 'long',
+                                            })}
+                                        </span>
+                                    </p>
+                                </div>
+                            ) : null}
                             {props.body.prize ? (
                                 <div
                                     className={styles.team_pay}
