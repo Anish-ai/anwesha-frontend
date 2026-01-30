@@ -2,6 +2,7 @@ import styles from '../styles/events.module.css'
 import { Josefin_Sans, Montserrat } from 'next/font/google'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { DM_Serif_Display } from "next/font/google";
 import Link from 'next/link'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
@@ -9,6 +10,16 @@ import Card from '../components/EventItem/index.js'
 // import Modal from '../components/EventItem/Modal.js'
 import EventItem from '../components/EventItem'
 import Modal from '../components/BigModal/index.js'
+
+const dmSerif = DM_Serif_Display({
+    subsets: ["latin"],
+    weight: "400",
+});
+
+
+const cn = (...classes) => {
+    return classes.filter(Boolean).join(' ')
+}
 // import eventsDetails from '../public/events/events_data.json' assert { type: 'json' };
 
 // DEPRECATED: Static event data - now fetched from backend /event/allevents
@@ -46,34 +57,44 @@ import Modal from '../components/BigModal/index.js'
 // }]
 
 const SponsorsSlider = ({ images, animation_duration = -1 }) => {
-    const width = 127.381; // IF YOU CHANGE THIS THEN CHANGE IT INSIDE autoScrollSponseAnimation ALSO
-    const heigth = 127.381;
-    const duration = animation_duration <= 0 ? Math.floor(10 * (images.length / 7)) : animation_duration;
+    const width = 127.381 // IF YOU CHANGE THIS THEN CHANGE IT INSIDE autoScrollSponseAnimation ALSO
+    const heigth = 127.381
+    const duration =
+        animation_duration <= 0
+            ? Math.floor(10 * (images.length / 7))
+            : animation_duration
 
-    const gap = 16;
-    return <div style={{
-        position: "relative",
-        backgroundColor: "inherit",
-        // minWidth: width * (images.length + 1),
-        minWidth: (width + gap) * images.length,
-        height: heigth
-    }}>
-        {
-            images.map((src, index) =>
-                <div key={index} className={styles.autoScrollSponseAnimation} style={{
-                    width: "100%",
-                    position: "absolute",
-                    left: "100%",
-                    // zIndex: 8,
-                    animationDelay: `${(duration / images.length) * index}s`,
-                    animationDuration: `${duration}s`,
-                    '--width': width
-                }}>
-                    <Image src={src} width={width} height={heigth} />
+    const gap = 16
+    return (
+        <div
+            style={{
+                position: 'relative',
+                backgroundColor: 'inherit',
+                // minWidth: width * (images.length + 1),
+                minWidth: (width + gap) * images.length,
+                height: heigth,
+            }}
+        >
+            {images.map((src, index) => (
+                <div
+                    key={index}
+                    className={styles.autoScrollSponseAnimation}
+                    style={{
+                        width: '100%',
+                        position: 'absolute',
+                        left: '100%',
+                        // zIndex: 8,
+                        animationDelay: `${(duration / images.length) * index
+                            }s`,
+                        animationDuration: `${duration}s`,
+                        '--width': width,
+                    }}
+                >
+                    <Image src={src} width={width} height={heigth} alt="Image" />
                 </div>
-            )
-        }
-    </div>
+            ))}
+        </div>
+    )
 }
 
 const Events = () => {
@@ -177,7 +198,7 @@ const Events = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
-    
+
     const handleSearch = (e) => {
         const query = e.target.value
         setSearchQuery(query)
@@ -234,7 +255,7 @@ const Events = () => {
                 {/* Featured Events Section - Below Search Bar on First Page */}
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                     {isSearching && searchResults.length === 0 && (
-                        <div style={{ color: 'white', fontSize: '24px', textAlign: 'center', width: '100%', marginBottom: '5px' , marginTop:'20px' }}>
+                        <div style={{ color: 'white', fontSize: '24px', textAlign: 'center', width: '100%', marginBottom: '5px', marginTop: '20px' }}>
                             No events found
                         </div>
                     )}
@@ -266,20 +287,28 @@ const Events = () => {
                         )}
                     </div>
                 </div>
+                <div className={styles.hero_button}>
+                    <button
+                        className={styles.sexy_button}
+                        onClick={() => window.open('/Anwesha_26_EVENTS_RULEBOOK.pdf', '_blank')}
+                    >
+                        Rulebook
+                    </button>
+                </div>
 
                 <div className={styles.eventsPanel}>
-                <div className={styles.eventsPanelTitle}>EVENTS</div>
-                <div className={styles.cardContainer}>
-                    {events.map((item, idx) => (
-                        <Card
-                            onClick={() => openModal(item)}
-                            key={idx}
-                            event={item}
-                            closeHandler={closeModal}
-                        />
-                    ))}
+                    <div className={styles.eventsPanelTitle}>EVENTS</div>
+                    <div className={styles.cardContainer}>
+                        {events.map((item, idx) => (
+                            <Card
+                                onClick={() => openModal(item)}
+                                key={idx}
+                                event={item}
+                                closeHandler={closeModal}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
                 {isModalOpen && (
                     <Modal
                         title={(selectedEvent?.name || '').split('#')[0]}
@@ -292,14 +321,16 @@ const Events = () => {
             {/* Sponsors */}
             <section className={styles.sponsors}>
                 <div className={styles.sponsors_title}>
-                    <h2>Our Proud Sponsors</h2>
+                    <h2 className={dmSerif.className}>Our Proud Sponsors</h2>
                     <h3>Strengthening the Vision Together</h3>
                 </div>
                 <div className={styles.sponsors_images_slider}>
                     <SponsorsSlider images={sponsorImages} />
                 </div>
             </section>
-        </div>
+
+
+        </div >
     )
 }
 export default Events
