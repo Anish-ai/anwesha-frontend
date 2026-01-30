@@ -182,7 +182,7 @@ const Events = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
-    
+
     const handleSearch = (e) => {
         const query = e.target.value
         setSearchQuery(query)
@@ -214,8 +214,8 @@ const Events = () => {
     return (
         <div className={styles.mainContainer}>
             <Head>
-                <title>Events - Anwesha 2024</title>
-                <meta name="description" content="Events-Anwesha 2024" />
+                <title>Events - Anwesha 2026</title>
+                <meta name="description" content="Events-Anwesha 2026" />
                 <link rel="icon" href="./logo_no_bg.svg" />
             </Head>
 
@@ -269,31 +269,31 @@ const Events = () => {
                                 ))}
                             </>
                         )}
+                        <div className={styles.hero_button}>
+                            <button
+                                className={styles.sexy_button}
+                                onClick={() => window.open('/Anwesha_26_EVENTS_RULEBOOK.pdf', '_blank')}
+                            >
+                                Rulebook
+                            </button>
+                        </div>
                     </div>
                 </div>
 
 
                 <div className={styles.eventsPanel}>
-                <div className={styles.eventsPanelTitle}>EVENTS</div>
-                <div className={styles.hero_button}>
-                    <button
-                        className={styles.sexy_button}
-                        onClick={() => window.open('/Anwesha_26_EVENTS_RULEBOOK.pdf', '_blank')}
-                    >
-                        Rulebook
-                    </button>
+                    <div className={styles.eventsPanelTitle}>EVENTS</div>
+                    <div className={styles.cardContainer}>
+                        {events.map((item, idx) => (
+                            <Card
+                                onClick={() => openModal(item)}
+                                key={idx}
+                                event={item}
+                                closeHandler={closeModal}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div className={styles.cardContainer}>
-                    {events.map((item, idx) => (
-                        <Card
-                            onClick={() => openModal(item)}
-                            key={idx}
-                            event={item}
-                            closeHandler={closeModal}
-                        />
-                    ))}
-                </div>
-            </div>
                 {isModalOpen && (
                     <Modal
                         title={(selectedEvent?.name || '').split('#')[0]}

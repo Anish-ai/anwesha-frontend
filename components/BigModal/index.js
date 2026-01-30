@@ -14,68 +14,84 @@ const Modal = (props) => {
     const router = useRouter()
     const userData = useContext(AuthContext)
 
-    function handleRagister() {
+    const [isRegistering, setIsRegistering] = useState(false)
+    async function handleRagister() {
         if (userData.isAuth) {
-            if (props.body.is_active) {
-                if (props.body.is_solo) {
-                    if (
-                        userData.state.user.user_type !== 'iitp_student' ||
-                        props.body.id == 'EVT49870' ||
-                        props.body.id == 'EVT68cb3'
-                    ) {
-                        if (props.body.registration_fee === '0.00')
-                            soloEventRegistrationiitp(
-                                props.body.id,
-                                router,
-                                props.closeHandler
-                            )
-                        else
-                            soloEventRegistration(
-                                props.body.id,
-                                props.body.registration_fee,
-                                userData.state.user.email_id,
-                                userData.state.user.phone_number,
-                                userData.state.user.anwesha_id,
-                                router,
-                                props.closeHandler
-                            )
+            setIsRegistering(true)
+            try {
+                if (props.body.is_active) {
+                    if (props.body.is_solo) {
+                        if (
+                            userData.state.user.user_type !== 'iitp_student' ||
+                            props.body.id == 'EVT49870' ||
+                            props.body.id == 'EVT68cb3'
+                        ) {
+                            if (props.body.registration_fee === '0.00')
+                                await soloEventRegistrationiitp(
+                                    props.body.id,
+                                    router,
+                                    props.closeHandler
+                                )
+                            else
+                                await soloEventRegistration(
+                                    props.body.id,
+                                    props.body.registration_fee,
+                                    userData.state.user.email_id,
+                                    userData.state.user.phone_number,
+                                    userData.state.user.anwesha_id,
+                                    router,
+                                    props.closeHandler
+                                )
 
+                        } else {
+                            if (props.body.tags === '5')
+                                await soloEventRegistration(
+                                    props.body.id,
+                                    props.body.registration_fee,
+                                    userData.state.user.email_id,
+                                    userData.state.user.phone_number,
+                                    userData.state.user.anwesha_id,
+                                    router,
+                                    props.closeHandler
+                                )
+                            else
+                                await soloEventRegistrationiitp(
+                                    props.body.id,
+                                    router,
+                                    props.closeHandler
+                                )
+                        }
                     } else {
-                        if (props.body.tags === '5')
-                            soloEventRegistration(
-                                props.body.id,
-                                props.body.registration_fee,
-                                userData.state.user.email_id,
-                                userData.state.user.phone_number,
-                                userData.state.user.anwesha_id,
-                                router,
-                                props.closeHandler
-                            )
-                        else
-                            soloEventRegistrationiitp(
-                                props.body.id,
-                                router,
-                                props.closeHandler
-                            )
+                        // router.replace(props.body.registration_link)
+                        await router.push({
+                            pathname: `/event-registration/${[props.body.id]}`,
+                            query: {
+                                id: props.body.id,
+                                name: props.body.name,
+                                description: props.body.description,
+                                max_team_size: props.body.max_team_size,
+                                min_team_size: props.body.min_team_size,
+                                registration_fee: props.body.registration_fee,
+                                user_type: userData.state.user.user_type,
+                                tags: props.body.tags,
+                            },
+                        })
                     }
                 } else {
-                    // router.replace(props.body.registration_link)
-                    router.push({
-                        pathname: `/event-registration/${[props.body.id]}`,
-                        query: {
-                            id: props.body.id,
-                            name: props.body.name,
-                            description: props.body.description,
-                            max_team_size: props.body.max_team_size,
-                            min_team_size: props.body.min_team_size,
-                            registration_fee: props.body.registration_fee,
-                            user_type: userData.state.user.user_type,
-                            tags: props.body.tags,
-                        },
+                    toast.info('Registration Closed !', {
+                        position: 'top-right',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
                     })
                 }
-            } else {
-                toast.info('Registration Closed !', {
+            } catch (error) {
+                console.error(error)
+                toast.error('Something went wrong', {
                     position: 'top-right',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -85,6 +101,8 @@ const Modal = (props) => {
                     progress: undefined,
                     theme: 'light',
                 })
+            } finally {
+                setIsRegistering(false)
             }
         } else {
             router.push('/userLogin')
@@ -169,7 +187,7 @@ const Modal = (props) => {
                                     className={styles.btn}
                                     id={styles.rulebtn}
                                     href={props.body.video}
-                                    // onClick={(e) => props.closeHandler()}
+                                // onClick={(e) => props.closeHandler()}
                                 >
                                     Rulebook
                                 </a>
@@ -177,8 +195,9 @@ const Modal = (props) => {
                             <button
                                 className={styles.btn}
                                 onClick={handleRagister}
+                                disabled={isRegistering}
                             >
-                                Register
+                                {isRegistering ? 'Processing...' : 'Register'}
                             </button>
                             {/* </div> */}
                         </div>
@@ -190,7 +209,7 @@ const Modal = (props) => {
                                         <span className={styles.date_text}>Date:</span>
                                         <span className={styles.date_value}>
                                             {props.body.start_time.substring(5, 7) !==
-                                            props.body.end_time.substring(5, 7) ? (
+                                                props.body.end_time.substring(5, 7) ? (
                                                 <>
                                                     {' '}
                                                     {new Date(
@@ -211,10 +230,10 @@ const Modal = (props) => {
                                                         8,
                                                         10
                                                     ) !==
-                                                    props.body.end_time.substring(
-                                                        8,
-                                                        10
-                                                    ) ? (
+                                                        props.body.end_time.substring(
+                                                            8,
+                                                            10
+                                                        ) ? (
                                                         <>
                                                             {new Date(
                                                                 props.body.start_time
@@ -251,7 +270,7 @@ const Modal = (props) => {
                                         <br />
                                     </>
                                 ) : null}
-                                
+
                                 {/* Display Time if available */}
                                 {props.body.Time && (
                                     <>
@@ -262,7 +281,7 @@ const Modal = (props) => {
                                         <br />
                                     </>
                                 )}
-                                
+
                                 {/* Display Venue */}
                                 {(props.body.venue || props.body.Venue) && (
                                     <>
@@ -286,20 +305,20 @@ const Modal = (props) => {
                                         {props.body.max_team_size === 1
                                             ? 'Individual Participation'
                                             : props.body.min_team_size ===
-                                              props.body.max_team_size
-                                            ? props.body.min_team_size + ' members'
-                                            : props.body.min_team_size +
-                                              ' - ' +
-                                              props.body.max_team_size +
-                                              ' members'}
+                                                props.body.max_team_size
+                                                ? props.body.min_team_size + ' members'
+                                                : props.body.min_team_size +
+                                                ' - ' +
+                                                props.body.max_team_size +
+                                                ' members'}
                                     </div>
                                 ) : null}
                                 {props.body.registration_fee ? (
                                     !userData.isAuth ||
-                                    userData.state.user.user_type !==
+                                        userData.state.user.user_type !==
                                         'iitp_student' ||
-                                    props.body.id == 'EVT68cb3' ||
-                                    props.body.id == 'EVT49870' ? (
+                                        props.body.id == 'EVT68cb3' ||
+                                        props.body.id == 'EVT49870' ? (
                                         <p>
                                             Registration Fee&nbsp;
                                             {/* <img src="/assets/payment.svg" /> */}
@@ -313,7 +332,7 @@ const Modal = (props) => {
                             {props.body.registration_deadline ? (
                                 <div
                                     className={styles.team_pay}
-                                    // style={{ flexDirection: 'row' }}
+                                // style={{ flexDirection: 'row' }}
                                 >
                                     <p>
                                         {/* <img src="/assets/alert.svg" /> */}
@@ -321,6 +340,25 @@ const Modal = (props) => {
                                         <span style={{ fontWeight: '600' }}>
                                             {new Date(
                                                 props.body.registration_deadline
+                                            ).toDateString('default', {
+                                                day: 'numeric',
+                                                month: 'long',
+                                            })}
+                                        </span>
+                                    </p>
+                                </div>
+                            ) : null}
+                            {props.body.end_time && ((props.body.venue && props.body.venue.toLowerCase() === 'online') || (props.body.Venue && props.body.Venue.toLowerCase() === 'online')) ? (
+                                <div
+                                    className={styles.team_pay}
+                                // style={{ flexDirection: 'row' }}
+                                >
+                                    <p>
+                                        {/* <img src="/assets/alert.svg" /> */}
+                                        Submission deadline&nbsp;
+                                        <span style={{ fontWeight: '600' }}>
+                                            {new Date(
+                                                props.body.end_time
                                             ).toDateString('default', {
                                                 day: 'numeric',
                                                 month: 'long',
@@ -361,9 +399,9 @@ const Modal = (props) => {
                                                             e[1]
                                                                 ? null
                                                                 : {
-                                                                      pointerEvents:
-                                                                          'none',
-                                                                  }
+                                                                    pointerEvents:
+                                                                        'none',
+                                                                }
                                                         }
                                                         target="_blank"
                                                         rel="noreferrer"
