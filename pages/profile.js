@@ -47,6 +47,8 @@ function Profile() {
     const [editingAadhaar, setEditingAadhaar] = useState(false)
     const [aadhaarValue, setAadhaarValue] = useState(profDetails?.aadhaar_number || '')
     const [aadhaarLoading, setAadhaarLoading] = useState(false)
+    const [myntraStatus, setMyntraStatus] = useState(null)
+    const [myntraLoading, setMyntraLoading] = useState(true)
 
     const handleSave = () => {
         setIsEditing(false) // Exit edit mode
@@ -193,6 +195,41 @@ function Profile() {
         }
     }, [userData?.state?.user])
 
+    // Fetch Myntra registration status
+    useEffect(() => {
+        const fetchMyntraStatus = async () => {
+            if (!userData?.state?.user) return
+            
+            const authHeaders = userData?.getAuthHeaders
+                ? userData.getAuthHeaders()
+                : {}
+            
+            try {
+                const response = await fetch(`${host}/sponsor/myntra-status/`, {
+                    method: 'GET',
+                    headers: {
+                        ...authHeaders,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                
+                if (response.ok) {
+                    const data = await response.json()
+                    setMyntraStatus(data)
+                } else {
+                    setMyntraStatus({ is_myntra_registered: false })
+                }
+            } catch (error) {
+                console.error('Failed to fetch Myntra status:', error)
+                setMyntraStatus({ is_myntra_registered: false })
+            } finally {
+                setMyntraLoading(false)
+            }
+        }
+        
+        fetchMyntraStatus()
+    }, [userData?.state?.user])
+
     function regenrateqr() {
         const authHeaders = userData.getAuthHeaders()
         fetch(`${host}/user/regenerateqr/`, {
@@ -262,6 +299,57 @@ function Profile() {
             />
             <div className={styles.mainContainer}>
                 <div className={styles.welcome}>WELCOME BACK!</div>
+                
+                {/* Myntra Registration Notice */}
+                {!myntraLoading && myntraStatus && !myntraStatus.is_myntra_registered && (
+                    <div style={{
+                        backgroundColor: '#fff3cd',
+                        border: '2px solid #ffc107',
+                        borderRadius: '8px',
+                        padding: '20px',
+                        margin: '20px auto',
+                        maxWidth: '800px',
+                        textAlign: 'center'
+                    }}>
+                        <h3 style={{
+                            color: '#856404',
+                            marginBottom: '10px',
+                            fontSize: '20px',
+                            fontWeight: 'bold'
+                        }}>
+                            ⚠️ Myntra Registration Required for Pronite Entry
+                        </h3>
+                        <p style={{
+                            color: '#856404',
+                            marginBottom: '15px',
+                            fontSize: '16px'
+                        }}>
+                            You have not registered on Myntra yet. This is mandatory for pronite entry.
+                        </p>
+                        <a
+                            href="https://myntra.onelink.me/dNYC/psb0vkzt?af_qr=true"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                display: 'inline-block',
+                                backgroundColor: '#ff3f6c',
+                                color: 'white',
+                                padding: '12px 24px',
+                                borderRadius: '5px',
+                                textDecoration: 'none',
+                                fontWeight: 'bold',
+                                fontSize: '16px',
+                                cursor: 'pointer',
+                                transition: 'background-color 0.3s'
+                            }}
+                            onMouseOver={(e) => e.target.style.backgroundColor = '#e6395f'}
+                            onMouseOut={(e) => e.target.style.backgroundColor = '#ff3f6c'}
+                        >
+                            Register on Myntra App
+                        </a>
+                    </div>
+                )}
+                
                 <div className={styles.subContainer}>
                     <div className={styles.idandqr}>
                         <div
