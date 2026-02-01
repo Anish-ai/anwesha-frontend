@@ -423,23 +423,32 @@ function Anweshapass() {
                     <br />
                 </div>
 
-                <div className={styles.passcontainer_hero}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div className={styles.myntra_notice}>
+                        After buying the passes download Myntra app in your mobile and Register in the ClamFest by filling the form. <a href="https://myntra.onelink.me/dNYC/psb0vkzt?af_qr=true" target="_blank" rel="noopener noreferrer">Visit </a>
+                        <br />
+                        <span className={styles.red_warning}>This step is mandatory for pronite entry.</span>
+                    </div>
+                    <div className={styles.passcontainer_hero}>
 
-                    <div className={styles.passcontainer_background} />
-                    <div className={styles.passcontainer_hero_fix}>
-                        <div className={styles.passcontainer_tshirts}>
-                            <div className={styles.tshirt_white} />
-                            <div className={styles.tshirt_black_parent}>
-                                <div className={styles.tshirt_black} />
+                        <div className={styles.passcontainer_background} />
+                        <div className={styles.passcontainer_hero_fix}>
+
+                            <div className={styles.passcontainer_tshirts}>
+                                <div className={styles.tshirt_white} />
+                                <div className={styles.tshirt_black_parent}>
+                                    <div className={styles.tshirt_black} />
+                                </div>
+                                <div className={styles.tshirt_blue} />
                             </div>
-                            <div className={styles.tshirt_blue} />
-                        </div>
-                        <div className={styles.passcontainer_button} >
-                            <button className={styles.register_button} onClick={handlefestpass}>
-                                {isloading ? 'GRABBING...' : 'GRAB NOW'}
-                            </button>
-                            {/* <div className={styles.earlybird}><p>💀 Early Bird Offer ! Till 6 Feb 11:59 PM 💀</p></div>
+                            <div className={styles.passcontainer_button} >
+                                <button className={styles.register_button} onClick={handlefestpass}>
+                                    {isloading ? 'GRABBING...' : 'GRAB NOW'}
+                                </button>
+                                <div className={styles.event_dates}><p>for 6th, 7th, and 8th Feb</p></div>
+                                {/* <div className={styles.earlybird}><p>💀 Early Bird Offer ! Till 6 Feb 11:59 PM 💀</p></div>
                             <div className={styles.earlybird1} style={{ fontSize: '18px' }}><p>Prices will be ₹949 after</p></div>*/}
+                            </div>
                         </div>
                     </div>
                 </div>
