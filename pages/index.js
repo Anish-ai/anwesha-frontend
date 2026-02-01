@@ -933,7 +933,7 @@ const IndexPage = () => {
 
                     <div className={styles.hero_button}>
                         <button
-                            className={cn(styles.sexy_button)}
+                            className={cn(styles.sexy_button , styles.sexy_button_small)}
                             onClick={() => router.push('/userRegister')}
                         >
                             Register
