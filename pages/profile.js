@@ -200,28 +200,38 @@ function Profile() {
         const fetchMyntraStatus = async () => {
             if (!userData?.state?.user) return
             
-            const authHeaders = userData?.getAuthHeaders
-                ? userData.getAuthHeaders()
-                : {}
-            
             try {
-                const response = await fetch(`${host}/sponsor/myntra-status/`, {
+                const authHeaders = userData?.getAuthHeaders
+                    ? userData.getAuthHeaders()
+                    : {}
+                
+                console.log('[Profile] Auth headers object:', authHeaders)
+                console.log('[Profile] Has Authorization header:', !!authHeaders.Authorization)
+                
+                var myHeaders = new Headers()
+                myHeaders.append('Content-Type', 'application/json')
+                Object.entries(authHeaders).forEach(([k, v]) =>
+                    myHeaders.append(k, v)
+                )
+                
+                const response = await fetch(`${host}/sponsors/myntra-status/`, {
                     method: 'GET',
-                    headers: {
-                        ...authHeaders,
-                        'Content-Type': 'application/json'
-                    }
+                    headers: myHeaders
                 })
                 
                 if (response.ok) {
                     const data = await response.json()
+                    console.log('[Profile] Myntra status received:', data)
                     setMyntraStatus(data)
                 } else {
-                    setMyntraStatus({ is_myntra_registered: false })
+                    console.log('[Profile] Myntra status API returned non-OK:', response.status)
+                    // Only set status on success, don't show warning on API errors
+                    setMyntraStatus(null)
                 }
             } catch (error) {
-                console.error('Failed to fetch Myntra status:', error)
-                setMyntraStatus({ is_myntra_registered: false })
+                console.error('[Profile] Failed to fetch Myntra status:', error)
+                // Don't show warning if API fails
+                setMyntraStatus(null)
             } finally {
                 setMyntraLoading(false)
             }
@@ -301,7 +311,7 @@ function Profile() {
                 <div className={styles.welcome}>WELCOME BACK!</div>
                 
                 {/* Myntra Registration Notice */}
-                {!myntraLoading && myntraStatus && !myntraStatus.is_myntra_registered && (
+                {!myntraLoading && myntraStatus && myntraStatus.is_myntra_registered === false && (
                     <div style={{
                         backgroundColor: '#fff3cd',
                         border: '2px solid #ffc107',
