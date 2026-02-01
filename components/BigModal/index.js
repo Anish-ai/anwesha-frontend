@@ -36,9 +36,9 @@ const Modal = (props) => {
                                 await soloEventRegistration(
                                     props.body.id,
                                     props.body.registration_fee,
-                                    userData.state.user.email_id,
-                                    userData.state.user.phone_number,
-                                    userData.state.user.anwesha_id,
+                                    userData?.state.user.email_id,
+                                    userData?.state.user.phone_number,
+                                    userData?.state.user.anwesha_id,
                                     router,
                                     props.closeHandler
                                 )
@@ -48,9 +48,9 @@ const Modal = (props) => {
                                 await soloEventRegistration(
                                     props.body.id,
                                     props.body.registration_fee,
-                                    userData.state.user.email_id,
-                                    userData.state.user.phone_number,
-                                    userData.state.user.anwesha_id,
+                                    userData?.state.user.email_id,
+                                    userData?.state.user.phone_number,
+                                    userData?.state.user.anwesha_id,
                                     router,
                                     props.closeHandler
                                 )
