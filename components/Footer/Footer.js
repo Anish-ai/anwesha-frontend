@@ -121,7 +121,12 @@ const Footer = () => {
                 >
                   Contact us :
                 </span>
-                +91 7564985810
+                <br />
+                For Event issues: +91 7564985810
+                <br />
+                For Website issues: anweshatroubleshoot@gmail.com
+                <br />
+                +91 9350180765
               </h4>
             </div>
           </div>
