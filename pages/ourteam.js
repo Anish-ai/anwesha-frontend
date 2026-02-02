@@ -180,14 +180,6 @@ export default function Ourteam() {
                 linkedin: 'https://www.linkedin.com/in/jatin-kumar-4357b72a7',
                 email: 'jatin_2301ec12@iitp.ac.in',
             },
-            {
-                name: 'Parv Agarwal',
-                image: '/team/parvAgarwal.jpeg',
-                instagram:
-                    'https://www.instagram.com/z.e.r.o01?igsh=b3Zhd3BldmV1YzBv',
-                linkedin: 'https://www.linkedin.com/in/parvagarwal',
-                email: 'parv_pa2503mth244@iitp.ac.in',
-            },
         ],
         mpr: [
             {
@@ -224,7 +216,7 @@ export default function Ourteam() {
                     'https://www.linkedin.com/in/saksham-srivastava-28ba99296/',
                 email: 'saksham_2301ec56@iitp.ac.in',
             },
-             {
+            {
                 name: 'Kushal Kesharwani ',
                 image: '/team/kushal.jpg',
                 instagram: 'https://www.instagram.com/anwesha_iitpatna/',
